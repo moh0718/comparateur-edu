@@ -168,8 +168,10 @@ export default function AdminPage() {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 md:px-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-600 text-white text-sm">🎓</div>
-            <span className="font-semibold text-slate-900">Admin — Comparateur Edu</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-white text-sm">
+              🎓
+            </div>
+            <span className="font-semibold text-slate-900">Admin — kompar - edu</span>
           </Link>
           <SignOutButton />
         </div>

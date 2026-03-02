@@ -41,10 +41,12 @@ function LoginForm() {
       <div className="w-full max-w-sm rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
         <div className="mb-6 flex justify-center">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 text-white">
-              <span className="text-sm" aria-hidden>🏛️</span>
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
+              <span className="text-sm" aria-hidden>
+                🎓
+              </span>
             </div>
-            <span className="text-lg font-semibold text-slate-900">Kompar - Banque</span>
+            <span className="text-lg font-semibold text-slate-900">kompar - edu</span>
           </Link>
         </div>
         <h1 className="text-center text-xl font-bold text-slate-900">Connexion admin</h1>
