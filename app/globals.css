@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Comparateur Edu — famille visuelle Kompar */
+:root {
+  --color-primary: #16a34a;
+  --color-primary-hover: #15803d;
+  --color-surface: #f8fafc;
+}

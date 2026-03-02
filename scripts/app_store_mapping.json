@@ -1,0 +1,70 @@
+{
+  "algerie-poste": {
+    "play_store_id": "dz.poste.baridimob",
+    "app_store_id": "1481839638"
+  },
+  "cnep-banque": {
+    "play_store_id": "dz.cnep.cnepconnect",
+    "app_store_id": "6447764246"
+  },
+  "bna": {
+    "play_store_id": "com.bna.bnadigit",
+    "app_store_id": "1521474032"
+  },
+  "bea": {
+    "play_store_id": "com.aebs.p2bbea",
+    "app_store_id": "1551818054"
+  },
+  "cpa": {
+    "play_store_id": "com.cpa.cpamobile",
+    "app_store_id": "1559108272"
+  },
+  "badr": {
+    "play_store_id": "com.ofss.mybadr",
+    "app_store_id": "6751541367"
+  },
+  "bdl": {
+    "play_store_id": "dz.bdl.digitbdl",
+    "app_store_id": "1489442916"
+  },
+  "societe-generale-algerie": {
+    "play_store_id": "com.sga.sgalgerie",
+    "app_store_id": "1385575100"
+  },
+  "bnp-paribas-algerie": {
+    "play_store_id": "com.bnpparibas.dz.mbanquepublic",
+    "app_store_id": "6443903850"
+  },
+  "banxy": {
+    "play_store_id": "com.natixis.banxy",
+    "app_store_id": "1267915619"
+  },
+  "agb": {
+    "play_store_id": "com.agb.agbonline",
+    "app_store_id": "1624492694"
+  },
+  "al-salam-bank-algeria": {
+    "play_store_id": "dz.alsalam.mysalamplus",
+    "app_store_id": "6755228976"
+  },
+  "banque-al-baraka-algerie": {
+    "play_store_id": "com.aebs.p2bbaraka",
+    "app_store_id": "1473746377"
+  },
+  "arab-bank-plc-algeria": {
+    "play_store_id": "com.arabbank.arabimobilev2",
+    "app_store_id": "1387380275"
+  },
+  "housing-bank-hbtf": {
+    "play_store_id": "com.hbtfalgeria",
+    "app_store_id": "6502285597"
+  },
+  "fransabank-el-djazair": {
+    "play_store_id": "com.aebs.p2bfransabank",
+    "app_store_id": "1588042270"
+  },
+  "trust-bank-algeria": {
+    "play_store_id": "dz.trustbank.connect",
+    "app_store_id": null
+  }
+}

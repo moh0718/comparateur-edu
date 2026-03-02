@@ -1,0 +1,14 @@
+<svg width="180" height="80" viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>CPA</title>
+  <rect width="180" height="80" rx="10" fill="#ffffff" />
+  <rect x="20" y="16" width="60" height="48" rx="8" fill="#FACC15" />
+  <path d="M30 48 L40 26 L50 48 Z" fill="#0F172A" />
+  <circle cx="58" cy="32" r="6" fill="#0F172A" />
+  <text x="95" y="38" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="18" fill="#111827" font-weight="700">
+    CPA
+  </text>
+  <text x="95" y="54" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#6B7280">
+    Crédit Populaire d&apos;Algérie
+  </text>
+</svg>
+

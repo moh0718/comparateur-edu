@@ -1,0 +1,15 @@
+# Fichiers d'environnement — NE JAMAIS committer de fichier contenant des secrets
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+!.env.example
+
+.DS_Store
+node_modules/
+.next/
+.venv/
+__pycache__/
+*.pyc

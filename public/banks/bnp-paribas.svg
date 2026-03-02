@@ -1,0 +1,14 @@
+<svg width="180" height="80" viewBox="0 0 180 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>BNP Paribas</title>
+  <rect width="180" height="80" rx="10" fill="#ffffff" />
+  <rect x="20" y="16" width="60" height="48" rx="8" fill="#0F766E" />
+  <path d="M30 28 L38 22 L46 28 L40 34 Z" fill="#ECFEFF" />
+  <path d="M34 40 L44 34 L52 40 L42 46 Z" fill="#ECFEFF" opacity="0.8" />
+  <text x="95" y="38" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="15" fill="#111827" font-weight="700">
+    BNP Paribas
+  </text>
+  <text x="95" y="54" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" fill="#6B7280">
+    Banque &amp; Assurance
+  </text>
+</svg>
+

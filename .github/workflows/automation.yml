@@ -1,0 +1,85 @@
+# Automation Comparateur Edu — crawl établissements + génération blog
+#
+# Secrets à configurer dans GitHub : Settings → Secrets and variables → Actions
+#
+# Pour les deux jobs :
+#   NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+#
+# Job crawl-etablissements uniquement :
+#   FIRECRAWL_API_KEY, GOOGLE_PLACES_API_KEY, SERPER_API_KEY, APIFY_API_KEY,
+#   GEMINI_API_KEY, RESEND_API_KEY, MY_EMAIL, REVALIDATION_SECRET, VERCEL_REVALIDATE_URL
+#
+# Job generation-blog uniquement :
+#   SERPER_API_KEY, FIRECRAWL_API_KEY, GEMINI_API_KEY
+
+name: Automation
+
+on:
+  schedule:
+    # JOB 1 : chaque lundi 06h00 UTC
+    - cron: "0 6 * * 1"
+    # JOB 2 : chaque mercredi 08h00 UTC
+    - cron: "0 8 * * 3"
+  workflow_dispatch:
+
+jobs:
+  crawl-etablissements:
+    name: Crawl établissements
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run crawler.py
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          APIFY_API_KEY: ${{ secrets.APIFY_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          MY_EMAIL: ${{ secrets.MY_EMAIL }}
+          REVALIDATION_SECRET: ${{ secrets.REVALIDATION_SECRET }}
+          VERCEL_REVALIDATE_URL: ${{ secrets.VERCEL_REVALIDATE_URL }}
+        run: python scripts/crawler.py
+
+      - name: Revalidate ISR (Vercel)
+        run: |
+          curl -sSf -X POST "${{ secrets.VERCEL_REVALIDATE_URL }}" \
+            -H "Authorization: Bearer ${{ secrets.REVALIDATION_SECRET }}"
+
+  generation-blog:
+    name: Génération blog
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 8 * * 3' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run blog_generator.py
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/blog_generator.py
