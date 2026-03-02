@@ -1,11 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { InstitutionCard } from "@/components/InstitutionCard";
 import { FilterBar, defaultFilters, type FilterState } from "@/components/FilterBar";
 import { institutionsMock } from "@/data/institutions-mock";
 import type { Institution } from "@/data/institutions-mock";
+import { Button } from "@/components/ui/button";
+import { LEAD_FORM_HREF } from "@/lib/navigation";
 
 function filterInstitutions(list: Institution[], f: FilterState): Institution[] {
   return list.filter((inst) => {
@@ -70,9 +73,22 @@ export function EtablissementsClient() {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <h1 className="mb-6 text-2xl font-bold text-slate-900 md:text-3xl">
-        Annuaire des établissements
-      </h1>
+      <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">
+            Annuaire des établissements
+          </h1>
+          <p className="mt-1 max-w-xl text-sm text-slate-600">
+            Filtrez par wilaya, budget et services pour explorer les écoles, ou laissez{" "}
+            <span className="font-semibold">kompar - edu</span> vous proposer une sélection personnalisée.
+          </p>
+        </div>
+        <div className="flex justify-start md:justify-end">
+          <Button asChild variant="primary" size="lg" className="rounded-full px-6">
+            <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
+          </Button>
+        </div>
+      </div>
 
       <div className="mb-6 flex flex-col gap-4 lg:flex-row">
         <input
@@ -101,6 +117,23 @@ export function EtablissementsClient() {
             <p className="rounded-xl border border-slate-200 bg-white p-8 text-center text-slate-600">
               Aucun établissement ne correspond à vos filtres. Essayez d&apos;élargir la recherche.
             </p>
+          )}
+
+          {list.length > 0 && (
+            <section
+              aria-label="Recommandation personnalisée"
+              className="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50/70 px-6 py-6 text-center sm:px-8"
+            >
+              <p className="text-sm text-emerald-900 sm:text-base">
+                Vous hésitez entre plusieurs établissements ? Répondez à quelques questions et{" "}
+                <span className="font-semibold">recevez une recommandation personnalisée</span> gratuite.
+              </p>
+              <div className="mt-4 flex justify-center">
+                <Button asChild variant="primary" size="lg" className="rounded-full px-8">
+                  <Link href={LEAD_FORM_HREF}>Lancer le formulaire</Link>
+                </Button>
+              </div>
+            </section>
           )}
         </div>
       </div>

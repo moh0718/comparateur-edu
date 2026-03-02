@@ -32,8 +32,12 @@ export function Header() {
             🎓
           </div>
           <div className="hidden flex-col leading-tight sm:flex">
-            <span className="text-sm font-semibold text-slate-900">Comparateur Edu</span>
-            <span className="text-[11px] text-slate-500">Éducation privée en Algérie</span>
+            <span className="flex items-center gap-1 text-sm font-semibold text-slate-900">
+              kompar - edu
+              <span role="img" aria-label="Algérie" className="text-base">
+                🇩🇿
+              </span>
+            </span>
           </div>
         </Link>
 
@@ -97,9 +101,23 @@ export function Header() {
 
         {/* CTA Lead Gen — doit "sauter aux yeux" */}
         <div className="ml-auto shrink-0">
-          <Button asChild variant="primary" size="sm" className="whitespace-nowrap text-xs font-semibold shadow-md md:text-sm">
+          <Button
+            asChild
+            variant="primary"
+            size="sm"
+            className="whitespace-nowrap text-sm font-semibold shadow-md md:text-base"
+          >
             <Link href={LEAD_FORM_HREF}>Trouver mon École</Link>
           </Button>
+        </div>
+      </div>
+
+      {/* Bandeau valeur ajoutée */}
+      <div className="border-t border-slate-100 bg-emerald-50/80">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-5 py-1.5 text-center sm:px-6 md:px-8">
+          <p className="text-[11px] font-medium text-emerald-800 sm:text-xs">
+            <span className="font-semibold">1er comparateur neutre d&apos;établissements privés en Algérie</span> — données vérifiées, filtres avancés et recommandations gratuites par WhatsApp.
+          </p>
         </div>
       </div>
 

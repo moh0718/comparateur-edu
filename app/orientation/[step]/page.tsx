@@ -122,11 +122,11 @@ export default function OrientationStepPage() {
     <div className="flex min-h-screen flex-col bg-slate-50">
       <header className="sticky top-0 z-10 border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-14 max-w-xl items-center justify-between px-4 sm:px-5">
-          <Link href={ROUTES.home} className="flex items-center gap-2" aria-label="Comparateur Edu accueil">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-600 text-white text-sm">
+          <Link href={ROUTES.home} className="flex items-center gap-2" aria-label="kompar - edu accueil">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-white text-sm">
               🎓
             </div>
-            <span className="text-sm font-semibold text-slate-900">Comparateur Edu</span>
+            <span className="text-sm font-semibold text-slate-900">kompar - edu</span>
           </Link>
           <button
             type="button"

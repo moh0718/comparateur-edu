@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { InstitutionCard } from "@/components/InstitutionCard";
 import { Button } from "@/components/ui/button";
 import { SITE_NAME, SITE_DESCRIPTION, getBaseUrl } from "@/lib/seo";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
-import { institutionsMock } from "@/data/institutions-mock";
 
 export const metadata: Metadata = {
   title: "Comparateur gratuit — Décision simplifiée | Écoles & universités en Algérie",
@@ -30,11 +29,6 @@ const CATEGORIES = [
 ];
 
 export default function HomePage() {
-  const featured = institutionsMock
-    .filter((i) => i.is_active !== false)
-    .sort((a, b) => (b.is_partner ? 1 : 0) - (a.is_partner ? 1 : 0))
-    .slice(0, 6);
-
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
@@ -42,26 +36,73 @@ export default function HomePage() {
       <main className="flex-1 px-5 pb-16 pt-8 sm:px-6 md:px-8 md:pb-24 md:pt-12">
         <div className="mx-auto max-w-7xl space-y-10 md:space-y-14">
           {/* 1. Hero — positionnement : comparateur gratuit, décision simplifiée */}
-          <section aria-labelledby="hero-title" className="text-center">
-            <p className="mx-auto mb-2 max-w-xl text-sm font-medium uppercase tracking-wide text-green-600">
-              Comparateur gratuit · Tiers de confiance
-            </p>
-            <h1
-              id="hero-title"
-              className="mx-auto max-w-3xl text-balance text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl md:text-5xl"
-            >
-              Une décision simplifiée pour votre orientation en Algérie
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg">
-              Agrégateur d&apos;informations vérifiées : tableaux comparatifs, filtres dynamiques. Alger, Blida, Tipaza, Boumerdès.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button asChild variant="primary" size="lg" className="rounded-full px-8">
-                <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
-              </Button>
-              <Button asChild variant="secondary" size="lg" className="rounded-full border-green-600 px-8 text-green-600 hover:bg-green-50">
-                <Link href={ROUTES.etablissements}>Comparer les établissements</Link>
-              </Button>
+          <section aria-labelledby="hero-title">
+            <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+              <div className="text-center md:text-left">
+                <p className="mx-auto mb-2 max-w-xl text-sm font-semibold uppercase tracking-wide text-emerald-600 md:mx-0">
+                  Comparateur gratuit · Tiers de confiance
+                </p>
+                <h1
+                  id="hero-title"
+                  className="mx-auto max-w-3xl text-balance text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl md:text-5xl md:mx-0"
+                >
+                  Une décision simplifiée pour votre orientation en Algérie
+                </h1>
+                <p className="mx-auto mt-4 max-w-2xl text-base text-slate-700 sm:text-lg md:mx-0">
+                  Agrégateur d&apos;informations vérifiées : tableaux comparatifs, filtres dynamiques. Alger, Blida, Tipaza, Boumerdès.
+                </p>
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+                  <Button asChild variant="primary" size="lg" className="rounded-full px-8 shadow-md">
+                    <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="secondary"
+                    size="lg"
+                    className="rounded-full border-green-600 px-8 text-green-700 hover:bg-green-50 hover:text-green-800"
+                  >
+                    <Link href={ROUTES.etablissements}>Comparer les établissements</Link>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Visuel comparateur pour ajouter du peps */}
+              <div className="hidden justify-end md:flex">
+                <div className="relative w-full max-w-sm">
+                  <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-emerald-200 via-sky-200 to-amber-100 blur-2xl" aria-hidden />
+                  <div className="relative overflow-hidden rounded-3xl bg-white/90 p-5 shadow-xl ring-1 ring-slate-200">
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
+                        <span aria-hidden>📊</span>
+                        Comparaison en un coup d&apos;œil
+                      </span>
+                      <span className="text-[10px] font-medium uppercase tracking-wide text-slate-400">
+                        Alger · Blida · Tipaza
+                      </span>
+                    </div>
+                    <div className="space-y-3 text-xs">
+                      <div className="grid grid-cols-[1.2fr,0.8fr,0.8fr] gap-2 rounded-2xl bg-slate-50 p-3">
+                        <span className="text-[11px] font-semibold text-slate-700">École A</span>
+                        <span className="text-[11px] text-slate-600">+ Validation MESRS</span>
+                        <span className="text-[11px] font-semibold text-emerald-700">✓ Recommandée</span>
+                      </div>
+                      <div className="grid grid-cols-[1.2fr,0.8fr,0.8fr] gap-2 rounded-2xl bg-slate-900 p-3 text-[11px] text-slate-100">
+                        <span className="font-semibold">École B</span>
+                        <span className="text-slate-300">Langues &amp; double diplôme</span>
+                        <span className="font-semibold text-emerald-300">Meilleur rapport qualité/prix</span>
+                      </div>
+                      <div className="grid grid-cols-[1.2fr,0.8fr,0.8fr] gap-2 rounded-2xl bg-slate-50 p-3">
+                        <span className="text-[11px] font-semibold text-slate-700">École C</span>
+                        <span className="text-[11px] text-slate-600">Forte employabilité</span>
+                        <span className="text-[11px] font-semibold text-amber-700">À explorer</span>
+                      </div>
+                    </div>
+                    <p className="mt-4 text-[11px] text-slate-500">
+                      Visuel illustratif. Les recommandations finales sont personnalisées selon votre profil.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -121,24 +162,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 4. Établissements mis en avant */}
-          <section aria-labelledby="featured-title">
-            <h2 id="featured-title" className="mb-6 text-xl font-bold text-slate-900 md:text-2xl">
-              Établissements à la une
-            </h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {featured.map((inst) => (
-                <InstitutionCard key={inst.id} institution={inst} />
-              ))}
-            </div>
-            <div className="mt-6 text-center">
-              <Button asChild variant="primary">
-                <Link href={ROUTES.etablissements}>Voir tout l&apos;annuaire</Link>
-              </Button>
-            </div>
-          </section>
-
-          {/* 5. Pourquoi nous — tiers de confiance, décision simplifiée, échange valeur */}
+          {/* 4. Pourquoi nous — tiers de confiance, décision simplifiée, échange valeur */}
           <section
             id="pourquoi"
             aria-labelledby="pourquoi-title"
@@ -181,7 +205,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 6. CTA — formulaire = passage obligé pour la décision simplifiée */}
+          {/* 5. CTA — formulaire = passage obligé pour la décision simplifiée */}
           <section
             aria-labelledby="cta-title"
             className="rounded-2xl bg-brand px-6 py-10 text-center text-white shadow-card md:px-10 md:py-12"

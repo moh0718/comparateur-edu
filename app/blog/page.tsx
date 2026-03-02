@@ -166,6 +166,29 @@ export default function BlogPage() {
               Suivant
             </Button>
           </nav>
+
+          {/* CTA formulaire orientation */}
+          <section
+            aria-label="Trouver mon école"
+            className="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50/70 px-6 py-7 text-center sm:px-8"
+          >
+            <h2 className="text-base font-semibold text-emerald-900 sm:text-lg">
+              Passer de la théorie à l&apos;action : trouvez votre école idéale
+            </h2>
+            <p className="mt-2 text-sm text-emerald-900/80 sm:text-base">
+              Après la lecture des articles, répondez à quelques questions et{" "}
+              <span className="font-semibold">recevez une recommandation personnalisée</span> d&apos;établissements privés en
+              Algérie.
+            </p>
+            <div className="mt-4 flex justify-center gap-3">
+              <Button asChild variant="primary" size="lg" className="rounded-full px-8">
+                <Link href={LEAD_FORM_HREF}>Lancer le formulaire</Link>
+              </Button>
+              <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+                <Link href={ROUTES.etablissements}>Voir l&apos;annuaire</Link>
+              </Button>
+            </div>
+          </section>
           </div>
           <AdSlotSkyscraper />
         </div>

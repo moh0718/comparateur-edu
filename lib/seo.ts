@@ -4,7 +4,7 @@
  * Décision simplifiée (pas de vente de "rêve") — formulaire = échange de valeur.
  */
 
-export const SITE_NAME = "Comparateur Edu";
+export const SITE_NAME = "kompar - edu";
 
 export const SITE_DESCRIPTION =
   "Comparateur gratuit d'établissements en Algérie. Agrégateur d'informations vérifiées : tableaux comparatifs, filtres dynamiques, décision simplifiée. Alger, Blida, Tipaza, Boumerdès.";
@@ -21,7 +21,7 @@ export const SITE_KEYWORDS = [
   "MESRS reconnaissance diplômes",
   "annuaire écoles Algerie",
   "décision orientation scolaire",
-  "Comparateur Edu",
+  "kompar - edu",
 ];
 
 /** Wilayas ciblées pour GEO. */

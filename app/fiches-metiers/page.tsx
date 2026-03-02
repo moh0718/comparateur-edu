@@ -3,10 +3,11 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SITE_NAME, getBaseUrl } from "@/lib/seo";
-import { ROUTES } from "@/lib/navigation";
+import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 import { metiersMock } from "@/data/metiers-mock";
 import { SECTEURS } from "@/data/metiers-data";
 import { SearchMetiers } from "@/components/fiches-metiers/SearchMetiers";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Fiches métiers — Orientation et débouchés en Algérie",
@@ -64,6 +65,14 @@ export default function FichesMetiersPage() {
               les salaires indicatifs du marché, le potentiel freelance et les perspectives d&apos;avenir. Les montants indiqués sont des estimations
               et varient selon la wilaya, l&apos;employeur, l&apos;expérience et le statut (salarié ou indépendant).
             </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Button asChild variant="primary" size="lg" className="rounded-full px-8">
+                <Link href={LEAD_FORM_HREF}>Trouver mon École</Link>
+              </Button>
+              <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+                <Link href={ROUTES.etablissements}>Voir l&apos;annuaire des établissements</Link>
+              </Button>
+            </div>
           </div>
         </section>
 

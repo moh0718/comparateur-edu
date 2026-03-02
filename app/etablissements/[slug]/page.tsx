@@ -49,6 +49,19 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
     { label: "Programmes", value: inst.programmes ?? null },
   ].filter((r) => r.value !== undefined);
 
+  const missingCriteriaCount = criteriaRows.filter((r) => r.value === null || r.value === "").length;
+
+  const categoryLabelMap: Record<string, string> = {
+    Superieur: "Écoles et universités privées",
+    Langues: "Centres de langues",
+    "Formation Pro": "Formations professionnelles et courtes",
+    General: "Écoles générales et lycées",
+    Sante: "Écoles et instituts paramédicaux",
+    Prescolaire: "Crèches et maternelles privées",
+  };
+
+  const categoryLabel = inst.category ? categoryLabelMap[inst.category] ?? inst.category : "Établissement privé";
+
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
@@ -71,7 +84,7 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                 <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">{inst.name}</h1>
                 <p className="mt-1 text-slate-600">
                   {[inst.commune, inst.wilaya].filter(Boolean).join(", ")}
-                  {inst.category && ` • ${inst.category}`}
+                  {categoryLabel && ` • ${categoryLabel}`}
                 </p>
                 <div className="mt-2 flex flex-wrap items-center gap-2">
                   <ConfidenceBadge confidence={inst.data_confidence ?? null} />
@@ -87,6 +100,35 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                   )}
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* Résumé & valeur ajoutée du comparateur */}
+          <section className="mb-8 grid gap-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+            <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+              <h2 className="mb-3 text-lg font-semibold text-slate-900">En un coup d&apos;œil</h2>
+              <p className="text-sm text-slate-700">
+                {inst.description
+                  ? inst.description
+                  : `Fiche ${categoryLabel.toLowerCase()} pour vous aider à comparer rapidement les options d'enseignement privé en Algérie : coûts, langues, reconnaissance et services (transport, internat, etc.).`}
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm text-slate-700">
+                <li>• Positionnement de l&apos;établissement dans son secteur ({categoryLabel.toLowerCase()}).</li>
+                <li>• Fourchette de frais de scolarité pour situer le budget.</li>
+                <li>• Langues d&apos;enseignement et reconnaissance éventuelle par le MESRS.</li>
+                <li>• Services pratiques : transport, internat, horaires, réseaux sociaux.</li>
+              </ul>
+            </div>
+            <div className="rounded-xl bg-emerald-50/70 p-5 text-sm text-slate-800 shadow-sm md:p-6">
+              <h3 className="mb-2 text-sm font-semibold text-emerald-900">
+                Pourquoi passer par kompar - edu plutôt que d&apos;appeler chaque école ?
+              </h3>
+              <ul className="space-y-1.5">
+                <li>• Vue normalisée des critères clés (budget, langues, reconnaissance, services).</li>
+                <li>• Sélection priorisée des établissements avec données vérifiées en premier.</li>
+                <li>• Recommandations gratuites par WhatsApp selon votre profil, sans engagement.</li>
+                <li>• Projet indépendant : objectif d&apos;éviter le &quot;marketing de rêve&quot; et de faciliter une décision lucide.</li>
+              </ul>
             </div>
           </section>
 
@@ -156,6 +198,12 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                 </div>
               ))}
             </dl>
+            {missingCriteriaCount > 3 && (
+              <p className="mt-4 text-xs text-slate-500">
+                Certaines informations sont encore en cours de collecte (sites officiels, Google Maps, échanges avec l&apos;établissement). Si
+                vous êtes responsable de cette école, contactez-nous pour enrichir cette fiche.
+              </p>
+            )}
           </section>
 
           {/* Section 3 — Points forts / faibles */}
@@ -189,7 +237,12 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
             <div className="rounded-xl bg-green-600 p-4 text-center text-white shadow-lg md:rounded-2xl md:p-6">
               <p className="text-sm font-medium md:text-base">{contactLabel}</p>
               {contactWhatsApp ? (
-                <Button asChild variant="secondary" size="lg" className="mt-3 rounded-full border-2 border-white bg-transparent text-white hover:bg-white/10 hover:text-white">
+                <Button
+                  asChild
+                  variant="secondary"
+                  size="lg"
+                  className="mt-3 rounded-full border-2 border-white bg-transparent text-white hover:bg-white/10 hover:text-white"
+                >
                   <a
                     href={`https://wa.me/${contactWhatsApp.replace(/\D/g, "")}`}
                     target="_blank"
@@ -201,6 +254,17 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
               ) : (
                 <p className="mt-2 text-sm text-green-100">Numéro à configurer (NEXT_PUBLIC_WA_NUMBER)</p>
               )}
+              <p className="mt-3 text-xs text-green-100">
+                Ou remplissez le formulaire complet pour comparer plusieurs écoles :
+              </p>
+              <Button
+                asChild
+                variant="secondary"
+                size="sm"
+                className="mt-2 rounded-full border-2 border-white bg-white/5 px-5 py-2 text-xs font-semibold text-white hover:bg-white/15"
+              >
+                <Link href={LEAD_FORM_HREF}>Lancer le formulaire kompar - edu</Link>
+              </Button>
             </div>
           </section>
         </div>

@@ -48,8 +48,8 @@ class InstitutionData(BaseModel):
 
     name: str
     slug: Optional[str] = None
-    description: Optional[str] = None
-    programmes: Optional[str] = None
+    description: Optional[str] = None  # résumé riche pour les parents (3–6 phrases)
+    programmes: Optional[str] = None  # détails sur les filières / parcours (2–4 phrases)
     address: Optional[str] = None
     commune: Optional[str] = None
     phone: Optional[str] = None
@@ -60,6 +60,13 @@ class InstitutionData(BaseModel):
     rating: Optional[float] = None
     reviews_count: Optional[int] = None
     data_confidence: Optional[Literal["high", "medium", "low"]] = None
+    points_forts: Optional[list[str]] = None
+    points_faibles: Optional[list[str]] = None
+    mesrs_recognized: Optional[bool] = None
+    bac_required: Optional[bool] = None
+    has_internat: Optional[bool] = None
+    has_transport: Optional[bool] = None
+    level_general: Optional[list[str]] = None
 
     @field_validator("languages")
     @classmethod
@@ -78,6 +85,14 @@ class InstitutionData(BaseModel):
         if re.search(r"-\s*\d+\s*(DA|dinars?)", v, re.I) or re.search(r"\d+\s*millions?\s*DA", v, re.I):
             return None
         return v[:200].strip() or None
+
+    @field_validator("points_forts", "points_faibles")
+    @classmethod
+    def trim_points(cls, v: Optional[list[str]]) -> Optional[list[str]]:
+        if not v:
+            return None
+        cleaned = [s.strip() for s in v if isinstance(s, str) and s.strip()]
+        return cleaned[:6] or None
 
 
 # --- Charger institutions depuis Supabase (is_active = true) ---
@@ -333,8 +348,8 @@ INSTITUTION_SCHEMA = """
 {
   "name": "string",
   "slug": "string | null",
-  "description": "string | null",
-  "programmes": "string | null",
+  "description": "string | null (3 à 6 phrases complètes pour présenter l'établissement à un parent hésitant entre plusieurs options, sans marketing excessif)",
+  "programmes": "string | null (2 à 4 phrases expliquant les principaux types de formations, niveaux et publics visés)",
   "address": "string | null",
   "commune": "string | null",
   "phone": "string | null",
@@ -344,13 +359,26 @@ INSTITUTION_SCHEMA = """
   "opening_hours": "string | null",
   "rating": number | null,
   "reviews_count": number | null,
-  "data_confidence": "high" | "medium" | "low"
+  "data_confidence": "high" | "medium" | "low",
+  "points_forts": ["string"] | null (3 à 6 puces claires, orientées parents/élèves, sans langage vide),
+  "points_faibles": ["string"] | null (2 à 5 puces sur les points de vigilance ou limites possibles),
+  "mesrs_recognized": true | false | null,
+  "bac_required": true | false | null,
+  "has_internat": true | false | null,
+  "has_transport": true | false | null,
+  "level_general": ["Primaire" | "Collège" | "Lycée"] | null
 }
 """
 
 PROMPT_EXTRACTION = """
 Tu es un expert éducation algérien. Extrais UNIQUEMENT les informations présentes dans ce texte selon le schéma JSON ci-dessous.
-Si une info est absente ou incertaine → null. Ne jamais inventer.
+Si une info est absente ou incertaine → null. Ne jamais inventer, ne pas extrapoler au-delà de ce qui est dit dans le texte.
+
+Style attendu :
+- description : texte riche en français (3 à 6 phrases complètes) qui aide des parents à comprendre pour qui est l'établissement, son positionnement et ce qu'il apporte concrètement.
+- programmes : 2 à 4 phrases qui expliquent clairement les types de formations, niveaux (maternelle, collège, lycée, supérieur, pro...) et publics visés.
+- points_forts : 3 à 6 puces très concrètes (ex : \"Taux de réussite bac élevé\", \"Double diplomation avec université étrangère\", \"Accompagnement insertion professionnelle\"), sans phrases creuses.
+- points_faibles : 2 à 5 puces factuelles (budget élevé, sélection forte, accès difficile, éloigné du centre, etc.) uniquement si ces éléments apparaissent dans les sources.
 
 data_confidence :
 - high : info confirmée par 2+ sources
@@ -447,6 +475,13 @@ def supabase_upsert_institution_and_log(
         "description": data.description,
         "programmes": data.programmes,
         "data_confidence": data.data_confidence,
+        "points_forts": data.points_forts,
+        "points_faibles": data.points_faibles,
+        "mesrs_recognized": data.mesrs_recognized,
+        "bac_required": data.bac_required,
+        "has_internat": data.has_internat,
+        "has_transport": data.has_transport,
+        "level_general": data.level_general,
         "is_active": True,
         "updated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
