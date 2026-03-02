@@ -39,7 +39,7 @@ export function Footer({ className = "", variant = "default" }: FooterProps) {
         </div>
 
         <p className="text-xs text-slate-500">
-          © 2026 Comparateur Edu. Tous droits réservés.
+          © 2026 kompar - edu. Tous droits réservés.
         </p>
 
         <p className="text-[11px] leading-relaxed text-slate-600 md:text-xs">

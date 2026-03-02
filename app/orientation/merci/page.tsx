@@ -35,8 +35,8 @@ export default function OrientationMerciPage() {
           <p className="mt-3 text-sm leading-relaxed text-slate-600">
             WhatsApp s&apos;est ouvert avec un résumé de vos réponses. Envoyez le message pour recevoir vos recommandations d&apos;établissements. Nous vous répondrons dans les plus brefs délais.
           </p>
-          <p className="mt-2 text-xs text-slate-500">
-            Aucune donnée n&apos;a été enregistrée sur nos serveurs.
+          <p className="mt-2 rounded-lg border border-emerald-200 bg-emerald-50/80 px-4 py-2 text-xs font-medium text-emerald-800">
+            Aucune donnée personnelle n&apos;est stockée sur ce site ni dans aucune base de données.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button asChild variant="primary" size="lg" className="rounded-full">

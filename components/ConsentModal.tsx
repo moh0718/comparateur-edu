@@ -96,10 +96,7 @@ export function ConsentModal() {
               Vos préférences de confidentialité
             </h2>
             <p id="consent-description" className="mt-2 text-sm text-slate-600 leading-relaxed">
-              Nous utilisons <span className="font-medium text-slate-800">WhatsApp</span> pour vous recontacter si vous
-              le demandez, et des outils statistiques (comme Vercel Analytics ou équivalents) pour comprendre comment
-              le site est utilisé. Ces mesures sont <span className="font-medium">anonymisées</span> et ne contiennent
-              pas vos données personnelles. Aucun cookie publicitaire tiers n&apos;est utilisé.
+              <strong className="text-slate-800">Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. La mise en relation se fait exclusivement par <span className="font-medium text-slate-800">WhatsApp</span> avec votre consentement. Nous pouvons aussi utiliser des outils statistiques anonymes pour comprendre l&apos;usage du site. Aucun cookie publicitaire tiers.
             </p>
           </div>
         </div>
@@ -115,8 +112,7 @@ export function ConsentModal() {
             <div className="text-sm text-slate-700">
               <div className="font-medium text-slate-900">Contact par WhatsApp</div>
               <p className="mt-0.5 text-xs text-slate-600">
-                Autoriser Comparateur Edu à vous recontacter sur WhatsApp au sujet de votre projet d&apos;orientation ou
-                de comparaison d&apos;établissements. Vous pourrez toujours nous demander d&apos;arrêter.
+                Autoriser le contact par WhatsApp au sujet de votre projet d&apos;orientation ou de comparaison d&apos;établissements. Vos réponses ne sont jamais stockées sur nos serveurs. Vous pourrez nous demander d&apos;arrêter à tout moment.
               </p>
             </div>
           </label>

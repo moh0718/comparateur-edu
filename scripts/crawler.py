@@ -23,6 +23,8 @@ load_dotenv()
 
 # --- Config (toutes les clés via os.getenv) ---
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL") or os.getenv("SUPABASE_URL")
+# Limite Google Places API (2 appels/établissement : Find + Details). 100 = 200 appels/run. Gratuit : 5000/mois par SKU.
+CRAWLER_PLACES_MAX = int(os.getenv("CRAWLER_PLACES_MAX", "100"))
 SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY")
 GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY")
@@ -307,7 +309,7 @@ def source4_serper_firecrawl(name: str) -> tuple[str, bool]:
 
 
 # --- Collecte 4 sources pour un établissement ---
-def collect_sources(inst: dict[str, Any]) -> tuple[str, list[str]]:
+def collect_sources(inst: dict[str, Any], places_rank: int = 0) -> tuple[str, list[str]]:
     name = inst.get("name") or "Établissement"
     website = inst.get("website_url")
     commune = inst.get("commune")
@@ -321,11 +323,12 @@ def collect_sources(inst: dict[str, Any]) -> tuple[str, list[str]]:
     if u1:
         sources_used.append("site_officiel")
 
-    s2, u2 = source2_google_places(name, commune)
-    if s2:
-        combined.append(s2)
-    if u2:
-        sources_used.append("google_places")
+    if places_rank < CRAWLER_PLACES_MAX:
+        s2, u2 = source2_google_places(name, commune)
+        if s2:
+            combined.append(s2)
+        if u2:
+            sources_used.append("google_places")
 
     s3, u3 = source3_instagram(instagram)
     if s3:
@@ -534,7 +537,7 @@ def main() -> None:
     for i, inst in enumerate(institutions):
         name = inst.get("name") or "Inconnu"
         try:
-            combined, sources_used = collect_sources(inst)
+            combined, sources_used = collect_sources(inst, places_rank=i)
             if not combined or combined == "[Aucun contenu récupéré]":
                 supabase_upsert_institution_and_log(inst, InstitutionData(name=name), [], "ERREUR", "Aucune source disponible")
                 send_resend_alert(f"[Crawler Edu] Échec — {name}", "Aucune donnée récupérée (4 sources).")

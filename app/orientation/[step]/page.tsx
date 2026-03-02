@@ -159,9 +159,14 @@ export default function OrientationStepPage() {
           ) : config ? (
             <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
               {currentStep === 1 && (
-                <p className="mb-4 text-center text-sm font-medium text-green-600">
-                  Décision simplifiée en quelques questions — échange de valeur, recommandation personnalisée.
-                </p>
+                <>
+                  <p className="mb-4 text-center text-sm font-medium text-green-600">
+                    Décision simplifiée en quelques questions — échange de valeur, recommandation personnalisée.
+                  </p>
+                  <p className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50/80 px-4 py-3 text-center text-xs font-medium text-emerald-800">
+                    <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. La mise en relation se fait exclusivement par WhatsApp, avec votre consentement.
+                  </p>
+                </>
               )}
               {config.title && (
                 <p className="text-center text-sm font-bold uppercase tracking-wide text-slate-600">{config.title}</p>
@@ -318,7 +323,7 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}
               placeholder="Ex. 055 12 34 56"
-              className="w-full rounded-lg border border-slate-200 px-4 py-3 text-slate-900 focus:border-green-500 focus:ring-2 focus:ring-green-100"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
               required
             />
           </div>
@@ -332,8 +337,8 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
             {sending ? "Envoi…" : "Recevoir sur WhatsApp"}
           </button>
         </form>
-        <p className="mt-4 text-center text-xs text-slate-500">
-          En cliquant sur ce bouton, WhatsApp va s&apos;ouvrir avec un resume de vos reponses. Vous restez libre d&apos;envoyer ou non ce message. Aucune donnee n&apos;est enregistree sur nos serveurs.
+        <p className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50/80 px-4 py-3 text-center text-xs font-medium text-emerald-800">
+          <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. WhatsApp s&apos;ouvrira avec un résumé de vos réponses. Vous restez libre d&apos;envoyer ou non le message.
         </p>
       </div>
 

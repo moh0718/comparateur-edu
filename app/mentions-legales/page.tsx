@@ -8,7 +8,7 @@ import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 export const metadata: Metadata = {
   title: "Mentions légales",
   description:
-    "Mentions légales de Kompar - Banque : éditeur du site, hébergement, objet du site, données personnelles et contact.",
+    "Mentions légales : éditeur, hébergement, objet du site. Aucune donnée personnelle stockée — mise en relation exclusivement par WhatsApp avec consentement.",
   openGraph: {
     title: `Mentions légales | ${SITE_NAME}`,
     description: "Éditeur, hébergeur, objet du site et informations légales.",
@@ -47,7 +47,7 @@ const LEGAL_HEBERGEUR_NAME = "Vercel Inc.";
 const LEGAL_HEBERGEUR_ADDRESS = "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis";
 const LEGAL_HEBERGEUR_PHONE = "—";
 const LEGAL_HEBERGEUR_EMAIL = "privacy@vercel.com";
-const LEGAL_HEBERGEUR_PRECISION = "L'hébergement est assuré par Vercel Inc. pour la mise à disposition du site (scripts et contenus). Aucune donnée personnelle des visiteurs n'est stockée sur l'infrastructure Vercel ; les données saisies dans les formulaires sont traitées selon les modalités décrites en section 4.";
+const LEGAL_HEBERGEUR_PRECISION = "L'hébergement est assuré par Vercel Inc. pour la mise à disposition du site (scripts et contenus). Aucune donnée personnelle des visiteurs n'est stockée sur l'infrastructure Vercel ni sur ce site ; la mise en relation se fait exclusivement par WhatsApp avec consentement (voir section 4).";
 
 export default function MentionsLegalesPage() {
   return (
@@ -193,24 +193,24 @@ export default function MentionsLegalesPage() {
             </div>
           </section>
 
-          {/* 4. Collecte et utilisation des données */}
+          {/* 4. Données personnelles — zéro stockage, WhatsApp avec consentement */}
           <section
             className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
             aria-labelledby="section-4-title"
           >
             <h2 id="section-4-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>4</span>
-              Collecte et utilisation des données
+              Données personnelles
             </h2>
             <div className="space-y-3 text-sm leading-relaxed text-slate-700">
-              <p>
-                Les informations collectées via les formulaires du site sont utilisées pour vous proposer des recommandations personnalisées et peuvent être transmises à des partenaires bancaires dans le cadre d&apos;offres adaptées à votre profil.
+              <p className="rounded-lg border border-emerald-200 bg-emerald-50/80 px-4 py-3 font-medium text-emerald-900">
+                <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données.
               </p>
               <p>
-                Les données sont stockées et traitées en Algérie conformément à la législation locale en vigueur.
+                La mise en relation se fait <strong className="text-slate-800">exclusivement par WhatsApp</strong>, avec votre consentement préalable (bannière de confidentialité). Vos réponses au formulaire ne sont jamais enregistrées sur nos serveurs : un lien WhatsApp s&apos;ouvre avec un message pré-rempli que vous envoyez (ou non) directement à notre numéro.
               </p>
               <p>
-                <strong className="text-slate-800">Sécurité des données :</strong> Vos informations sont protégées et ne sont jamais revendues à des tiers.
+                <strong className="text-slate-800">Consentement :</strong> En acceptant les préférences de confidentialité proposées à votre première visite, vous autorisez le contact par WhatsApp pour vos demandes d&apos;orientation. Vous pouvez à tout moment demander l&apos;arrêt des échanges.
               </p>
             </div>
           </section>

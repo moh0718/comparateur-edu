@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { ConfidenceBadge } from "@/components/ConfidenceBadge";
 import { Button } from "@/components/ui/button";
 import { SITE_NAME, getBaseUrl } from "@/lib/seo";
-import { ROUTES } from "@/lib/navigation";
+import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 import { institutionsMock } from "@/data/institutions-mock";
 
 export const revalidate = 86400;

@@ -135,15 +135,16 @@ function mapCandidate(seed: SeedInstitution, c: PlacesCandidate | null): Scraped
   };
 }
 
+const DEFAULT_PLACES_LIMIT = 50; // Limite par défaut (1 appel/établissement). Gratuit: 5000/mois.
+
 async function main() {
   const { priority, limit } = parseArgs();
   let seeds = INSTITUTIONS_SCRAPING_SEED;
   if (priority) {
     seeds = seeds.filter((s) => s.scraping_priority === priority);
   }
-  if (limit) {
-    seeds = seeds.slice(0, limit);
-  }
+  const cap = limit ?? DEFAULT_PLACES_LIMIT;
+  seeds = seeds.slice(0, cap);
 
   // eslint-disable-next-line no-console
   console.log(

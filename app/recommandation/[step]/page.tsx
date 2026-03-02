@@ -560,7 +560,7 @@ function FinalizeProfileStep({
   };
 
   const inputClass =
-    "w-full rounded-lg border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-100";
+    "w-full rounded-lg border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-500 focus:border-green-500 focus:ring-2 focus:ring-green-100";
   const labelClass = "mb-1.5 block text-sm font-medium text-slate-700";
   const errorClass = "mt-1 text-xs text-red-600";
 
@@ -713,10 +713,8 @@ function FinalizeProfileStep({
           </button>
         </div>
 
-        <p className="mt-6 text-center text-xs leading-relaxed text-slate-500 sm:px-4">
-          En cliquant sur ce bouton, WhatsApp va s&apos;ouvrir avec un resume de vos reponses.
-          Vous restez libre d&apos;envoyer ou non ce message.
-          Aucune donnee n&apos;est enregistree sur nos serveurs.
+        <p className="mt-6 rounded-lg border border-emerald-200 bg-emerald-50/80 px-4 py-3 text-center text-xs font-medium text-emerald-800">
+          <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. WhatsApp s&apos;ouvrira avec un résumé de vos réponses. Vous restez libre d&apos;envoyer ou non le message.
         </p>
       </form>
 

@@ -108,7 +108,7 @@ export function SearchMetiers({ metiers, placeholder = "Rechercher un métier (e
           aria-expanded={open}
           aria-controls="suggestions-list"
           id="metiers-search"
-          className="w-full rounded-2xl border-2 border-slate-200 bg-white py-4 pl-5 pr-12 text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+          className="w-full rounded-2xl border-2 border-slate-200 bg-white py-4 pl-5 pr-12 text-slate-900 placeholder:text-slate-500 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
         />
         <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden>
           ↵

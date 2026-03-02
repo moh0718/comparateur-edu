@@ -8,7 +8,7 @@ import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 export const metadata: Metadata = {
   title: "Conditions générales et politique de confidentialité",
   description:
-    "Conditions générales d'utilisation et politique de confidentialité de Kompar - Banque : rôle, collecte des données, sécurité (Loi 18-07), consentement, cookies et contact.",
+    "Conditions générales et politique de confidentialité : zéro stockage de données personnelles, mise en relation exclusivement par WhatsApp avec consentement, cookies et contact.",
   openGraph: {
     title: `Conditions générales et politique de confidentialité | ${SITE_NAME}`,
     description:
@@ -61,9 +61,17 @@ const SECTIONS: Array<{
   },
   {
     num: 2,
-    title: "Collecte et utilisation des données",
-    content:
-      "Pour vous proposer des recommandations adaptées, nous collectons des informations telles que : Nom, prénom, âge, wilaya, besoins en produits bancaires et préférences. Ces données sont utilisées uniquement pour établir votre diagnostic et vous orienter vers les offres les plus pertinentes.",
+    title: "Données personnelles — zéro stockage",
+    content: (
+      <>
+        <p className="mb-3 rounded-lg border border-emerald-200 bg-emerald-50/80 px-4 py-3 font-medium text-emerald-900">
+          <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données.
+        </p>
+        <p className="text-slate-700">
+          La mise en relation se fait <strong className="text-slate-800">exclusivement par WhatsApp</strong>, avec votre consentement préalable. Vos réponses au formulaire ne sont jamais enregistrées sur nos serveurs : un lien WhatsApp s&apos;ouvre avec un message pré-rempli que vous envoyez (ou non) directement à notre numéro.
+        </p>
+      </>
+    ),
   },
   {
     num: 3,
@@ -73,17 +81,17 @@ const SECTIONS: Array<{
       <>
         <p className="mb-2 font-medium text-slate-800">Protection de vos données (Loi 18-07)</p>
         <p className="mb-3 text-slate-700">
-          Soucieux de votre vie privée, notre service est conçu selon le principe de &laquo;&nbsp;Minimisation des données&nbsp;&raquo;&nbsp;:
+          Soucieux de votre vie privée, notre service ne stocke aucune donnée personnelle :
         </p>
         <ul className="list-none space-y-2 text-slate-700">
           <li>
-            <strong className="text-slate-800">Zéro Stockage Permanent :</strong> Notre serveur ne contient aucune base de données de vos informations personnelles. Une fois votre diagnostic terminé, les informations ne sont pas conservées sur nos systèmes cloud.
+            <strong className="text-slate-800">Aucun stockage :</strong> Ce site et ses bases de données ne conservent aucune donnée personnelle des visiteurs. Ni nom, ni numéro, ni réponses aux formulaires ne sont enregistrés sur nos serveurs.
           </li>
           <li>
-            <strong className="text-slate-800">Mise en relation en temps réel :</strong> Nous agissons uniquement comme un tunnel de mise en relation. Vos réponses nous sont transmises instantanément via un canal sécurisé pour établir votre diagnostic, puis sont effacées de la mémoire de transit.
+            <strong className="text-slate-800">WhatsApp avec consentement uniquement :</strong> La mise en relation se fait exclusivement par WhatsApp. En acceptant la bannière de confidentialité, vous autorisez le contact par WhatsApp pour vos demandes d&apos;orientation. Vous restez libre d&apos;envoyer ou non le message pré-rempli.
           </li>
           <li>
-            <strong className="text-slate-800">Souveraineté :</strong> Aucune gestion &laquo;&nbsp;Big Data&nbsp;&raquo; n&apos;est effectuée sur des serveurs tiers. Vos informations servent exclusivement à vous fournir la recommandation bancaire demandée.
+            <strong className="text-slate-800">Pas de profilage :</strong> Aucune donnée n&apos;est utilisée pour du ciblage publicitaire ou du profilage. Vos échanges restent entre vous et notre équipe via WhatsApp.
           </li>
         </ul>
       </>
@@ -93,7 +101,7 @@ const SECTIONS: Array<{
     num: 4,
     title: "Consentement et droits",
     content:
-      "En utilisant le site, vous consentez à ce que nous utilisions vos informations pour vous proposer des recommandations personnalisées. Vous disposez d'un droit d'accès, de rectification et d'opposition concernant vos données. Pour les exercer, contactez-nous via le formulaire ou l'adresse indiquée en section Contact.",
+      "En acceptant les préférences de confidentialité proposées à votre première visite, vous autorisez le contact par WhatsApp pour vos demandes d'orientation. Vous pouvez à tout moment demander l'arrêt des échanges. Comme aucune donnée n'est stockée sur ce site, il n'existe pas de base de données à consulter ou rectifier ; les échanges se font directement via WhatsApp.",
   },
   {
     num: 5,
@@ -110,9 +118,9 @@ const SECTIONS: Array<{
   },
   {
     num: 7,
-    title: "Résultat immédiat et formulaire",
+    title: "Formulaire et mise en relation",
     content:
-      "Pour le formulaire : Remplissez le formulaire, vous recevrez rapidement des recommandations adaptées directement par nous. Aucune donnée n'est conservée après la mise en relation.",
+      "Remplissez le formulaire : un lien WhatsApp s'ouvre avec un message pré-rempli contenant vos réponses. Vous l'envoyez (ou non) directement à notre numéro. Aucune donnée personnelle n'est stockée sur ce site ni dans aucune base de données — la mise en relation se fait exclusivement par WhatsApp, avec votre consentement.",
   },
   {
     num: 8,

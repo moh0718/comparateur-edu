@@ -58,7 +58,7 @@ export default function ComparerPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Nom ou commune..."
-              className="w-full max-w-md rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-100"
+              className="w-full max-w-md rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-100"
             />
             <div className="mt-3 flex flex-wrap gap-2">
               {options.slice(0, 12).map((inst) => (

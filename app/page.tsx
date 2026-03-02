@@ -59,7 +59,7 @@ export default function HomePage() {
                     asChild
                     variant="secondary"
                     size="lg"
-                    className="rounded-full border-green-600 px-8 text-green-700 hover:bg-green-50 hover:text-green-800"
+                    className="rounded-full border-2 border-emerald-600 px-8 text-emerald-800 hover:bg-emerald-50 hover:text-emerald-900"
                   >
                     <Link href={ROUTES.etablissements}>Comparer les établissements</Link>
                   </Button>
@@ -107,18 +107,18 @@ export default function HomePage() {
           </section>
 
           {/* 2. Barre de recherche rapide */}
-          <section aria-label="Recherche rapide" className="rounded-2xl bg-white p-4 shadow-sm md:p-5">
+          <section aria-label="Recherche rapide" className="rounded-2xl bg-white p-4 shadow-card md:p-5">
             <form action={ROUTES.etablissements} method="get" className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <input
                 type="search"
                 name="q"
                 placeholder="Nom d'établissement..."
-                className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-100"
+                className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
                 aria-label="Recherche par nom"
               />
               <select
                 name="categorie"
-                className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 focus:border-green-500 focus:outline-none"
+                className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none"
                 aria-label="Catégorie"
               >
                 <option value="">Catégorie</option>
@@ -128,7 +128,7 @@ export default function HomePage() {
               </select>
               <select
                 name="wilaya"
-                className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 focus:border-green-500 focus:outline-none"
+                className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none"
                 aria-label="Wilaya"
               >
                 <option value="">Wilaya</option>
@@ -153,7 +153,7 @@ export default function HomePage() {
                 <Link
                   key={c.id}
                   href={c.href}
-                  className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:border-green-300 hover:bg-green-50"
+                  className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition-all hover:border-emerald-300 hover:bg-emerald-50 hover:shadow-md"
                 >
                   <span aria-hidden>{c.icon}</span>
                   {c.label}
@@ -166,12 +166,12 @@ export default function HomePage() {
           <section
             id="pourquoi"
             aria-labelledby="pourquoi-title"
-            className="rounded-2xl bg-white p-6 shadow-sm md:p-8"
+            className="rounded-2xl bg-white p-6 shadow-card md:p-8"
           >
             <h2 id="pourquoi-title" className="mb-6 text-center text-xl font-bold text-slate-900 md:text-2xl">
-              Pourquoi Comparateur Edu ?
+              Pourquoi kompar - edu ?
             </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-center text-slate-600">
+            <p className="mx-auto mb-8 max-w-2xl text-center text-slate-700">
               On ne vend pas le rêve : on vous aide à <strong>simplifier votre décision</strong>. Le formulaire d&apos;orientation est l&apos;échange valeur/information pour mériter une recommandation personnalisée.
             </p>
             <div className="grid gap-8 md:grid-cols-3">
@@ -180,7 +180,7 @@ export default function HomePage() {
                   ✓
                 </div>
                 <h3 className="font-semibold text-slate-900">Agrégateur d&apos;informations</h3>
-                <p className="mt-1 text-sm text-slate-600">
+                <p className="mt-1 text-sm text-slate-700">
                   Données vérifiées (sites officiels, Google Maps). Pas d&apos;annuaire statique : tableaux comparatifs et filtres dynamiques.
                 </p>
               </article>
@@ -189,7 +189,7 @@ export default function HomePage() {
                   ⚖️
                 </div>
                 <h3 className="font-semibold text-slate-900">Comparatif transparent</h3>
-                <p className="mt-1 text-sm text-slate-600">
+                <p className="mt-1 text-sm text-slate-700">
                   Comparez côte à côte : coût, reconnaissance MESRS, langues, options. Outils de simulation pour affiner votre choix.
                 </p>
               </article>
@@ -198,7 +198,7 @@ export default function HomePage() {
                   💬
                 </div>
                 <h3 className="font-semibold text-slate-900">Décision simplifiée</h3>
-                <p className="mt-1 text-sm text-slate-600">
+                <p className="mt-1 text-sm text-slate-700">
                   Quelques questions → recommandations personnalisées. Échange de valeur : vous donnez vos critères, on vous oriente. Gratuit.
                 </p>
               </article>
@@ -208,19 +208,19 @@ export default function HomePage() {
           {/* 5. CTA — formulaire = passage obligé pour la décision simplifiée */}
           <section
             aria-labelledby="cta-title"
-            className="rounded-2xl bg-brand px-6 py-10 text-center text-white shadow-card md:px-10 md:py-12"
+            className="rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-10 text-center text-white shadow-card md:px-10 md:py-12"
           >
             <h2 id="cta-title" className="text-xl font-bold md:text-2xl">
               Décision simplifiée : trouvez votre école en quelques clics
             </h2>
-            <p className="mt-2 text-green-100">
+            <p className="mt-2 text-white/90">
               Le formulaire est le passage pour mériter une recommandation personnalisée. Échange valeur/information, pas de contrainte.
             </p>
             <Button
               asChild
               variant="secondary"
               size="lg"
-              className="mt-6 rounded-full border-2 border-white bg-transparent px-8 text-white hover:bg-white/10 hover:text-white"
+              className="mt-6 rounded-full border-2 border-white bg-white/5 px-8 text-white hover:bg-white/15 hover:text-white"
             >
               <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
             </Button>

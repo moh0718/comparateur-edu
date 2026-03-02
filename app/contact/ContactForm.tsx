@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 const inputBase =
-  "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 pl-9 text-sm text-slate-900 outline-none ring-0 placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-100";
+  "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 pl-9 text-sm text-slate-900 outline-none ring-0 placeholder:text-slate-500 focus:border-green-500 focus:ring-2 focus:ring-green-100";
 
 function IconUser() {
   return (
@@ -108,7 +108,7 @@ export function ContactForm() {
 
   const inputErrorClass = "border-red-400 bg-red-50/50 focus:border-red-500 focus:ring-red-100";
   const textareaBase =
-    "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-100 resize-y min-h-[100px]";
+    "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition-colors placeholder:text-slate-500 focus:border-green-500 focus:ring-2 focus:ring-green-100 resize-y min-h-[100px]";
 
   return (
     <form className="mt-6 space-y-4 sm:mt-8" onSubmit={handleSubmit}>
@@ -225,9 +225,7 @@ export function ContactForm() {
             <IconLock />
           </span>
           <span>
-            En cliquant sur ce bouton, WhatsApp va s&apos;ouvrir avec un resume de vos reponses.
-            Vous restez libre d&apos;envoyer ou non ce message.
-            Aucune donnee n&apos;est enregistree sur nos serveurs.
+            <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. WhatsApp s&apos;ouvrira avec vos réponses. Vous restez libre d&apos;envoyer ou non le message.
           </span>
         </p>
       </div>
