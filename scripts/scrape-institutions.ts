@@ -26,6 +26,9 @@ type PlacesCandidate = {
   website?: string;
   international_phone_number?: string;
   current_opening_hours?: { weekday_text?: string[] };
+  rating?: number;
+  user_ratings_total?: number;
+  types?: string[];
 };
 
 type PlacesFindResponse = {
@@ -41,6 +44,9 @@ type ScrapedInstitution = SeedInstitution & {
   website_url?: string;
   phone?: string;
   opening_hours?: string;
+   rating?: number;
+   reviews_count?: number;
+   place_types?: string[];
 };
 
 const __filename = fileURLToPath(import.meta.url);
@@ -93,24 +99,38 @@ async function findPlace(seed: SeedInstitution): Promise<PlacesCandidate | null>
       "website",
       "international_phone_number",
       "current_opening_hours",
+      "rating",
+      "user_ratings_total",
+      "types",
     ].join(","),
   );
   url.searchParams.set("language", "fr");
   url.searchParams.set("key", API_KEY!);
 
-  const res = await fetch(url);
-  if (!res.ok) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+  try {
+    const res = await fetch(url, { signal: controller.signal });
+    if (!res.ok) {
+      // eslint-disable-next-line no-console
+      console.error(`❌ Erreur HTTP Google Places pour ${seed.name}:`, res.status, res.statusText);
+      return null;
+    }
+    const data = (await res.json()) as PlacesFindResponse;
+    if (!data.candidates || data.candidates.length === 0) {
+      // eslint-disable-next-line no-console
+      console.warn(`⚠️ Aucun candidat Google Places pour ${seed.name} (${input})`);
+      return null;
+    }
+    return data.candidates[0] ?? null;
+  } catch (e) {
     // eslint-disable-next-line no-console
-    console.error(`Erreur HTTP Google Places pour ${seed.name}:`, res.status, res.statusText);
+    console.error(`❌ Erreur réseau/timeout Google Places pour ${seed.name}:`, e);
     return null;
+  } finally {
+    clearTimeout(timeoutId);
   }
-  const data = (await res.json()) as PlacesFindResponse;
-  if (!data.candidates || data.candidates.length === 0) {
-    // eslint-disable-next-line no-console
-    console.warn(`Aucun candidat Google Places pour ${seed.name} (${input})`);
-    return null;
-  }
-  return data.candidates[0] ?? null;
 }
 
 function mapCandidate(seed: SeedInstitution, c: PlacesCandidate | null): ScrapedInstitution {
@@ -132,10 +152,14 @@ function mapCandidate(seed: SeedInstitution, c: PlacesCandidate | null): Scraped
     website_url: c.website,
     phone: c.international_phone_number,
     opening_hours: openingText,
+    rating: typeof c.rating === "number" ? c.rating : undefined,
+    reviews_count: typeof c.user_ratings_total === "number" ? c.user_ratings_total : undefined,
+    place_types: Array.isArray(c.types) ? c.types : undefined,
   };
 }
 
 const DEFAULT_PLACES_LIMIT = 50; // Limite par défaut (1 appel/établissement). Gratuit: 5000/mois.
+const DEFAULT_CONCURRENCY = Number.parseInt(process.env.SCRAPING_CONCURRENCY || "3", 10) || 3;
 
 async function main() {
   const { priority, limit } = parseArgs();
@@ -154,20 +178,33 @@ async function main() {
   );
 
   const results: ScrapedInstitution[] = [];
-  for (const seed of seeds) {
-    // eslint-disable-next-line no-console
-    console.log(`→ ${seed.name} (${seed.commune ?? ""})...`);
-    try {
-      const candidate = await findPlace(seed);
-      const mapped = mapCandidate(seed, candidate);
-      results.push(mapped);
-      // petit sleep pour éviter de spammer l'API
-      await new Promise((r) => setTimeout(r, 250));
-    } catch (e) {
+  const concurrency = Math.min(Math.max(DEFAULT_CONCURRENCY, 1), 10);
+  let index = 0;
+
+  async function worker(workerId: number) {
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      const currentIndex = index;
+      if (currentIndex >= seeds.length) break;
+      index += 1;
+      const seed = seeds[currentIndex];
       // eslint-disable-next-line no-console
-      console.error(`Erreur sur ${seed.name}:`, e);
+      console.log(`(w${workerId}) → ${seed.name} (${seed.commune ?? ""})...`);
+      try {
+        const candidate = await findPlace(seed);
+        const mapped = mapCandidate(seed, candidate);
+        results.push(mapped);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(`❌ Erreur sur ${seed.name}:`, e);
+      }
+      // petit sleep pour lisser le débit par worker
+      await new Promise((r) => setTimeout(r, 200));
     }
   }
+
+  const workers = Array.from({ length: concurrency }, (_, i) => worker(i + 1));
+  await Promise.all(workers);
 
   const outPath = path.join(__dirname, "..", "data", "institutions-places.json");
   fs.writeFileSync(outPath, JSON.stringify(results, null, 2), "utf8");
