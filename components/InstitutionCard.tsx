@@ -47,11 +47,6 @@ export function InstitutionCard({ institution, className }: InstitutionCardProps
               {category}
             </span>
             <ConfidenceBadge confidence={institution.data_confidence ?? null} />
-            {institution.is_partner && (
-              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-800">
-                Partenaire
-              </span>
-            )}
           </div>
           <h2 className="mt-1 font-semibold text-slate-900 line-clamp-1">{institution.name}</h2>
           {institution.commune && (

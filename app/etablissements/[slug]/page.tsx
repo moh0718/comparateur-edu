@@ -34,8 +34,8 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
   if (!inst) notFound();
 
   const waNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
-  const contactWhatsApp = inst.is_partner && inst.partner_whatsapp ? inst.partner_whatsapp : waNumber;
-  const contactLabel = inst.is_partner ? `Contacter ${inst.name}` : "Demander un conseil gratuit";
+  const contactWhatsApp = waNumber;
+  const contactLabel = "Demander un conseil gratuit";
 
   const criteriaRows: { label: string; value: string | boolean | null; confidence?: "high" | "medium" | "low" }[] = [
     { label: "Catégorie", value: inst.category ?? null, confidence: inst.data_confidence ?? undefined },
@@ -91,11 +91,6 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                   {inst.mesrs_recognized && (
                     <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
                       MESRS reconnu
-                    </span>
-                  )}
-                  {inst.is_partner && (
-                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
-                      Partenaire
                     </span>
                   )}
                 </div>
