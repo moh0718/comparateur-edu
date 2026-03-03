@@ -14,7 +14,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { INSTITUTIONS_SCRAPING_SEED, type SeedInstitution } from "@/data/institutions-seed";
+import { INSTITUTIONS_SCRAPING_SEED, type SeedInstitution } from "../data/institutions-seed";
 
 type PlacesGeometry = { location: { lat: number; lng: number } };
 
