@@ -199,7 +199,8 @@ def source2_google_places(name: str, commune: Optional[str]) -> tuple[str, bool]
             params={
                 "input": query,
                 "inputtype": "textquery",
-                "fields": "place_id,name,formatted_address,formatted_phone_number,rating,photos",
+                # On récupère aussi le site web pour aider Gemini à extraire website_url
+                "fields": "place_id,name,formatted_address,formatted_phone_number,website,rating,photos",
                 "key": GOOGLE_PLACES_API_KEY,
             },
             timeout=15,
@@ -211,7 +212,14 @@ def source2_google_places(name: str, commune: Optional[str]) -> tuple[str, bool]
             return "", False
         place = candidates[0]
         place_id = place.get("place_id")
-        parts = [f"--- Google Maps ---\nNom: {place.get('name', '')}\nAdresse: {place.get('formatted_address', '')}\nTél: {place.get('formatted_phone_number', '')}\nNote: {place.get('rating', '')}"]
+        parts = [
+            "--- Google Maps ---",
+            f"Nom: {place.get('name', '')}",
+            f"Adresse: {place.get('formatted_address', '')}",
+            f"Tél: {place.get('formatted_phone_number', '')}",
+            f"Site web: {place.get('website', '')}",
+            f"Note: {place.get('rating', '')}",
+        ]
         # Place Details pour reviews et opening_hours
         if place_id:
             r2 = requests.get(

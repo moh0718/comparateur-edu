@@ -12,7 +12,7 @@ const buttonVariants = cva(
         primary:
           "bg-emerald-600 text-white hover:bg-emerald-700 shadow-md px-6 py-2",
         secondary:
-          "border-2 border-brand bg-white text-brand hover:bg-green-50 px-5 py-2",
+          "border-2 border-emerald-600 bg-white text-emerald-800 hover:bg-emerald-50 px-5 py-2 font-semibold",
         ghost:
           "bg-slate-100 text-slate-800 hover:bg-slate-200 px-4 py-2 rounded-full"
       },
