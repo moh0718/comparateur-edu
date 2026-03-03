@@ -217,10 +217,11 @@ def source2_google_places(name: str, commune: Optional[str]) -> tuple[str, bool]
 
 
 # --- SOURCE 3 : Instagram (Apify) ---
-def source3_instagram(username: Optional[str]) -> tuple[str, bool]:
-    if not APIFY_API_KEY or not (username or "").strip():
+def _apify_instagram_for_username(handle: str) -> tuple[str, bool]:
+    """Scrape un compte Instagram unique via Apify. Retourne (texte, utilisé)."""
+    if not APIFY_API_KEY or not handle.strip():
         return "", False
-    username = username.strip().lstrip("@")
+    username = handle.strip().lstrip("@")
     try:
         r = requests.post(
             "https://api.apify.com/v2/acts/apify~instagram-scraper/runs",
@@ -272,6 +273,29 @@ def source3_instagram(username: Optional[str]) -> tuple[str, bool]:
         return "", True
     except Exception:
         return "", False
+
+
+def source3_instagram(username: Optional[str]) -> tuple[str, bool]:
+    """
+    Scrape Instagram avec éventuellement plusieurs pseudos séparés par '/'.
+    On essaie chaque handle en séquence jusqu'à trouver du contenu.
+    """
+    if not APIFY_API_KEY or not (username or "").strip():
+        return "", False
+
+    raw = (username or "").replace("\\", "/")
+    candidates = [h.strip() for h in raw.split("/") if h.strip()]
+    if not candidates:
+        return "", False
+
+    any_used = False
+    for handle in candidates:
+        text, used = _apify_instagram_for_username(handle)
+        if used:
+            any_used = True
+        if text:
+            return text, True
+    return ("", any_used)
 
 
 # --- SOURCE 4 : Serper + Firecrawl (médias/forums) ---
