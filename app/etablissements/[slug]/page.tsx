@@ -7,22 +7,101 @@ import { Footer } from "@/components/Footer";
 import { ConfidenceBadge } from "@/components/ConfidenceBadge";
 import { Button } from "@/components/ui/button";
 import { SITE_NAME, getBaseUrl } from "@/lib/seo";
-import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
-import { institutionsMock } from "@/data/institutions-mock";
+import { LEAD_FORM_HREF } from "@/lib/navigation";
+import { createClient } from "@/lib/supabase/server";
 
 export const revalidate = 86400;
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+type InstitutionRow = {
+  name: string;
+  slug: string;
+  commune?: string | null;
+  wilaya?: string | null;
+  category?: string | null;
+  address?: string | null;
+  website_url?: string | null;
+  phone?: string | null;
+  instagram_username?: string | null;
+  opening_hours?: string | null;
+  description?: string | null;
+  programmes?: string | null;
+  annual_cost_range?: string | null;
+  mesrs_recognized?: boolean | null;
+  languages?: string[] | null;
+  bac_required?: boolean | null;
+  diploma_type?: string | null;
+  intl_equivalence?: string | null;
+  admission_type?: string | null;
+  promo_size?: string | null;
+  internship_provided?: boolean | null;
+  internship_duration?: string | null;
+  corporate_partners?: unknown;
+  school_partners?: unknown;
+  real_outcomes?: string | null;
+  insertion_rate?: string | null;
+  passerelles?: string | null;
+  school_levels?: string[] | null;
+  curriculum?: string | null;
+  boarding_available?: boolean | null;
+  transport_available?: boolean | null;
+  canteen_available?: boolean | null;
+  elearning_platform?: boolean | null;
+  special_needs_inclusion?: boolean | null;
+  level_general?: string[] | null;
+  logo_url?: string | null;
+  points_forts?: string[] | null;
+  points_faibles?: string[] | null;
+  data_confidence?: "high" | "medium" | "low" | null;
+};
+
+const categoryLabelMap: Record<string, string> = {
+  Superieur: "Écoles et universités privées",
+  Langues: "Centres de langues",
+  "Formation Pro": "Formations professionnelles et courtes",
+  General: "Écoles générales et lycées",
+  Sante: "Écoles et instituts paramédicaux",
+  Prescolaire: "Crèches et maternelles privées",
+};
+
+function joinJsonArray(value: unknown): string | null {
+  if (Array.isArray(value)) {
+    const flat = value
+      .map((v) => (typeof v === "string" ? v : null))
+      .filter((v): v is string => Boolean(v));
+    return flat.length ? flat.join(", ") : null;
+  }
+  if (value && typeof value === "object" && "map" in (value as any)) {
+    try {
+      // Supabase peut renvoyer un objet {key: value}
+      const vals = Object.values(value as Record<string, unknown>).filter((v): v is string => typeof v === "string");
+      return vals.length ? vals.join(", ") : null;
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const inst = institutionsMock.find((i) => i.slug === slug);
-  if (!inst) return { title: "Établissement introuvable" };
-  const title = `${inst.name} – Fiche établissement`;
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("institutions")
+    .select("name, description, commune, wilaya, category")
+    .eq("slug", slug)
+    .maybeSingle<InstitutionRow>();
+
+  if (!data) return { title: "Établissement introuvable" };
+
+  const title = `${data.name} – Fiche établissement`;
   const url = `${getBaseUrl()}/etablissements/${slug}`;
   return {
     title,
-    description: inst.description ?? `Fiche de ${inst.name}. ${inst.commune ?? ""} ${inst.category ?? ""}.`,
+    description:
+      data.description ??
+      `Fiche de ${data.name}. ${data.commune ?? ""} ${data.wilaya ?? ""} ${data.category ?? ""}`.trim(),
     openGraph: { title: `${title} | ${SITE_NAME}`, url },
     alternates: { canonical: url },
   };
@@ -30,37 +109,52 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function EtablissementSlugPage({ params }: PageProps) {
   const { slug } = await params;
-  const inst = institutionsMock.find((i) => i.slug === slug);
+  const supabase = await createClient();
+  const { data: inst } = await supabase.from("institutions").select("*").eq("slug", slug).maybeSingle<InstitutionRow>();
   if (!inst) notFound();
+
+  const categoryLabel = inst.category ? categoryLabelMap[inst.category] ?? inst.category : "Établissement privé";
 
   const waNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
   const contactWhatsApp = waNumber;
-  const contactLabel = "Demander un conseil gratuit";
+  const contactLabel = "Remplir le formulaire pour recevoir 3 à 5 propositions adaptées";
 
-  const criteriaRows: { label: string; value: string | boolean | null; confidence?: "high" | "medium" | "low" }[] = [
-    { label: "Catégorie", value: inst.category ?? null, confidence: inst.data_confidence ?? undefined },
-    { label: "Wilaya / Commune", value: [inst.wilaya, inst.commune].filter(Boolean).join(" – ") || null },
-    { label: "Coût annuel", value: inst.annual_cost_range ?? null },
-    { label: "MESRS reconnu", value: inst.mesrs_recognized ?? null },
-    { label: "Langues", value: inst.languages?.join(", ") ?? null },
+  const orientationRows: { label: string; value: string | boolean | null }[] = [
     { label: "Bac requis", value: inst.bac_required ?? null },
-    { label: "Internat", value: inst.has_internat ?? null },
-    { label: "Transport", value: inst.has_transport ?? null },
-    { label: "Programmes", value: inst.programmes ?? null },
+    { label: "Diplôme", value: inst.diploma_type ?? null },
+    { label: "Reconnaissance MESRS", value: inst.mesrs_recognized ?? null },
+    { label: "Équivalence à l'étranger", value: inst.intl_equivalence ?? null },
+    {
+      label: "Langue(s) d'enseignement",
+      value: inst.languages && inst.languages.length ? inst.languages.join(", ") : null,
+    },
+    { label: "Coût total estimé", value: inst.annual_cost_range ?? null },
+    { label: "Type d'admission", value: inst.admission_type ?? null },
+    { label: "Taille des promos", value: inst.promo_size ?? null },
+    { label: "Stage prévu", value: inst.internship_provided ?? null },
+    { label: "Durée de stage", value: inst.internship_duration ?? null },
+    { label: "Réseau d'entreprises partenaires", value: joinJsonArray(inst.corporate_partners) },
+    { label: "Réseau d'écoles partenaires", value: joinJsonArray(inst.school_partners) },
+    { label: "Débouchés réels", value: inst.real_outcomes ?? null },
+    { label: "Taux d'insertion estimé", value: inst.insertion_rate ?? null },
+    { label: "Passerelles possibles", value: inst.passerelles ?? null },
   ].filter((r) => r.value !== undefined);
 
-  const missingCriteriaCount = criteriaRows.filter((r) => r.value === null || r.value === "").length;
-
-  const categoryLabelMap: Record<string, string> = {
-    Superieur: "Écoles et universités privées",
-    Langues: "Centres de langues",
-    "Formation Pro": "Formations professionnelles et courtes",
-    General: "Écoles générales et lycées",
-    Sante: "Écoles et instituts paramédicaux",
-    Prescolaire: "Crèches et maternelles privées",
-  };
-
-  const categoryLabel = inst.category ? categoryLabelMap[inst.category] ?? inst.category : "Établissement privé";
+  const parentsRows: { label: string; value: string | boolean | null }[] = [
+    {
+      label: "Niveaux scolaires",
+      value:
+        (inst.school_levels && inst.school_levels.length && inst.school_levels.join(", ")) ||
+        (inst.level_general && inst.level_general.length && inst.level_general.join(", ")) ||
+        null,
+    },
+    { label: "Programme", value: inst.curriculum ?? null },
+    { label: "Internat", value: inst.boarding_available ?? null },
+    { label: "Transport scolaire", value: inst.transport_available ?? null },
+    { label: "Cantine", value: inst.canteen_available ?? null },
+    { label: "Plateforme e-learning", value: inst.elearning_platform ?? null },
+    { label: "Accueil besoins spécifiques", value: inst.special_needs_inclusion ?? null },
+  ].filter((r) => r.value !== undefined);
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
@@ -175,33 +269,63 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
 
           {/* Section 2 — Tableau critères */}
           <section className="mb-8 rounded-xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
-            <h2 className="mb-4 text-lg font-semibold text-slate-900">Critères</h2>
+            <h2 className="mb-4 text-lg font-semibold text-slate-900">Décision orientation (supérieur / pro)</h2>
             <dl className="space-y-3 text-sm">
-              {criteriaRows.map((row) => (
-                <div key={row.label} className="flex flex-wrap items-start justify-between gap-2 border-b border-slate-100 pb-2">
+              {orientationRows.map((row) => (
+                <div
+                  key={row.label}
+                  className="flex flex-wrap items-start justify-between gap-2 border-b border-slate-100 pb-2"
+                >
                   <dt className="font-medium text-slate-700">{row.label}</dt>
                   <dd className="flex items-center gap-2 text-slate-800">
                     {row.value === null || row.value === "" ? (
                       <span className="text-slate-400">Non renseigné</span>
                     ) : typeof row.value === "boolean" ? (
-                      <span className={row.value ? "text-green-600" : "text-slate-500"}>{row.value ? "Oui" : "Non"}</span>
+                      <span className={row.value ? "text-green-600" : "text-slate-500"}>
+                        {row.value ? "Oui" : "Non"}
+                      </span>
                     ) : (
                       row.value
                     )}
-                    {row.confidence && <ConfidenceBadge confidence={row.confidence} />}
                   </dd>
                 </div>
               ))}
             </dl>
-            {missingCriteriaCount > 3 && (
-              <p className="mt-4 text-xs text-slate-500">
-                Certaines informations sont encore en cours de collecte (sites officiels, Google Maps, échanges avec l&apos;établissement). Si
-                vous êtes responsable de cette école, contactez-nous pour enrichir cette fiche.
-              </p>
-            )}
+            <p className="mt-4 text-xs text-slate-500">
+              Ces éléments sont fournis à titre indicatif à partir des sources publiques et du crawler kompar - edu. Pour
+              une recommandation personnalisée (budget, projet, contraintes), remplissez le formulaire en bas de page.
+            </p>
           </section>
 
-          {/* Section 3 — Points forts / faibles */}
+          {/* Section 3 — Critères parents (général) */}
+          {parentsRows.length > 0 && (
+            <section className="mb-8 rounded-xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+              <h2 className="mb-4 text-lg font-semibold text-slate-900">Pour les parents (vie d&apos;établissement)</h2>
+              <dl className="space-y-3 text-sm">
+                {parentsRows.map((row) => (
+                  <div
+                    key={row.label}
+                    className="flex flex-wrap items-start justify-between gap-2 border-b border-slate-100 pb-2"
+                  >
+                    <dt className="font-medium text-slate-700">{row.label}</dt>
+                    <dd className="flex items-center gap-2 text-slate-800">
+                      {row.value === null || row.value === "" ? (
+                        <span className="text-slate-400">Non renseigné</span>
+                      ) : typeof row.value === "boolean" ? (
+                        <span className={row.value ? "text-green-600" : "text-slate-500"}>
+                          {row.value ? "Oui" : "Non"}
+                        </span>
+                      ) : (
+                        row.value
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
+
+          {/* Section 4 — Points forts / faibles */}
           {(inst.points_forts?.length || inst.points_faibles?.length) ? (
             <section className="mb-8 grid gap-6 md:grid-cols-2">
               {inst.points_forts?.length ? (
@@ -227,16 +351,16 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
             </section>
           ) : null}
 
-          {/* Section 4 — CTA sticky mobile */}
+          {/* Section 5 — CTA sticky mobile */}
           <section className="sticky bottom-4 z-10 mt-8 md:static md:mt-0">
             <div className="rounded-xl bg-green-600 p-4 text-center text-emerald-50 shadow-lg md:rounded-2xl md:p-6">
               <p className="text-sm font-medium md:text-base">{contactLabel}</p>
               {contactWhatsApp ? (
                 <Button
                   asChild
-                  variant="secondary"
+                  variant="primary"
                   size="lg"
-                  className="mt-3 rounded-full border-2 border-white bg-transparent text-emerald-50 hover:bg-white/10 hover:text-emerald-50"
+                  className="mt-3 rounded-full px-8 text-base font-semibold"
                 >
                   <a
                     href={`https://wa.me/${contactWhatsApp.replace(/\D/g, "")}`}
