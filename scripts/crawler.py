@@ -70,6 +70,28 @@ class InstitutionData(BaseModel):
     has_transport: Optional[bool] = None
     level_general: Optional[list[str]] = None
 
+    # Champs orientation (supérieur / pro)
+    diploma_type: Optional[str] = None
+    intl_equivalence: Optional[str] = None
+    admission_type: Optional[str] = None
+    promo_size: Optional[str] = None
+    internship_provided: Optional[bool] = None
+    internship_duration: Optional[str] = None
+    corporate_partners: Optional[list[str]] = None
+    school_partners: Optional[list[str]] = None
+    real_outcomes: Optional[str] = None
+    insertion_rate: Optional[str] = None
+    passerelles: Optional[str] = None
+
+    # Champs parents (enseignement général)
+    school_levels: Optional[list[str]] = None
+    curriculum: Optional[str] = None
+    boarding_available: Optional[bool] = None
+    transport_available: Optional[bool] = None
+    canteen_available: Optional[bool] = None
+    elearning_platform: Optional[bool] = None
+    special_needs_inclusion: Optional[bool] = None
+
     @field_validator("languages")
     @classmethod
     def languages_allowed(cls, v: Optional[list[str]]) -> Optional[list[str]]:
@@ -393,7 +415,27 @@ INSTITUTION_SCHEMA = """
   "bac_required": true | false | null,
   "has_internat": true | false | null,
   "has_transport": true | false | null,
-  "level_general": ["Primaire" | "Collège" | "Lycée"] | null
+  "level_general": ["Primaire" | "Collège" | "Lycée"] | null,
+
+  "diploma_type": "string | null (ex: Diplôme national, Diplôme international, Certification, Attestation)",
+  "intl_equivalence": "string | null (ex: Équivalence France possible)",
+  "admission_type": "string | null (ex: Sélective, Dossier, Entretien, Ouverte)",
+  "promo_size": "string | null (ex: Petites promos (15-20), Grandes (50+))",
+  "internship_provided": true | false | null,
+  "internship_duration": "string | null (ex: 3 mois, 6 mois)",
+  "corporate_partners": ["string"] | null (ex: noms d'entreprises partenaires),
+  "school_partners": ["string"] | null (ex: écoles / universités partenaires),
+  "real_outcomes": "string | null (débouchés réels observés)",
+  "insertion_rate": "string | null (ex: 80% en 6 mois (estimé))",
+  "passerelles": "string | null (passerelles / équivalences possibles)",
+
+  "school_levels": ["Maternelle" | "Primaire" | "CEM" | "Lycee"] | null,
+  "curriculum": "string | null (ex: Programme algérien, AEFE, bilingue, international)",
+  "boarding_available": true | false | null,
+  "transport_available": true | false | null,
+  "canteen_available": true | false | null,
+  "elearning_platform": true | false | null,
+  "special_needs_inclusion": true | false | null
 }
 """
 
@@ -509,6 +551,29 @@ def supabase_upsert_institution_and_log(
         "has_internat": data.has_internat,
         "has_transport": data.has_transport,
         "level_general": data.level_general,
+
+        # Orientation (sup / pro)
+        "diploma_type": data.diploma_type,
+        "intl_equivalence": data.intl_equivalence,
+        "admission_type": data.admission_type,
+        "promo_size": data.promo_size,
+        "internship_provided": data.internship_provided,
+        "internship_duration": data.internship_duration,
+        "corporate_partners": data.corporate_partners,
+        "school_partners": data.school_partners,
+        "real_outcomes": data.real_outcomes,
+        "insertion_rate": data.insertion_rate,
+        "passerelles": data.passerelles,
+
+        # Parents (général)
+        "school_levels": data.school_levels,
+        "curriculum": data.curriculum,
+        "boarding_available": data.boarding_available,
+        "transport_available": data.transport_available,
+        "canteen_available": data.canteen_available,
+        "elearning_platform": data.elearning_platform,
+        "special_needs_inclusion": data.special_needs_inclusion,
+
         "is_active": True,
         "updated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
