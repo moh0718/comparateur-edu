@@ -116,7 +116,6 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
   const categoryLabel = inst.category ? categoryLabelMap[inst.category] ?? inst.category : "Établissement privé";
 
   const waNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
-  const contactWhatsApp = waNumber;
   const contactLabel = "Remplir le formulaire pour recevoir 3 à 5 propositions adaptées";
 
   const orientationRows: { label: string; value: string | boolean | null }[] = [
@@ -351,31 +350,24 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
             </section>
           ) : null}
 
-          {/* Section 5 — CTA sticky mobile */}
+          {/* Section 5 — CTA formulaire */}
           <section className="sticky bottom-4 z-10 mt-8 md:static md:mt-0">
             <div className="rounded-xl bg-green-600 p-4 text-center text-emerald-50 shadow-lg md:rounded-2xl md:p-6">
               <p className="text-sm font-medium md:text-base">{contactLabel}</p>
-              {contactWhatsApp ? (
-                <Button
-                  asChild
-                  variant="primary"
-                  size="lg"
-                  className="mt-3 rounded-full px-8 text-base font-semibold"
-                >
-                  <a
-                    href={`https://wa.me/${contactWhatsApp.replace(/\D/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Ouvrir WhatsApp
-                  </a>
-                </Button>
-              ) : (
-                <p className="mt-2 text-sm text-emerald-100">Numéro à configurer (NEXT_PUBLIC_WA_NUMBER)</p>
+              <Button
+                asChild
+                variant="primary"
+                size="lg"
+                className="mt-3 rounded-full px-8 text-base font-semibold"
+              >
+                <Link href={LEAD_FORM_HREF}>Lancer le formulaire kompar - edu</Link>
+              </Button>
+              {waNumber && (
+                <p className="mt-3 text-xs text-emerald-100">
+                  Besoin d&apos;un échange rapide ? Vous pouvez aussi nous écrire directement sur WhatsApp au{" "}
+                  <span className="font-semibold">{waNumber}</span>.
+                </p>
               )}
-              <p className="mt-3 text-xs text-emerald-100">
-                Ou remplissez le formulaire complet pour comparer plusieurs écoles :
-              </p>
               <Button
                 asChild
                 variant="secondary"
