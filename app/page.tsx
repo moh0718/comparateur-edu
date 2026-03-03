@@ -44,7 +44,7 @@ export default function HomePage() {
                 </p>
                 <h1
                   id="hero-title"
-                  className="mx-auto max-w-3xl text-balance text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl md:text-5xl md:mx-0"
+                  className="mx-auto max-w-3xl text-balance font-display text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl md:mx-0"
                 >
                   Une décision simplifiée pour votre orientation en Algérie
                 </h1>
@@ -168,7 +168,7 @@ export default function HomePage() {
             aria-labelledby="pourquoi-title"
             className="rounded-2xl bg-white p-6 shadow-card md:p-8"
           >
-            <h2 id="pourquoi-title" className="mb-6 text-center text-xl font-bold text-slate-900 md:text-2xl">
+            <h2 id="pourquoi-title" className="mb-6 text-center font-display text-xl font-semibold text-slate-900 md:text-2xl">
               Pourquoi kompar - edu ?
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-center text-slate-700">
@@ -210,7 +210,7 @@ export default function HomePage() {
             aria-labelledby="cta-title"
             className="rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-10 text-center text-white shadow-card md:px-10 md:py-12"
           >
-            <h2 id="cta-title" className="text-xl font-bold md:text-2xl">
+            <h2 id="cta-title" className="font-display text-xl font-semibold md:text-2xl">
               Décision simplifiée : trouvez votre école en quelques clics
             </h2>
             <p className="mt-2 text-white/90">

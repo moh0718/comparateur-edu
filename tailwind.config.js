@@ -6,6 +6,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          "var(--font-sans)",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "\"Segoe UI\"",
+          "sans-serif"
+        ],
+        display: [
+          "var(--font-display)",
+          "\"Playfair Display\"",
+          "Georgia",
+          "\"Times New Roman\"",
+          "serif"
+        ]
+      },
       colors: {
         // Famille visuelle Kompar / Comparateur Edu : vert confiance + neutres
         brand: {

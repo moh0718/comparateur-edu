@@ -1,9 +1,23 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, DM_Serif_Display } from "next/font/google";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_KEYWORDS, getBaseUrl } from "@/lib/seo";
 import "./globals.css";
 import { ConsentModal } from "@/components/ConsentModal";
 
 const baseUrl = getBaseUrl();
+
+const fontSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const fontDisplay = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -71,12 +85,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${fontSans.variable} ${fontDisplay.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }} />
       </head>
-      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
+      <body className="min-h-screen bg-slate-50 font-sans text-slate-900 antialiased">
         <ConsentModal />
         {children}
       </body>
