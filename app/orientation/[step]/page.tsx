@@ -123,7 +123,7 @@ export default function OrientationStepPage() {
       <header className="sticky top-0 z-10 border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-14 max-w-xl items-center justify-between px-4 sm:px-5">
           <Link href={ROUTES.home} className="flex items-center gap-2" aria-label="kompar - edu accueil">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-white text-sm">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-emerald-50 text-sm">
               🎓
             </div>
             <span className="text-sm font-semibold text-slate-900">kompar - edu</span>
@@ -331,7 +331,7 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
           <button
             type="submit"
             disabled={sending || !waNumber}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-4 text-white hover:bg-green-700 disabled:opacity-50"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-4 text-emerald-50 hover:bg-green-700 disabled:opacity-50"
           >
             <span className="text-xl">💬</span>
             {sending ? "Envoi…" : "Recevoir sur WhatsApp"}

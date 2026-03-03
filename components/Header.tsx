@@ -43,14 +43,8 @@ export function Header() {
 
         {/* Navigation desktop */}
         <nav aria-label="Navigation principale" className="hidden flex-1 items-center justify-center gap-1 text-sm font-medium text-slate-700 md:flex">
-          <Link href={ROUTES.ecoles} className={cn("rounded-lg px-3 py-2", navLinkBrandClass)}>
-            Écoles
-          </Link>
-          <Link href={ROUTES.universites} className={cn("rounded-lg px-3 py-2", navLinkBrandClass)}>
-            Universités
-          </Link>
-          <Link href={ROUTES.formationsPro} className={cn("rounded-lg px-3 py-2", navLinkBrandClass)}>
-            Formations Pro
+          <Link href={ROUTES.etablissements} className={cn("rounded-lg px-3 py-2", navLinkBrandClass)}>
+            Annuaire établissements
           </Link>
 
           {/* Métiers & Salons — dropdown au survol */}
@@ -124,9 +118,9 @@ export function Header() {
       {/* Navigation mobile */}
       <nav aria-label="Navigation mobile" className="border-t border-slate-100 py-2 text-xs font-medium text-slate-700 md:hidden">
         <div className="mx-auto flex max-w-7xl flex-wrap gap-2 px-5 pb-1 pt-1 sm:px-6 md:px-8">
-          <Link href={ROUTES.ecoles} className="rounded-lg bg-slate-100 px-3 py-2 text-brand">Écoles</Link>
-          <Link href={ROUTES.universites} className="rounded-lg bg-slate-100 px-3 py-2 text-brand">Universités</Link>
-          <Link href={ROUTES.formationsPro} className="rounded-lg bg-slate-100 px-3 py-2 text-brand">Formations Pro</Link>
+          <Link href={ROUTES.etablissements} className="rounded-lg bg-slate-100 px-3 py-2 text-brand">
+            Annuaire établissements
+          </Link>
           <Link href={ROUTES.fichesMetiers} className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700">Fiches métiers</Link>
           <Link href={ROUTES.salonsEtudiants} className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700">Salons étudiants</Link>
           <Link href={ROUTES.blog} className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700">Le Mag&apos;</Link>

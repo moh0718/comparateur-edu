@@ -234,14 +234,14 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
 
           {/* Section 4 — CTA sticky mobile */}
           <section className="sticky bottom-4 z-10 mt-8 md:static md:mt-0">
-            <div className="rounded-xl bg-green-600 p-4 text-center text-white shadow-lg md:rounded-2xl md:p-6">
+            <div className="rounded-xl bg-green-600 p-4 text-center text-emerald-50 shadow-lg md:rounded-2xl md:p-6">
               <p className="text-sm font-medium md:text-base">{contactLabel}</p>
               {contactWhatsApp ? (
                 <Button
                   asChild
                   variant="secondary"
                   size="lg"
-                  className="mt-3 rounded-full border-2 border-white bg-transparent text-white hover:bg-white/10 hover:text-white"
+                  className="mt-3 rounded-full border-2 border-white bg-transparent text-emerald-50 hover:bg-white/10 hover:text-emerald-50"
                 >
                   <a
                     href={`https://wa.me/${contactWhatsApp.replace(/\D/g, "")}`}
@@ -252,16 +252,16 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                   </a>
                 </Button>
               ) : (
-                <p className="mt-2 text-sm text-green-100">Numéro à configurer (NEXT_PUBLIC_WA_NUMBER)</p>
+                <p className="mt-2 text-sm text-emerald-100">Numéro à configurer (NEXT_PUBLIC_WA_NUMBER)</p>
               )}
-              <p className="mt-3 text-xs text-green-100">
+              <p className="mt-3 text-xs text-emerald-100">
                 Ou remplissez le formulaire complet pour comparer plusieurs écoles :
               </p>
               <Button
                 asChild
                 variant="secondary"
                 size="sm"
-                className="mt-2 rounded-full border-2 border-white bg-white/5 px-5 py-2 text-xs font-semibold text-white hover:bg-white/15"
+                className="mt-2 rounded-full border-2 border-white bg-white/5 px-5 py-2 text-xs font-semibold text-emerald-50 hover:bg-white/15 hover:text-emerald-50"
               >
                 <Link href={LEAD_FORM_HREF}>Lancer le formulaire kompar - edu</Link>
               </Button>

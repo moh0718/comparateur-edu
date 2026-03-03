@@ -2,8 +2,31 @@ import { Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { EtablissementsClient } from "@/components/etablissements/EtablissementsClient";
+import { createClient } from "@/lib/supabase/server";
+import { institutionsMock, type Institution } from "@/data/institutions-mock";
 
-export default function EtablissementsPage() {
+async function loadInstitutions(): Promise<Institution[]> {
+  try {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("institutions")
+      .select("*")
+      .eq("is_active", true);
+    if (error) {
+      console.error("Supabase institutions error:", error.message);
+      return institutionsMock;
+    }
+    if (data && data.length > 0) {
+      return data as Institution[];
+    }
+  } catch (e) {
+    console.error("Supabase institutions fetch failed:", e);
+  }
+  return institutionsMock;
+}
+
+export default async function EtablissementsPage() {
+  const institutions = await loadInstitutions();
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
@@ -19,7 +42,7 @@ export default function EtablissementsPage() {
             </div>
           }
         >
-          <EtablissementsClient />
+          <EtablissementsClient institutions={institutions} />
         </Suspense>
       </main>
 

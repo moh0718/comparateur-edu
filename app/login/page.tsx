@@ -41,7 +41,7 @@ function LoginForm() {
       <div className="w-full max-w-sm rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
         <div className="mb-6 flex justify-center">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-emerald-50">
               <span className="text-sm" aria-hidden>
                 🎓
               </span>
@@ -93,7 +93,7 @@ function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-green-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-lg bg-green-600 px-4 py-3 text-sm font-semibold text-emerald-50 transition-colors hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? "Connexion…" : "Se connecter"}
           </button>

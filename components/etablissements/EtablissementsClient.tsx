@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { InstitutionCard } from "@/components/InstitutionCard";
 import { FilterBar, defaultFilters, type FilterState } from "@/components/FilterBar";
-import { institutionsMock } from "@/data/institutions-mock";
 import type { Institution } from "@/data/institutions-mock";
 import { Button } from "@/components/ui/button";
 import { LEAD_FORM_HREF } from "@/lib/navigation";
@@ -51,7 +50,11 @@ function sortInstitutions(list: Institution[]): Institution[] {
   });
 }
 
-export function EtablissementsClient() {
+type EtablissementsClientProps = {
+  institutions: Institution[];
+};
+
+export function EtablissementsClient({ institutions }: EtablissementsClientProps) {
   const searchParams = useSearchParams();
   const [filters, setFilters] = useState<FilterState>(() => ({
     ...defaultFilters,
@@ -62,14 +65,14 @@ export function EtablissementsClient() {
   const [query, setQuery] = useState(searchParams.get("q") || "");
 
   const list = useMemo(() => {
-    let base = institutionsMock.filter((i) => i.is_active !== false);
+    let base = institutions.filter((i) => i.is_active !== false);
     if (query.trim()) {
       const q = query.trim().toLowerCase();
       base = base.filter((i) => i.name.toLowerCase().includes(q) || i.commune?.toLowerCase().includes(q));
     }
     const filtered = filterInstitutions(base, filters);
     return sortInstitutions(filtered);
-  }, [query, filters]);
+  }, [query, filters, institutions]);
 
   return (
     <div className="mx-auto max-w-7xl">
