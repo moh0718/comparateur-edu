@@ -78,7 +78,7 @@ export function InstitutionCard({ institution, className }: InstitutionCardProps
         )}
         <Link
           href={`/etablissements/${institution.slug}`}
-          className="rounded-full bg-brand px-4 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-brand-dark transition-colors"
+          className="rounded-full bg-brand px-4 py-1.5 text-xs font-medium text-emerald-50 shadow-sm hover:bg-brand-dark transition-colors"
         >
           Voir la fiche
         </Link>

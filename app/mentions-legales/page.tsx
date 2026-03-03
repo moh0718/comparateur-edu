@@ -55,7 +55,7 @@ export default function MentionsLegalesPage() {
       <header className="border-b border-slate-100 bg-white">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5 sm:px-6 md:px-8">
           <Link href={ROUTES.home} className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-lg text-white">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-lg text-emerald-50">
               <span aria-hidden>🏛️</span>
             </div>
             <div className="flex flex-col leading-tight">
@@ -132,7 +132,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-1-title"
           >
             <h2 id="section-1-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>1</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>1</span>
               Éditeur du site
             </h2>
             <ul className="space-y-2 text-sm text-slate-700">
@@ -155,7 +155,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-2-title"
           >
             <h2 id="section-2-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>2</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>2</span>
               Hébergement du site
             </h2>
             <ul className="space-y-2 text-sm text-slate-700">
@@ -177,7 +177,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-3-title"
           >
             <h2 id="section-3-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>3</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>3</span>
               Objet du site
             </h2>
             <div className="space-y-3 text-sm leading-relaxed text-slate-700">
@@ -199,7 +199,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-4-title"
           >
             <h2 id="section-4-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>4</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>4</span>
               Données personnelles
             </h2>
             <div className="space-y-3 text-sm leading-relaxed text-slate-700">
@@ -221,7 +221,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-5-title"
           >
             <h2 id="section-5-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>5</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>5</span>
               Conditions d&apos;utilisation des services
             </h2>
             <p className="text-sm leading-relaxed text-slate-700">
@@ -235,7 +235,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-6-title"
           >
             <h2 id="section-6-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>6</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>6</span>
               Monétisation et partenaires
             </h2>
             <p className="text-sm leading-relaxed text-slate-700">
@@ -249,7 +249,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-7-title"
           >
             <h2 id="section-7-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>7</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>7</span>
               Propriété intellectuelle
             </h2>
             <p className="text-sm leading-relaxed text-slate-700">
@@ -263,7 +263,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-8-title"
           >
             <h2 id="section-8-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>8</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>8</span>
               Responsabilité
             </h2>
             <p className="text-sm leading-relaxed text-slate-700">
@@ -277,7 +277,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-9-title"
           >
             <h2 id="section-9-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>9</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>9</span>
               Loi applicable et juridiction
             </h2>
             <p className="text-sm leading-relaxed text-slate-700">
@@ -291,7 +291,7 @@ export default function MentionsLegalesPage() {
             aria-labelledby="section-10-title"
           >
             <h2 id="section-10-title" className="mb-4 flex items-center gap-2 text-lg font-bold text-slate-900">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white" aria-hidden>10</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50" aria-hidden>10</span>
               Contact
             </h2>
             <p className="mb-3 text-sm text-slate-700">

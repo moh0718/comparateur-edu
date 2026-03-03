@@ -28,7 +28,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 sm:px-6 md:px-8">
         {/* Logo */}
         <Link href={ROUTES.home} className="flex shrink-0 items-center gap-2 transition-opacity hover:opacity-90">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 text-lg text-white shadow-md" aria-hidden>
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 text-lg text-emerald-50 shadow-md" aria-hidden>
             🎓
           </div>
           <div className="hidden flex-col leading-tight sm:flex">

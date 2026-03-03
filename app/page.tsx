@@ -225,6 +225,58 @@ export default function HomePage() {
               <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
             </Button>
           </section>
+
+          {/* 6. Visuels — donner de la chaleur humaine */}
+          <section
+            aria-labelledby="visuels-title"
+            className="rounded-2xl bg-white p-6 shadow-card md:p-8"
+          >
+            <h2
+              id="visuels-title"
+              className="mb-4 text-center font-display text-xl font-semibold text-slate-900 md:text-2xl"
+            >
+              L&apos;éducation privée, en images
+            </h2>
+            <p className="mx-auto mb-6 max-w-2xl text-center text-sm text-slate-600">
+              Un aperçu concret des situations que nous aidons à éclairer&nbsp;: parents en recherche
+              d&apos;une école, étudiants en supérieur, vie au sein d&apos;un établissement.
+            </p>
+            <div className="grid gap-4 md:grid-cols-3">
+              <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
+                <img
+                  src="/images/parents-orientation.jpg"
+                  alt="Parents échangeant avec un conseiller pour choisir une école"
+                  className="h-40 w-full object-cover md:h-48"
+                />
+                <figcaption className="px-4 py-3 text-xs text-slate-700">
+                  <span className="font-semibold">Parents</span> qui cherchent une école adaptée
+                  aux contraintes de budget, de transport et de niveau.
+                </figcaption>
+              </figure>
+              <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
+                <img
+                  src="/images/etudiants-superieur.jpg"
+                  alt="Étudiants en enseignement supérieur en amphi"
+                  className="h-40 w-full object-cover md:h-48"
+                />
+                <figcaption className="px-4 py-3 text-xs text-slate-700">
+                  <span className="font-semibold">Étudiants</span> qui comparent programmes,
+                  langues et reconnaissance des diplômes.
+                </figcaption>
+              </figure>
+              <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
+                <img
+                  src="/images/vie-etablissement.jpg"
+                  alt="Vue chaleureuse d'un établissement avec élèves"
+                  className="h-40 w-full object-cover md:h-48"
+                />
+                <figcaption className="px-4 py-3 text-xs text-slate-700">
+                  <span className="font-semibold">Vie d&apos;établissement</span> :
+                  infrastructures, ambiance et services du quotidien.
+                </figcaption>
+              </figure>
+            </div>
+          </section>
         </div>
       </main>
 

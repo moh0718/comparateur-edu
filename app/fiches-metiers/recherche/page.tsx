@@ -127,7 +127,7 @@ export default async function FichesMetiersRecherchePage({ searchParams }: PageP
                       href={href(p)}
                       className={`rounded-lg border px-4 py-2 text-sm font-medium ${
                         p === currentPage
-                          ? "border-brand bg-brand text-white"
+                          ? "border-brand bg-brand text-emerald-50"
                           : "border-slate-300 text-slate-700 hover:bg-slate-50"
                       }`}
                     >

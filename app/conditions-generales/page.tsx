@@ -145,7 +145,7 @@ export default function ConditionsGeneralesPage() {
       <header className="border-b border-slate-100 bg-white">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5 sm:px-6 md:px-8">
           <Link href={ROUTES.home} className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-lg text-white">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-lg text-emerald-50">
               <span aria-hidden>🏛️</span>
             </div>
             <div className="flex flex-col leading-tight">
@@ -233,7 +233,7 @@ export default function ConditionsGeneralesPage() {
                 >
                   <div className="flex shrink-0 items-start gap-2">
                     <span
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-white"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-semibold text-slate-50"
                       aria-hidden
                     >
                       {section.num}

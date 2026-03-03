@@ -168,7 +168,7 @@ export default function AdminPage() {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 md:px-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-white text-sm">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-emerald-50 text-sm">
               🎓
             </div>
             <span className="font-semibold text-slate-900">Admin — kompar - edu</span>
@@ -237,7 +237,7 @@ export default function AdminPage() {
                             type="button"
                             onClick={() => handleVerify(inst.id)}
                             disabled={verifyingId === inst.id}
-                            className="mr-2 rounded-lg bg-blue-600 px-2 py-1 text-xs text-white hover:bg-blue-700 disabled:opacity-50"
+                            className="mr-2 rounded-lg bg-blue-600 px-2 py-1 text-xs text-slate-50 hover:bg-blue-700 disabled:opacity-50"
                           >
                             Vérifier
                           </button>
@@ -246,7 +246,7 @@ export default function AdminPage() {
                           type="button"
                           onClick={() => handleToggle(inst.id)}
                           disabled={togglingId === inst.id}
-                          className={`rounded-lg px-2 py-1 text-xs font-medium disabled:opacity-50 ${isActive(inst) ? "bg-slate-200 text-slate-700 hover:bg-slate-300" : "bg-green-600 text-white hover:bg-green-700"}`}
+                          className={`rounded-lg px-2 py-1 text-xs font-medium disabled:opacity-50 ${isActive(inst) ? "bg-slate-200 text-slate-700 hover:bg-slate-300" : "bg-green-600 text-emerald-50 hover:bg-green-700"}`}
                         >
                           {togglingId === inst.id ? "…" : isActive(inst) ? "Désactiver" : "Activer"}
                         </button>
@@ -301,7 +301,7 @@ export default function AdminPage() {
                             type="button"
                             onClick={() => handlePublish(post.id)}
                             disabled={publishingId === post.id}
-                            className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 disabled:opacity-50"
+                            className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-emerald-50 hover:bg-green-700 disabled:opacity-50"
                           >
                             {publishingId === post.id ? "…" : "Publier"}
                           </button>

@@ -164,7 +164,7 @@ export default function FaqPage() {
       <header className="border-b border-slate-100 bg-white">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5 sm:px-6 md:px-8">
           <Link href={ROUTES.home} className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-lg text-white">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-lg text-emerald-50">
               <span aria-hidden>🏛️</span>
             </div>
             <div className="flex flex-col leading-tight">

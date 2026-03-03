@@ -19,7 +19,7 @@ export default function NotFound() {
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         <Link
           href="/"
-          className="rounded-full bg-green-600 px-5 py-2 text-sm font-semibold text-white hover:bg-green-700"
+          className="rounded-full bg-green-600 px-5 py-2 text-sm font-semibold text-emerald-50 hover:bg-green-700"
         >
           Accueil
         </Link>

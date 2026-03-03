@@ -278,7 +278,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-white/20 px-3 py-1 text-[11px] font-medium text-white"
+                      className="rounded-full bg-white/20 px-3 py-1 text-[11px] font-medium text-slate-50"
                     >
                       {tag}
                     </span>
@@ -313,7 +313,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1877F2] text-white transition-opacity hover:opacity-90"
+              className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1877F2] text-slate-50 transition-opacity hover:opacity-90"
               aria-label="Partager sur Facebook"
             >
               <span className="text-sm font-bold">f</span>
@@ -322,7 +322,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               href={`https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${shareTitle}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-black text-white transition-opacity hover:opacity-90"
+              className="flex h-9 w-9 items-center justify-center rounded-lg bg-black text-slate-50 transition-opacity hover:opacity-90"
               aria-label="Partager sur X (Twitter)"
             >
               <span className="text-sm font-bold">𝕏</span>
@@ -331,14 +331,14 @@ export default async function BlogPostPage({ params }: PageProps) {
               href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0A66C2] text-white transition-opacity hover:opacity-90"
+              className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0A66C2] text-slate-50 transition-opacity hover:opacity-90"
               aria-label="Partager sur LinkedIn"
             >
               <span className="text-sm font-bold">in</span>
             </a>
             <a
               href={`mailto:?subject=${shareTitle}&body=${shareText}%0A%0A${encodeURIComponent(shareUrl)}`}
-              className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-600 text-white transition-opacity hover:opacity-90"
+              className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-600 text-slate-50 transition-opacity hover:opacity-90"
               aria-label="Partager par email"
             >
               <span className="text-sm">✉</span>

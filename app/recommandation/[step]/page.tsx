@@ -141,7 +141,7 @@ export default function RecommandationStepPage() {
       <header className="sticky top-0 z-10 border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-14 max-w-xl items-center justify-between px-4 sm:px-5">
           <Link href="/" className="flex items-center gap-2" aria-label="Kompar - Banque accueil">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-800 text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-800 text-slate-50">
               <span className="text-sm" aria-hidden>🏛️</span>
             </div>
             <span className="text-sm font-semibold text-slate-900">Kompar - Banque</span>
@@ -278,7 +278,7 @@ export default function RecommandationStepPage() {
                         if (v) handleAnswer(v);
                       }}
                       disabled={!answers[`q${currentStep}`]}
-                      className="w-full rounded-xl bg-green-600 px-4 py-4 text-center text-sm font-medium text-white shadow-sm transition-colors outline-none hover:bg-green-700 focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 active:bg-green-800"
+                      className="w-full rounded-xl bg-green-600 px-4 py-4 text-center text-sm font-medium text-emerald-50 shadow-sm transition-colors outline-none hover:bg-green-700 focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 active:bg-green-800"
                     >
                       Continuer
                     </button>
@@ -290,9 +290,9 @@ export default function RecommandationStepPage() {
                     {config.options.map((opt) => {
                       const labelVariantClass =
                         opt.variant === "primary"
-                          ? "bg-green-600 text-white"
+                          ? "bg-green-600 text-emerald-50"
                           : opt.variant === "secondary"
-                            ? "bg-slate-800 text-white"
+                          ? "bg-slate-800 text-slate-50"
                             : "";
                       return (
                         <button
@@ -346,9 +346,9 @@ export default function RecommandationStepPage() {
                         "w-full rounded-xl px-4 py-4 text-center text-sm font-medium shadow-sm transition-colors";
                       const variantClass =
                         opt.variant === "primary"
-                          ? "bg-green-600 text-white hover:bg-green-700 active:bg-green-800"
+                          ? "bg-green-600 text-emerald-50 hover:bg-green-700 active:bg-green-800"
                           : opt.variant === "secondary"
-                            ? "bg-slate-800 text-white hover:bg-slate-700 active:bg-slate-900"
+                          ? "bg-slate-800 text-slate-50 hover:bg-slate-700 active:bg-slate-900"
                             : "border border-slate-200 bg-white text-slate-900 hover:border-green-300 hover:bg-green-50/50 active:bg-green-100";
                       return (
                         <button
@@ -408,7 +408,7 @@ export default function RecommandationStepPage() {
               <button
                 type="button"
                 onClick={handleQuit}
-                className="flex-1 rounded-lg bg-green-600 py-2.5 text-sm font-medium text-white hover:bg-green-700"
+                className="flex-1 rounded-lg bg-green-600 py-2.5 text-sm font-medium text-emerald-50 hover:bg-green-700"
               >
                 Quitter
               </button>
@@ -701,14 +701,14 @@ function FinalizeProfileStep({
             className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#25D366] shadow-lg"
             aria-hidden
           >
-            <WhatsAppIcon className="h-8 w-8 text-white" />
+            <WhatsAppIcon className="h-8 w-8 text-emerald-50" />
           </div>
           <button
             type="submit"
             disabled={sending}
-            className="flex w-full items-center justify-center gap-3 rounded-xl bg-[#25D366] px-4 py-4 text-center text-sm font-semibold text-white shadow-md transition-colors outline-none hover:bg-[#20BD5A] focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-white active:bg-[#1DA851] disabled:opacity-70 sm:py-4.5"
+            className="flex w-full items-center justify-center gap-3 rounded-xl bg-[#25D366] px-4 py-4 text-center text-sm font-semibold text-emerald-50 shadow-md transition-colors outline-none hover:bg-[#20BD5A] focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-white active:bg-[#1DA851] disabled:opacity-70 sm:py-4.5"
           >
-            <WhatsAppIcon className="h-6 w-6 shrink-0 text-white" />
+            <WhatsAppIcon className="h-6 w-6 shrink-0 text-emerald-50" />
             <span>{sending ? "Envoi…" : "Recevez votre proposition sur WhatsApp"}</span>
           </button>
         </div>

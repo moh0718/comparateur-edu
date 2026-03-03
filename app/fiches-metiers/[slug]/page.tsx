@@ -150,7 +150,7 @@ export default async function FicheMetierPage({ params }: PageProps) {
             </Link>
             <Link
               href={LEAD_FORM_HREF}
-              className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-dark"
+              className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-emerald-50 hover:bg-brand-dark"
             >
               Trouver mon École
             </Link>

@@ -38,6 +38,21 @@ export function Footer({ className = "", variant = "default" }: FooterProps) {
           </Link>
         </div>
 
+        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-600">
+          <span className="text-[11px] text-slate-500">
+            De la même famille&nbsp;:
+          </span>
+          <Link
+            href="https://kompar-banques.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1 text-[11px] font-medium text-emerald-800 shadow-sm hover:border-emerald-300 hover:bg-emerald-50"
+          >
+            <span aria-hidden>🏦</span>
+            <span>kompar - banques · comparateur de banques en Algérie</span>
+          </Link>
+        </div>
+
         <p className="text-xs text-slate-500">
           © 2026 kompar - edu. Tous droits réservés.
         </p>

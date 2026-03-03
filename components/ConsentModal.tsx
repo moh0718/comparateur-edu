@@ -156,7 +156,7 @@ export function ConsentModal() {
           <button
             type="button"
             onClick={handleAcceptAll}
-            className="w-full rounded-full bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 sm:w-auto"
+            className="w-full rounded-full bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-emerald-50 shadow-sm transition hover:bg-emerald-700 sm:w-auto"
           >
             Tout accepter
           </button>
