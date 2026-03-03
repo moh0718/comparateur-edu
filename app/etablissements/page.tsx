@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { EtablissementsClient } from "@/components/etablissements/EtablissementsClient";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { createClient } from "@/lib/supabase/server";
 import { institutionsMock, type Institution } from "@/data/institutions-mock";
 
@@ -44,6 +45,7 @@ export default async function EtablissementsPage() {
         >
           <EtablissementsClient institutions={institutions} />
         </Suspense>
+        <ScrollToTop />
       </main>
 
       <Footer />

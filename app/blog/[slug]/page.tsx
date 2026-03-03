@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Header } from "@/components/Header";
 import { AdSlotSkyscraper } from "@/components/AdSlot";
 import { Button } from "@/components/ui/button";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import {
   posts,
   type Post,
@@ -407,6 +408,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       </main>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

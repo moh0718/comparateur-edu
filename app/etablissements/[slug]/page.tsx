@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConfidenceBadge } from "@/components/ConfidenceBadge";
 import { Button } from "@/components/ui/button";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { SITE_NAME, getBaseUrl } from "@/lib/seo";
 import { LEAD_FORM_HREF } from "@/lib/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -368,20 +369,13 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                   <span className="font-semibold">{waNumber}</span>.
                 </p>
               )}
-              <Button
-                asChild
-                variant="secondary"
-                size="sm"
-                className="mt-2 rounded-full border-2 border-white bg-white/5 px-5 py-2 text-xs font-semibold text-emerald-50 hover:bg-white/15 hover:text-emerald-50"
-              >
-                <Link href={LEAD_FORM_HREF}>Lancer le formulaire kompar - edu</Link>
-              </Button>
             </div>
           </section>
         </div>
       </main>
 
       <Footer variant="bordered" />
+      <ScrollToTop />
     </div>
   );
 }
