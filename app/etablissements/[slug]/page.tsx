@@ -388,8 +388,8 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
               </Button>
               {waNumber && (
                 <p className="mt-3 text-xs text-emerald-100">
-                  Besoin d&apos;un échange rapide ? Vous pouvez aussi nous écrire directement sur WhatsApp au{" "}
-                  <span className="font-semibold">{waNumber}</span>.
+                  Besoin d&apos;un échange rapide ? Vous pouvez aussi nous écrire directement sur WhatsApp, après avoir rempli le
+                  formulaire.
                 </p>
               )}
             </div>
