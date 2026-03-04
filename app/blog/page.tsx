@@ -9,10 +9,12 @@ import { Button } from "@/components/ui/button";
 import { posts } from "@/data/posts-mock";
 import { Footer } from "@/components/Footer";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 const POSTS_PER_PAGE = 7;
 
 export default function BlogPage() {
+  const { lang, t } = useI18n();
   const [page, setPage] = useState(1);
 
   const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
@@ -55,15 +57,15 @@ export default function BlogPage() {
                   </time>
                 </p>
                 <h1 className="text-lg font-semibold text-slate-900 sm:text-xl md:text-2xl">
-                  {heroPost.title}
+                  {lang === "ar" && heroPost.titleAr ? heroPost.titleAr : heroPost.title}
                 </h1>
                 <p className="mx-auto max-w-2xl text-sm text-slate-600 sm:text-base">
-                  {heroPost.excerpt}
+                  {lang === "ar" && heroPost.excerptAr ? heroPost.excerptAr : heroPost.excerpt}
                 </p>
                 <div className="mt-2 flex justify-center">
                   <Button asChild variant="secondary" size="lg">
                     <Link href={`/blog/${heroPost.slug}`}>
-                      Lire l&apos;article &rarr;
+                      {t("blog.readArticle")}
                     </Link>
                   </Button>
                 </div>
@@ -96,11 +98,11 @@ export default function BlogPage() {
                   </span>
                   <h2 className="mt-2 text-sm font-semibold text-slate-900 sm:text-base">
                     <Link href={`/blog/${post.slug}`} className="hover:underline">
-                      {post.title}
+                      {lang === "ar" && post.titleAr ? post.titleAr : post.title}
                     </Link>
                   </h2>
                   <p className="mt-1 line-clamp-2 text-xs text-slate-600 sm:text-sm">
-                    {post.excerpt}
+                    {lang === "ar" && post.excerptAr ? post.excerptAr : post.excerpt}
                   </p>
                   <p className="mt-3 text-[11px] text-slate-500">
                     <time dateTime={post.date}>
@@ -112,7 +114,7 @@ export default function BlogPage() {
                       href={`/blog/${post.slug}`}
                       className="text-xs font-semibold text-blue-700 hover:text-blue-800 sm:text-sm"
                     >
-                      Lire &rarr;
+                      {t("blog.readShort")}
                     </Link>
                   </div>
                 </div>
@@ -132,9 +134,9 @@ export default function BlogPage() {
               className="text-xs"
               onClick={() => goToPage(page - 1)}
               disabled={page === 1}
-              aria-label="Page précédente"
+              aria-label={t("blog.prev")}
             >
-              Précédent
+              {t("blog.prev")}
             </Button>
             {Array.from({ length: totalPages }, (_, index) => {
               const pageNumber = index + 1;
@@ -161,9 +163,9 @@ export default function BlogPage() {
               className="text-xs"
               onClick={() => goToPage(page + 1)}
               disabled={page === totalPages}
-              aria-label="Page suivante"
+              aria-label={t("blog.next")}
             >
-              Suivant
+              {t("blog.next")}
             </Button>
           </nav>
 
@@ -173,19 +175,17 @@ export default function BlogPage() {
             className="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50/70 px-6 py-7 text-center sm:px-8"
           >
             <h2 className="text-base font-semibold text-emerald-900 sm:text-lg">
-              Passer de la théorie à l&apos;action : trouvez votre école idéale
+              {t("blog.cta.title")}
             </h2>
             <p className="mt-2 text-sm text-emerald-900/80 sm:text-base">
-              Après la lecture des articles, répondez à quelques questions et{" "}
-              <span className="font-semibold">recevez une recommandation personnalisée</span> d&apos;établissements privés en
-              Algérie.
+              {t("blog.cta.text")}
             </p>
             <div className="mt-4 flex justify-center gap-3">
               <Button asChild variant="primary" size="lg" className="rounded-full px-8">
-                <Link href={LEAD_FORM_HREF}>Lancer le formulaire</Link>
+                <Link href={LEAD_FORM_HREF}>{t("blog.cta.primary")}</Link>
               </Button>
               <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
-                <Link href={ROUTES.etablissements}>Voir l&apos;annuaire</Link>
+                <Link href={ROUTES.etablissements}>{t("blog.cta.secondary")}</Link>
               </Button>
             </div>
           </section>

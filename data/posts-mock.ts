@@ -17,8 +17,14 @@ export type ContentSection = {
 export type Post = {
   slug: string;
   title: string;
+  /** Titre en arabe (optionnel, utilisé si présent quand la langue = ar). */
+  titleAr?: string;
   excerpt: string;
+  /** Résumé en arabe (optionnel). */
+  excerptAr?: string;
   category: PostCategory;
+  /** Contenu complet en arabe (optionnel). */
+  contentAr?: string;
   date: string;
   imageUrl: string;
   /** Texte brut (paragraphes séparés par \n\n). Utilisé si contentSections est absent. */

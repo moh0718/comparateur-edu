@@ -71,6 +71,15 @@ const fr: Messages = {
   "rankings.hero.highlight.line1": "46 universités algériennes classées dans QS Arab 2026",
   "rankings.hero.highlight.line2":
     "1er pays du monde arabe en nombre d'établissements représentés.",
+  "blog.readArticle": "Lire l'article →",
+  "blog.readShort": "Lire →",
+  "blog.prev": "Précédent",
+  "blog.next": "Suivant",
+  "blog.cta.title": "Passer de la théorie à l'action : trouvez votre école idéale",
+  "blog.cta.text":
+    "Après la lecture des articles, répondez à quelques questions et recevez une recommandation personnalisée d'établissements privés en Algérie.",
+  "blog.cta.primary": "Lancer le formulaire",
+  "blog.cta.secondary": "Voir l'annuaire",
 };
 
 const ar: Messages = {
@@ -140,6 +149,15 @@ const ar: Messages = {
   "rankings.hero.highlight.line1": "46 جامعة جزائرية مصنَّفة في QS Arab 2026",
   "rankings.hero.highlight.line2":
     "المرتبة الأولى عربياً من حيث عدد المؤسسات الممثَّلة.",
+  "blog.readArticle": "اقرأ المقال →",
+  "blog.readShort": "اقرأ →",
+  "blog.prev": "السابق",
+  "blog.next": "التالي",
+  "blog.cta.title": "من القراءة إلى الفعل: اعثر على مؤسستك المثالية",
+  "blog.cta.text":
+    "بعد الاطلاع على المقالات، أجب عن بضع أسئلة وتلقَّ توصية شخصية بالمؤسسات الخاصة المناسبة لك في الجزائر.",
+  "blog.cta.primary": "ابدأ الاستبيان",
+  "blog.cta.secondary": "عرض الدليل",
 };
 
 const MESSAGES: Record<Lang, Messages> = { fr, ar };
