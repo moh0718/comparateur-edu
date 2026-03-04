@@ -7,7 +7,7 @@ import { ContactForm } from "./ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contactez Comparateur Edu pour toute question sur les établissements privés en Algérie. Réponse rapide.",
+    "Contactez Comparateur Edu pour toute question sur les établissements publics et privés en Algérie. Réponse rapide.",
   openGraph: {
     title: `Contact | ${SITE_NAME}`,
     description: "Contactez-nous pour toute question ou remarque.",

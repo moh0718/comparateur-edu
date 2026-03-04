@@ -11,6 +11,11 @@ import { LEAD_FORM_HREF } from "@/lib/navigation";
 
 function filterInstitutions(list: Institution[], f: FilterState): Institution[] {
   return list.filter((inst) => {
+    // Filtre secteur public / privé
+    const isPublic = Boolean((inst as any).sub_category);
+    if (f.sector === "Public" && !isPublic) return false;
+    if (f.sector === "Prive" && isPublic) return false;
+
     if (f.category && inst.category !== f.category) return false;
     if (f.wilaya && inst.wilaya !== f.wilaya) return false;
     if (f.level && inst.level_general && !inst.level_general.includes(f.level)) return false;
@@ -61,6 +66,7 @@ export function EtablissementsClient({ institutions }: EtablissementsClientProps
     category: (searchParams.get("categorie") as FilterState["category"]) || "",
     wilaya: searchParams.get("wilaya") || "",
     langue: searchParams.get("langue") || "",
+    sector: (searchParams.get("secteur") as FilterState["sector"]) || "",
   }));
   const [query, setQuery] = useState(searchParams.get("q") || "");
 

@@ -15,6 +15,8 @@ export interface FilterState {
   wilaya: string;
   level: string;
   budget: string;
+  /** Secteur : public / privé */
+  sector: "" | "Public" | "Prive";
   mesrs: boolean | null;
   bacNonRequis: boolean | null;
   internat: boolean | null;
@@ -55,6 +57,19 @@ export function FilterBar({ filters, onChange, className, openOnMobile = false }
       <h3 className="mb-4 text-sm font-semibold text-slate-900">Filtres</h3>
 
       <div className="space-y-5">
+        <div>
+          <label className="mb-2 block text-xs font-medium text-slate-600">Type d&apos;établissement</label>
+          <select
+            value={filters.sector}
+            onChange={(e) => onChange({ sector: e.target.value as FilterState["sector"] })}
+            className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900"
+          >
+            <option value="">Public &amp; privé</option>
+            <option value="Public">Public uniquement</option>
+            <option value="Prive">Privé uniquement</option>
+          </select>
+        </div>
+
         <div>
           <label className="mb-2 block text-xs font-medium text-slate-600">Catégorie</label>
           <select
@@ -157,6 +172,7 @@ export const defaultFilters: FilterState = {
   wilaya: "",
   level: "",
   budget: "",
+   sector: "",
   mesrs: null,
   bacNonRequis: null,
   internat: null,

@@ -29,6 +29,8 @@ export const ROUTES = {
   salonsEtudiants: "/salons-etudiants",
   /** Le Mag' — Blog & conseils SEO */
   blog: "/blog",
+  /** Classements internationaux des universités algériennes */
+  rankings: "/rankings",
   contact: "/contact",
   contactConfirmation: "/contact/confirmation",
   faq: "/faq",

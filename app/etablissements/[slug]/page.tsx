@@ -315,8 +315,9 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
               ))}
             </dl>
             <p className="mt-4 text-xs text-slate-500">
-              Ces éléments sont fournis à titre indicatif à partir des sources publiques et du crawler kompar - edu. Pour
-              une recommandation personnalisée (budget, projet, contraintes), remplissez le formulaire en bas de page.
+              Ces éléments sont fournis à titre indicatif à partir des sources publiques et du crawler kompar - edu. Les
+              coûts et taux d&apos;insertion affichés sont des estimations à vérifier directement auprès de l&apos;établissement.
+              Pour une recommandation personnalisée (budget, projet, contraintes), remplissez le formulaire en bas de page.
             </p>
           </section>
 

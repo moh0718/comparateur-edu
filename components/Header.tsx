@@ -28,6 +28,7 @@ export function Header() {
   const onEtablissements = pathname.startsWith(ROUTES.etablissements);
   const onFichesMetiers = pathname.startsWith(ROUTES.fichesMetiers);
   const onSalons = pathname.startsWith(ROUTES.salonsEtudiants);
+  const onRankings = pathname.startsWith(ROUTES.rankings);
   const onBlog = pathname.startsWith(ROUTES.blog);
   const onContact = pathname.startsWith(ROUTES.contact);
 
@@ -116,6 +117,16 @@ export function Header() {
             Le Mag&apos;
           </Link>
           <Link
+            href={ROUTES.rankings}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              navLinkClass,
+              onRankings && "font-semibold text-slate-900"
+            )}
+          >
+            Rankings
+          </Link>
+          <Link
             href={ROUTES.contact}
             className={cn(
               "rounded-lg px-3 py-2",
@@ -144,7 +155,7 @@ export function Header() {
       <div className="border-t border-slate-100 bg-emerald-50/80">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-5 py-1.5 text-center sm:px-6 md:px-8">
           <p className="text-[11px] font-medium text-emerald-800 sm:text-xs">
-            <span className="font-semibold">1er comparateur neutre d&apos;établissements privés en Algérie</span> — données vérifiées, filtres avancés et recommandations gratuites par WhatsApp.
+            <span className="font-semibold">1er comparateur neutre d&apos;établissements scolaires en Algérie</span> — publics et privés, données vérifiées, filtres avancés et recommandations gratuites par WhatsApp.
           </p>
         </div>
       </div>
@@ -195,6 +206,17 @@ export function Header() {
             )}
           >
             Le Mag&apos;
+          </Link>
+          <Link
+            href={ROUTES.rankings}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              onRankings
+                ? "bg-emerald-100 text-emerald-900 font-semibold"
+                : "bg-slate-100 text-slate-700"
+            )}
+          >
+            Rankings
           </Link>
           <Link
             href={ROUTES.contact}
