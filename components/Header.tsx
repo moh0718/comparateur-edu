@@ -11,8 +11,14 @@ import { useI18n } from "@/components/i18n/I18nProvider";
 export function Header() {
   const { lang, setLang, t } = useI18n();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  // Fermer le menu mobile au changement de route
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -23,6 +29,14 @@ export function Header() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   const navLinkClass = "hover:text-slate-900";
   const navLinkBrandClass = "text-brand hover:text-brand-dark";
@@ -140,9 +154,27 @@ export function Header() {
           </Link>
         </nav>
 
-        {/* Sélecteur langue + CTA Lead Gen */}
-        <div className="ml-auto flex shrink-0 items-center gap-3">
-          <div className="hidden items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[11px] font-medium text-slate-600 sm:flex">
+        {/* Burger mobile + Sélecteur langue (desktop) + CTA */}
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((o) => !o)}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 md:hidden"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          >
+            {mobileMenuOpen ? (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+          <div className="hidden items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[11px] font-medium text-slate-600 md:flex">
             <button
               type="button"
               onClick={() => {
@@ -190,77 +222,146 @@ export function Header() {
         </div>
       </div>
 
-      {/* Navigation mobile */}
-      <nav aria-label="Navigation mobile" className="border-t border-slate-100 py-2 text-xs font-medium text-slate-700 md:hidden">
-        <div className="mx-auto flex max-w-7xl flex-wrap gap-2 px-5 pb-1 pt-1 sm:px-6 md:px-8">
-          <Link
-            href={ROUTES.etablissements}
-            className={cn(
-              "rounded-lg px-3 py-2",
-              onEtablissements
-                ? "bg-emerald-100 text-emerald-900 font-semibold"
-                : "bg-slate-100 text-slate-700"
-            )}
-          >
-            {t("nav.etablissements")}
-          </Link>
-          <Link
-            href={ROUTES.fichesMetiers}
-            className={cn(
-              "rounded-lg px-3 py-2",
-              onFichesMetiers
-                ? "bg-emerald-100 text-emerald-900 font-semibold"
-                : "bg-slate-100 text-slate-700"
-            )}
-          >
-            {t("nav.metiersSalons")}
-          </Link>
-          <Link
-            href={ROUTES.salonsEtudiants}
-            className={cn(
-              "rounded-lg px-3 py-2",
-              onSalons
-                ? "bg-emerald-100 text-emerald-900 font-semibold"
-                : "bg-slate-100 text-slate-700"
-            )}
-          >
-            {t("nav.salons")}
-          </Link>
-          <Link
-            href={ROUTES.blog}
-            className={cn(
-              "rounded-lg px-3 py-2",
-              onBlog
-                ? "bg-emerald-100 text-emerald-900 font-semibold"
-                : "bg-slate-100 text-slate-700"
-            )}
-          >
-            {t("nav.blog")}
-          </Link>
-          <Link
-            href={ROUTES.rankings}
-            className={cn(
-              "rounded-lg px-3 py-2",
-              onRankings
-                ? "bg-emerald-100 text-emerald-900 font-semibold"
-                : "bg-slate-100 text-slate-700"
-            )}
-          >
-            {t("nav.rankings")}
-          </Link>
-          <Link
-            href={ROUTES.contact}
-            className={cn(
-              "rounded-lg px-3 py-2",
-              onContact
-                ? "bg-emerald-100 text-emerald-900 font-semibold"
-                : "bg-slate-100 text-slate-700"
-            )}
-          >
-            {t("nav.contact")}
-          </Link>
-        </div>
-      </nav>
+      {/* Fond cliquable (fermer le menu en cliquant sur la page) — mobile uniquement */}
+      {mobileMenuOpen && (
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen(false)}
+          className="fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-[2px] transition-opacity md:hidden"
+          aria-label="Fermer le menu et revoir la page"
+        />
+      )}
+
+      {/* Menu mobile (burger) — au-dessus du fond */}
+      <div
+        id="mobile-menu"
+        className={cn(
+          "relative z-50 overflow-hidden border-t border-slate-100 bg-white transition-[max-height] duration-200 ease-out md:hidden",
+          mobileMenuOpen ? "max-h-[85vh]" : "max-h-0"
+        )}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <nav aria-label="Navigation mobile" className="mx-auto max-w-7xl px-5 py-4 sm:px-6">
+          <ul className="flex flex-col gap-0.5 text-sm font-medium text-slate-700">
+            <li>
+              <Link
+                href={ROUTES.etablissements}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  "block rounded-lg px-4 py-3",
+                  onEtablissements ? "bg-emerald-50 text-emerald-800 font-semibold" : "hover:bg-slate-50"
+                )}
+              >
+                {t("nav.etablissements")}
+              </Link>
+            </li>
+            <li>
+              <span className="block px-4 pt-3 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                {t("nav.metiersSalons")}
+              </span>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.fichesMetiers}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  "block rounded-lg px-4 py-2.5 pl-6",
+                  onFichesMetiers ? "bg-emerald-50 text-emerald-800 font-semibold" : "hover:bg-slate-50"
+                )}
+              >
+                {t("nav.fichesMetiers")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.salonsEtudiants}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  "block rounded-lg px-4 py-2.5 pl-6",
+                  onSalons ? "bg-emerald-50 text-emerald-800 font-semibold" : "hover:bg-slate-50"
+                )}
+              >
+                {t("nav.salons")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.blog}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  "block rounded-lg px-4 py-3",
+                  onBlog ? "bg-emerald-50 text-emerald-800 font-semibold" : "hover:bg-slate-50"
+                )}
+              >
+                {t("nav.blog")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.rankings}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  "block rounded-lg px-4 py-3",
+                  onRankings ? "bg-emerald-50 text-emerald-800 font-semibold" : "hover:bg-slate-50"
+                )}
+              >
+                {t("nav.rankings")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={ROUTES.contact}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  "block rounded-lg px-4 py-3",
+                  onContact ? "bg-emerald-50 text-emerald-800 font-semibold" : "hover:bg-slate-50"
+                )}
+              >
+                {t("nav.contact")}
+              </Link>
+            </li>
+          </ul>
+
+          <div className="mt-4 flex flex-col gap-3 border-t border-slate-100 pt-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-slate-500">Langue</span>
+              <div className="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[11px] font-medium text-slate-600">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLang("fr");
+                    if (typeof window !== "undefined") window.location.reload();
+                  }}
+                  className={cn(
+                    "rounded-full px-2.5 py-1",
+                    lang === "fr" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500"
+                  )}
+                >
+                  FR
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLang("ar");
+                    if (typeof window !== "undefined") window.location.reload();
+                  }}
+                  className={cn(
+                    "rounded-full px-2.5 py-1",
+                    lang === "ar" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500"
+                  )}
+                >
+                  AR
+                </button>
+              </div>
+            </div>
+            <Button asChild variant="primary" size="lg" className="w-full justify-center shadow-md">
+              <Link href={LEAD_FORM_HREF} onClick={() => setMobileMenuOpen(false)}>
+                {t("nav.cta")}
+              </Link>
+            </Button>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }

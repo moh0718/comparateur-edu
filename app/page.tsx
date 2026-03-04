@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { cookies } from "next/headers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { SITE_NAME, SITE_DESCRIPTION, getBaseUrl } from "@/lib/seo";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 import { t } from "@/lib/i18n";
@@ -43,8 +43,9 @@ export default async function HomePage() {
       <main className="flex-1 px-5 pb-16 pt-8 sm:px-6 md:px-8 md:pb-24 md:pt-12">
         <div className="mx-auto max-w-7xl space-y-10 md:space-y-14">
           {/* 1. Hero — positionnement : comparateur gratuit, décision simplifiée */}
-          <section aria-labelledby="hero-title">
-            <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+          <ScrollReveal variant="fade-up">
+            <section aria-labelledby="hero-title">
+              <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
               <div className="text-center md:text-left">
                 <p className="mx-auto mb-2 max-w-xl text-sm font-semibold uppercase tracking-wide text-emerald-600 md:mx-0">
                   {t(lang, "home.hero.badge")}
@@ -111,10 +112,12 @@ export default async function HomePage() {
                 </div>
               </div>
             </div>
-          </section>
+            </section>
+          </ScrollReveal>
 
           {/* 2. Barre de recherche rapide */}
-          <section aria-label={t(lang, "home.search.aria")} className="rounded-2xl bg-white p-4 shadow-card md:p-5">
+          <ScrollReveal variant="fade-up" delay={80}>
+            <section aria-label={t(lang, "home.search.aria")} className="rounded-2xl bg-white p-4 shadow-card md:p-5">
             <form action={ROUTES.etablissements} method="get" className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <input
                 type="search"
@@ -148,10 +151,12 @@ export default async function HomePage() {
                 {t(lang, "home.search.submit")}
               </Button>
             </form>
-          </section>
+            </section>
+          </ScrollReveal>
 
           {/* 3. Catégories chips */}
-          <section aria-labelledby="categories-title">
+          <ScrollReveal variant="scale" delay={60}>
+            <section aria-labelledby="categories-title">
             <h2 id="categories-title" className="sr-only">
               {t(lang, "home.categories.title")}
             </h2>
@@ -167,10 +172,12 @@ export default async function HomePage() {
                 </Link>
               ))}
             </div>
-          </section>
+            </section>
+          </ScrollReveal>
 
           {/* 4. Pourquoi nous — tiers de confiance, décision simplifiée, échange valeur */}
-          <section
+          <ScrollReveal variant="slide-up-3d">
+            <section
             id="pourquoi"
             aria-labelledby="pourquoi-title"
             className="rounded-2xl bg-white p-6 shadow-card md:p-8"
@@ -210,10 +217,12 @@ export default async function HomePage() {
                 </p>
               </article>
             </div>
-          </section>
+            </section>
+          </ScrollReveal>
 
           {/* 5. CTA — formulaire = passage obligé pour la décision simplifiée */}
-          <section
+          <ScrollReveal variant="scale" delay={50}>
+            <section
             aria-labelledby="cta-title"
             className="rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-10 text-center text-emerald-50 shadow-card md:px-10 md:py-12"
           >
@@ -231,10 +240,12 @@ export default async function HomePage() {
             >
               <Link href={LEAD_FORM_HREF}>{t(lang, "home.cta.button")}</Link>
             </Button>
-          </section>
+            </section>
+          </ScrollReveal>
 
           {/* 6. Visuels — donner de la chaleur humaine */}
-          <section
+          <ScrollReveal variant="slide-up-3d" delay={80}>
+            <section
             aria-labelledby="visuels-title"
             className="rounded-2xl bg-white p-6 shadow-card md:p-8"
           >
@@ -273,7 +284,8 @@ export default async function HomePage() {
                 <figcaption className="px-4 py-3 text-xs text-slate-700">{t(lang, "home.visuals.card3")}</figcaption>
               </figure>
             </div>
-          </section>
+            </section>
+          </ScrollReveal>
         </div>
       </main>
 
