@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Institution } from "@/data/institutions-mock";
-import { ConfidenceBadge } from "@/components/ConfidenceBadge";
 import { cn } from "@/lib/utils";
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -42,12 +41,9 @@ export function InstitutionCard({ institution, className }: InstitutionCardProps
           </div>
         )}
         <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className={cn("rounded-full px-2 py-0.5 text-[10px] font-medium", categoryClass)}>
-              {category}
-            </span>
-            <ConfidenceBadge confidence={institution.data_confidence ?? null} />
-          </div>
+          <span className={cn("inline-flex rounded-full px-2 py-0.5 text-[10px] font-medium", categoryClass)}>
+            {category}
+          </span>
           <h2 className="mt-1 font-semibold text-slate-900 line-clamp-1">{institution.name}</h2>
           {institution.commune && (
             <p className="text-xs text-slate-500">{institution.commune}{institution.wilaya ? `, ${institution.wilaya}` : ""}</p>

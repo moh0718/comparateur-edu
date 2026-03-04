@@ -4,7 +4,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ConfidenceBadge } from "@/components/ConfidenceBadge";
 import { Button } from "@/components/ui/button";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { SITE_NAME, getBaseUrl } from "@/lib/seo";
@@ -182,14 +181,13 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                   {[inst.commune, inst.wilaya].filter(Boolean).join(", ")}
                   {categoryLabel && ` • ${categoryLabel}`}
                 </p>
-                <div className="mt-2 flex flex-wrap items-center gap-2">
-                  <ConfidenceBadge confidence={inst.data_confidence ?? null} />
-                  {inst.mesrs_recognized && (
+                {inst.mesrs_recognized && (
+                  <div className="mt-2">
                     <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
                       MESRS reconnu
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </section>

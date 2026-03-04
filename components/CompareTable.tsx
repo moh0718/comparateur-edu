@@ -1,7 +1,6 @@
 "use client";
 
 import type { Institution } from "@/data/institutions-mock";
-import { ConfidenceBadge } from "@/components/ConfidenceBadge";
 import { cn } from "@/lib/utils";
 
 interface CompareTableProps {
@@ -72,10 +71,7 @@ export function CompareTable({ institutions, className }: CompareTableProps) {
             <th className="px-4 py-3 font-semibold text-slate-900">Critère</th>
             {institutions.map((inst) => (
               <th key={inst.id} className="px-4 py-3 font-semibold text-slate-900">
-                <div className="flex flex-wrap items-center gap-1">
-                  {inst.name}
-                  <ConfidenceBadge confidence={inst.data_confidence ?? null} />
-                </div>
+                {inst.name}
               </th>
             ))}
           </tr>

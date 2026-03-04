@@ -980,34 +980,34 @@ export function RankingsClient() {
       </section>
 
       {/* Sources officielles */}
-      <section aria-labelledby="sources-title" className="space-y-5 md:space-y-6">
+      <section aria-labelledby="sources-title" className="space-y-3 md:space-y-4">
         <div>
-          <h2 id="sources-title" className="text-lg font-semibold text-slate-900 md:text-xl">
+          <h2 id="sources-title" className="text-base font-semibold text-slate-900 md:text-base">
             Sources officielles
           </h2>
-          <p className="mt-1 text-sm text-slate-600">
+          <p className="mt-0.5 text-xs text-slate-600">
             Toujours vérifier à la source. Ces liens mènent vers les classements originaux et vers la plateforme
             officielle du MESRS.
           </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {sourcesLinks.map((s) => (
             <article
               key={s.name}
-              className="rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-800 shadow-card"
+              className="rounded-xl border border-slate-100 bg-white/80 p-3 text-xs text-slate-800"
             >
-              <h3 className="flex items-center justify-between text-sm font-semibold text-slate-900">
+              <h3 className="flex items-center justify-between text-xs font-semibold text-slate-900">
                 <span>{s.name}</span>
-                <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-800">
+                <span className="rounded-full bg-emerald-50/70 px-2 py-0.5 text-[9px] font-semibold text-emerald-800">
                   Officiel
                 </span>
               </h3>
-              <p className="mt-1 text-xs text-slate-600">{s.desc}</p>
+              <p className="mt-1 text-[11px] text-slate-600">{s.desc}</p>
               <Link
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-emerald-700 hover:underline"
+                className="mt-2 inline-flex items-center gap-1 text-[11px] font-medium text-emerald-700 hover:underline"
               >
                 Ouvrir la source
                 <span aria-hidden>↗</span>
@@ -1044,7 +1044,7 @@ type RankingBlockProps = {
 function RankingBlock({ ranking }: RankingBlockProps) {
   return (
     <section className="space-y-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-card md:p-6">
-      <header className="flex flex-wrap items-start justify-between gap-4">
+      <header className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div className="space-y-1">
           <div
             className={cn(
@@ -1065,7 +1065,7 @@ function RankingBlock({ ranking }: RankingBlockProps) {
             <span className="font-semibold">Ce que ça ne mesure pas :</span> {ranking.doesNotMeasure}
           </p>
         </div>
-        <div className="flex flex-col items-end gap-2 text-right">
+        <div className="mt-1 flex max-w-xs flex-col items-start gap-2 text-left md:mt-0">
           <Link
             href={ranking.url}
             target="_blank"
@@ -1078,7 +1078,7 @@ function RankingBlock({ ranking }: RankingBlockProps) {
             <span>Voir le classement officiel</span>
             <span aria-hidden>↗</span>
           </Link>
-          <div className={cn("max-w-xs rounded-xl p-3 text-xs", rankingColorClasses[ranking.color])}>
+          <div className={cn("w-full rounded-xl p-3 text-xs", rankingColorClasses[ranking.color])}>
             <p className="font-semibold">Fait marquant de l&apos;édition</p>
             <p className="mt-1">{ranking.highlight}</p>
             {ranking.name.includes("SCImago") && (
