@@ -80,6 +80,11 @@ const fr: Messages = {
     "Après la lecture des articles, répondez à quelques questions et recevez une recommandation personnalisée d'établissements privés en Algérie.",
   "blog.cta.primary": "Lancer le formulaire",
   "blog.cta.secondary": "Voir l'annuaire",
+  "blog.article.share": "Partager :",
+  "blog.article.back": "Retour au blog",
+  "blog.article.similar": "Articles similaires",
+  "blog.article.notFound": "Article introuvable. Retournez à la",
+  "blog.article.backToList": "liste des articles",
 };
 
 const ar: Messages = {
@@ -158,6 +163,11 @@ const ar: Messages = {
     "بعد الاطلاع على المقالات، أجب عن بضع أسئلة وتلقَّ توصية شخصية بالمؤسسات الخاصة المناسبة لك في الجزائر.",
   "blog.cta.primary": "ابدأ الاستبيان",
   "blog.cta.secondary": "عرض الدليل",
+  "blog.article.share": "مشاركة:",
+  "blog.article.back": "العودة إلى المدونة",
+  "blog.article.similar": "مقالات مشابهة",
+  "blog.article.notFound": "المقال غير موجود. العودة إلى",
+  "blog.article.backToList": "قائمة المقالات",
 };
 
 const MESSAGES: Record<Lang, Messages> = { fr, ar };

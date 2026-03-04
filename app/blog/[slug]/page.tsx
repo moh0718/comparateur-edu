@@ -1,18 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { cookies } from "next/headers";
 import { Header } from "@/components/Header";
 import { AdSlotSkyscraper } from "@/components/AdSlot";
 import { Button } from "@/components/ui/button";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import {
-  posts,
-  type Post,
-  type ContentSection
-} from "@/data/posts-mock";
+import { posts, type Post } from "@/data/posts-mock";
 import { SITE_NAME, getBaseUrl } from "@/lib/seo";
 import { Footer } from "@/components/Footer";
-import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
+import { LEAD_FORM_HREF } from "@/lib/navigation";
+import { t, type Lang } from "@/lib/i18n";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -23,13 +21,17 @@ export async function generateMetadata({ params }: PageProps) {
   const post = posts.find((p) => p.slug === slug);
   if (!post)
     return { title: "Article introuvable", robots: { index: false, follow: true } };
+  const cookieStore = await cookies();
+  const lang = (cookieStore.get("lang")?.value ?? "fr") as Lang;
+  const title = lang === "ar" && post.titleAr ? post.titleAr : post.title;
+  const description = lang === "ar" && post.excerptAr ? post.excerptAr : post.excerpt;
   const url = `${getBaseUrl()}/blog/${post.slug}`;
   return {
-    title: post.title,
-    description: post.excerpt,
+    title,
+    description,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title,
+      description,
       url,
       type: "article",
       publishedTime: post.date,
@@ -38,8 +40,8 @@ export async function generateMetadata({ params }: PageProps) {
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
+      title,
+      description,
     },
     alternates: { canonical: url },
   };
@@ -181,16 +183,18 @@ function renderSectionContent(content: string) {
   });
 }
 
-function ArticleContent({ post }: { post: Post }) {
-  const fullContent =
-    post.contentSections && post.contentSections.length > 0
-      ? post.contentSections.map((s) => s.content).join("\n\n")
-      : post.content;
+function ArticleContent({ post, lang }: { post: Post; lang: Lang }) {
+  const rawContent =
+    lang === "ar" && post.contentAr
+      ? post.contentAr
+      : post.contentSections && post.contentSections.length > 0
+        ? post.contentSections.map((s) => s.content).join("\n\n")
+        : post.content;
 
   return (
     <div className="rounded-2xl bg-white p-5 shadow-sm sm:p-6">
       <div className="prose prose-sm max-w-none text-slate-800 prose-p:mb-4">
-        {renderSectionContent(fullContent)}
+        {renderSectionContent(rawContent)}
       </div>
     </div>
   );
@@ -198,6 +202,8 @@ function ArticleContent({ post }: { post: Post }) {
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
+  const cookieStore = await cookies();
+  const lang = (cookieStore.get("lang")?.value ?? "fr") as Lang;
   const post = posts.find((p) => p.slug === slug);
 
   if (!post) {
@@ -205,9 +211,9 @@ export default async function BlogPostPage({ params }: PageProps) {
       <div className="flex min-h-screen flex-col bg-slate-50">
         <main className="flex flex-1 items-center justify-center px-5 py-20">
           <p className="text-sm text-slate-600">
-            Article introuvable. Retournez à la{" "}
+            {t(lang, "blog.article.notFound")}{" "}
             <Link href="/blog" className="text-green-700 underline">
-              liste des articles
+              {t(lang, "blog.article.backToList")}
             </Link>
             .
           </p>
@@ -216,8 +222,12 @@ export default async function BlogPostPage({ params }: PageProps) {
     );
   }
 
+  const baseTitle = lang === "ar" && post.titleAr ? post.titleAr : post.title;
+  const baseExcerpt = lang === "ar" && post.excerptAr ? post.excerptAr : post.excerpt;
+
   const relatedPosts = getRelatedPosts(post, 3);
-  const formattedDate = new Date(post.date).toLocaleDateString("fr-FR", {
+  const locale = lang === "ar" ? "ar-DZ" : "fr-FR";
+  const formattedDate = new Date(post.date).toLocaleDateString(locale, {
     day: "numeric",
     month: "long",
     year: "numeric"
@@ -225,14 +235,14 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const baseUrl = getBaseUrl();
   const shareUrl = `${baseUrl.replace(/\/$/, "")}/blog/${post.slug}`;
-  const shareTitle = encodeURIComponent(post.title);
-  const shareText = encodeURIComponent(post.excerpt);
+  const shareTitle = encodeURIComponent(baseTitle);
+  const shareText = encodeURIComponent(baseExcerpt);
 
   const jsonLdArticle = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: post.title,
-    description: post.excerpt,
+    headline: baseTitle,
+    description: baseExcerpt,
     datePublished: post.date,
     dateModified: post.date,
     author: { "@type": "Organization", name: SITE_NAME },
@@ -258,7 +268,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="relative h-[280px] w-full sm:h-[320px] md:h-[380px]">
             <Image
               src={post.imageUrl}
-              alt={post.title}
+              alt={baseTitle}
               fill
               className="object-cover"
               priority
@@ -290,25 +300,25 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
           <div className="mx-auto max-w-6xl px-5 pt-5 sm:px-6 sm:pt-6 md:px-8">
             <h1 className="text-xl font-extrabold leading-snug text-slate-900 sm:text-2xl md:text-3xl">
-              {post.title}
+              {baseTitle}
             </h1>
             <p className="mt-2 text-sm text-slate-600 sm:text-base">
-              {post.excerpt}
+              {baseExcerpt}
             </p>
           </div>
         </section>
 
         {/* Contenu principal */}
         <div className="mx-auto mt-8 max-w-6xl px-5 sm:px-6 md:px-8">
-          <ArticleContent post={post} />
+          <ArticleContent post={post} lang={lang} />
 
           {/* Partage social — liens fonctionnels */}
           <section
-            aria-label="Partager l'article"
+            aria-label={t(lang, "blog.article.share")}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
             <span className="text-xs font-semibold text-slate-500">
-              Partager :
+              {t(lang, "blog.article.share")}
             </span>
             <a
               href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
@@ -352,7 +362,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               href="/blog"
               className="inline-flex items-center rounded-full border border-green-600 bg-transparent px-5 py-2 text-sm font-semibold text-green-600 hover:bg-green-50"
             >
-              ← Retour au blog
+              {lang === "ar" ? "→ " : "← "}{t(lang, "blog.article.back")}
             </Link>
           </div>
 
@@ -366,38 +376,42 @@ export default async function BlogPostPage({ params }: PageProps) {
                 id="articles-similaires"
                 className="text-lg font-semibold text-slate-900 md:text-xl"
               >
-                Articles similaires
+                {t(lang, "blog.article.similar")}
               </h2>
               <div className="grid gap-4 sm:grid-cols-3">
-                {relatedPosts.map((related) => (
-                  <Link
-                    key={related.slug}
-                    href={`/blog/${related.slug}`}
-                    className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
-                  >
-                    <h3 className="text-sm font-semibold text-slate-900 line-clamp-2">
-                      {related.title}
-                    </h3>
-                    <p className="mt-1 line-clamp-2 text-xs text-slate-600">
-                      {related.excerpt}
-                    </p>
-                  </Link>
-                ))}
+                {relatedPosts.map((related) => {
+                  const relTitle = lang === "ar" && related.titleAr ? related.titleAr : related.title;
+                  const relExcerpt = lang === "ar" && related.excerptAr ? related.excerptAr : related.excerpt;
+                  return (
+                    <Link
+                      key={related.slug}
+                      href={`/blog/${related.slug}`}
+                      className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+                    >
+                      <h3 className="text-sm font-semibold text-slate-900 line-clamp-2">
+                        {relTitle}
+                      </h3>
+                      <p className="mt-1 line-clamp-2 text-xs text-slate-600">
+                        {relExcerpt}
+                      </p>
+                    </Link>
+                  );
+                })}
               </div>
             </section>
           )}
 
           {/* CTA comparateur */}
           <section
-            aria-label="Appel à l'action"
+            aria-label={t(lang, "blog.cta.primary")}
             className="mt-12 rounded-2xl bg-brand/10 px-5 py-8 text-center sm:px-8"
           >
             <p className="text-sm text-slate-700 sm:text-base">
-              Utilisez notre comparateur gratuit pour filtrer les établissements par tarif, commune et services — et prenez votre décision en toute sérénité.
+              {t(lang, "blog.cta.text")}
             </p>
             <div className="mt-4">
               <Button asChild variant="primary" size="lg">
-                <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
+                <Link href={LEAD_FORM_HREF}>{t(lang, "blog.cta.primary")}</Link>
               </Button>
             </div>
           </section>
