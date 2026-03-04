@@ -70,6 +70,62 @@ MANUAL_WEBSITES = {
     "caci formation": "https://formations.caci.dz",
     "isg": "https://isg.dz",
     "esaa": "https://esaa.dz",
+
+    # Centres linguistiques / pôles culturels
+    "berlitz": "https://berlitz.dz",
+    "institut torii": "https://institut-torii.com",
+    "daf akademie": "https://daf-akademie.com",
+    "dsia": "https://daf-akademie.com",
+    "ef education first": "https://ef.dz",
+    "study center": "https://studycenter-dz.com",
+    "my coach in": "https://mycoach-in.com",
+    "in tuition": "https://in-tuition.dz",
+    "asl algerian school for languages": "https://aslalgerie.com",
+    "castle school": "https://castle-school.dz",
+
+    # Formations professionnelles spécialisées
+    "fly fra academy": "https://flyfra.com",
+    "fly fra": "https://flyfra.com",
+    "esa ecole sup aeronautique": "https://esaero-dz.com",
+    "esaero": "https://esaero-dz.com",
+    "acca algerie": "https://acca-algerie.com",
+    "code 213": "https://code213.dz",
+    "apti": "https://apti.dz",
+    "institut itm": "https://institut-itm.com",
+    "medav": "https://ecolemedav.com",
+    "dakira formations": "https://dakiraa.com",
+    "bmgi center": "https://bmgicenter.com",
+    "inter hotel school": "https://ihs-dz.com",
+    "in academy": "https://in-academy.dz",
+
+    # Enseignement général — Alger Ouest
+    "lycee alexandre dumas": "https://liad.dz",
+    "liad": "https://liad.dz",
+    "petite ecole d hydra": "https://alger-peh.mlfmonde.org",
+    "ecole cipele education": "https://cipeleschool.com",
+
+    # Dely Ibrahim / Cheraga
+    "ecole la majorelle": "https://ecole-lamajorelle.com",
+    "ecole el manar": "https://ecole-el-manar.org",
+    "groupe scolaire essalem": "https://groupe-scolaire-essalem.com",
+
+    # Alger centre / kouba / est
+    "el djoud": "https://eldjoudschool.com",
+    "groupe scolaire nedame": "https://ecolenedame.com",
+    "etablissement salim": "https://ets-salim.com",
+    "aquaschool": "https://aquaschool.dz",
+
+    # Wilayas limitrophes
+    "gs l ecureuil": "https://ecole-ecureuil.dz",
+    "groupe scolaire albert einstein": "https://groupeeinstein-dz.com",
+    "albert einstein school": "https://groupeeinstein-dz.com",
+    "avicenne school": "https://avicenneschool.com",
+    "british school algiers": "https://britishschoolalgiers.com",
+
+    # Santé / paramédical
+    "inoof": "https://inoof.edu.dz",
+    "institut ibn nafis": "https://ibn-nafis.com",
+    "ecole el taraqui": "https://ecoleeltaraqui.com",
 }
 
 
