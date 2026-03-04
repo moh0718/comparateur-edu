@@ -1018,7 +1018,7 @@ export function RankingsClient() {
       </section>
 
       {/* CTA final */}
-      <section className="mb-8 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-8 text-center text-emerald-50 shadow-lg md:px-10 md:py-10">
+      <section className="mb-4 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-6 text-center text-emerald-50 shadow-lg md:px-10 md:py-8">
         <h2 className="text-lg font-semibold md:text-xl">
           Tu hésites encore entre plusieurs universités publiques et privées ?
         </h2>

@@ -337,10 +337,10 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
               {orientationRows.map((row) => (
                 <div
                   key={row.label}
-                  className="flex flex-wrap items-start justify-between gap-2 border-b border-slate-100 pb-2"
+                  className="grid grid-cols-1 gap-1 border-b border-slate-100 pb-2 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)]"
                 >
                   <dt className="font-medium text-slate-700">{row.label}</dt>
-                  <dd className="flex items-center gap-2 text-slate-800">
+                  <dd className="text-slate-800">
                     {row.value === null || row.value === "" ? (
                       <span className="text-slate-400">Non renseigné</span>
                     ) : typeof row.value === "boolean" ? (
@@ -369,10 +369,10 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                 {parentsRows.map((row) => (
                   <div
                     key={row.label}
-                    className="flex flex-wrap items-start justify-between gap-2 border-b border-slate-100 pb-2"
+                    className="grid grid-cols-1 gap-1 border-b border-slate-100 pb-2 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)]"
                   >
                     <dt className="font-medium text-slate-700">{row.label}</dt>
-                    <dd className="flex items-center gap-2 text-slate-800">
+                    <dd className="text-slate-800">
                       {row.value === null || row.value === "" ? (
                         <span className="text-slate-400">Non renseigné</span>
                       ) : typeof row.value === "boolean" ? (
