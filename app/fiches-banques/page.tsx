@@ -8,12 +8,13 @@ import { Footer } from "@/components/Footer";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 
 export const metadata: Metadata = {
-  title: "Établissements",
+  title: "Fiches banques (ancienne version)",
   description:
-    "Découvrez les caractéristiques, offres et conditions des principales banques algériennes : BNA, CPA, BEA, BNP Paribas, Société Générale, AGB, Algérie Poste, Banxy et plus.",
+    "Ancienne section de comparaison de banques algériennes. Page conservée à titre d'archive, non indexée par les moteurs de recherche.",
+  robots: { index: false, follow: false },
   openGraph: {
-    title: `Établissements | ${SITE_NAME}`,
-    description: "Comparez les banques algériennes en détail.",
+    title: `Fiches banques (archive) | ${SITE_NAME}`,
+    description: "Ancienne section de fiches banques, non destinée au référencement.",
     url: `${getBaseUrl()}/fiches-banques`,
   },
   alternates: { canonical: `${getBaseUrl()}/fiches-banques` },

@@ -8,11 +8,11 @@ import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 export const metadata: Metadata = {
   title: "Conditions générales et politique de confidentialité",
   description:
-    "Conditions générales et politique de confidentialité : zéro stockage de données personnelles, mise en relation exclusivement par WhatsApp avec consentement, cookies et contact.",
+    "Conditions générales et politique de confidentialité de kompar - edu : rôle du site, zéro stockage de données personnelles, mise en relation par WhatsApp avec consentement, cookies et contact.",
   openGraph: {
     title: `Conditions générales et politique de confidentialité | ${SITE_NAME}`,
     description:
-      "Notre rôle, l'utilisation de vos données, vos droits et la protection de votre vie privée.",
+      "Fonctionnement de kompar - edu, utilisation de vos données, confidentialité et droits des utilisateurs en Algérie.",
     url: `${getBaseUrl()}/conditions-generales`,
   },
   alternates: { canonical: `${getBaseUrl()}/conditions-generales` },

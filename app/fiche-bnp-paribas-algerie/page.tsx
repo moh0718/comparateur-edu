@@ -10,8 +10,9 @@ const PAGE_DESCRIPTION =
   "Fiche complète BNP Paribas Algérie : offres, frais, cartes, conditions d'éligibilité, délais et avis. Comparez avec les autres banques algériennes.";
 
 export const metadata: Metadata = {
-  title: "Fiche BNP Paribas Algérie – Caractéristiques et avis",
+  title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
+  robots: { index: false, follow: false },
   openGraph: {
     title: `${PAGE_TITLE} | ${SITE_NAME}`,
     description: PAGE_DESCRIPTION,

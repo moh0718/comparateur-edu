@@ -97,14 +97,31 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!data) return { title: "Établissement introuvable" };
 
-  const title = `${data.name} – Fiche établissement`;
+  const city = [data.commune, data.wilaya].filter(Boolean).join(", ");
+  const title = `${data.name} – Fiche établissement scolaire${city ? ` à ${city}` : ""}`;
   const url = `${getBaseUrl()}/etablissements/${slug}`;
+  const description =
+    data.description ??
+    `Fiche détaillée de ${data.name}, établissement scolaire${city ? ` situé à ${city}` : ""} : programmes, langues d'enseignement, budget estimatif et services pratiques.`;
+
   return {
     title,
-    description:
-      data.description ??
-      `Fiche de ${data.name}. ${data.commune ?? ""} ${data.wilaya ?? ""} ${data.category ?? ""}`.trim(),
-    openGraph: { title: `${title} | ${SITE_NAME}`, url },
+    description,
+    keywords: [
+      data.name,
+      city && `${data.name} ${city}`,
+      data.wilaya && `école privée ${data.wilaya}`,
+      data.commune && `école ${data.commune}`,
+      "établissement scolaire Algérie",
+      "école privée Algérie",
+      "université Algérie",
+    ].filter(Boolean) as string[],
+    openGraph: {
+      title: `${title} | ${SITE_NAME}`,
+      description,
+      url,
+      type: "article",
+    },
     alternates: { canonical: url },
   };
 }
@@ -119,6 +136,27 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
 
   const waNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
   const contactLabel = "Remplir le formulaire pour recevoir 3 à 5 propositions adaptées";
+
+  const canonicalUrl = `${getBaseUrl()}/etablissements/${slug}`;
+  const city = [inst.commune, inst.wilaya].filter(Boolean).join(", ");
+  const jsonLdInstitution = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: inst.name,
+    url: inst.website_url || canonicalUrl,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: inst.address || undefined,
+      addressLocality: inst.commune || undefined,
+      addressRegion: inst.wilaya || undefined,
+      addressCountry: "DZ",
+    },
+    telephone: inst.phone || undefined,
+    sameAs: [
+      inst.facebook_page || undefined,
+      inst.instagram_username ? `https://www.instagram.com/${inst.instagram_username}` : undefined,
+    ].filter(Boolean),
+  };
 
   const orientationRows: { label: string; value: string | boolean | null }[] = [
     { label: "Bac requis", value: inst.bac_required ?? null },
@@ -159,6 +197,10 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdInstitution) }}
+      />
       <Header />
 
       <main className="flex-1 px-5 py-8 sm:px-6 md:px-8 md:py-12">

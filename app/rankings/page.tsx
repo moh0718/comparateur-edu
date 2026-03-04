@@ -2,12 +2,22 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { RankingsClient } from "@/components/rankings/RankingsClient";
-import { SITE_NAME, getBaseUrl } from "@/lib/seo";
+import { SITE_NAME, SITE_KEYWORDS, getBaseUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Rankings — universités algériennes | " + SITE_NAME,
   description:
     "Vue claire et honnête des classements internationaux des universités algériennes (QS, THE, Webometrics, SCImago...). Classements 2024–2026, explications et limites.",
+  keywords: [
+    "classement universités Algérie",
+    "rankings universités algériennes",
+    "QS Arab 2026 Algérie",
+    "THE Arab rankings Algérie",
+    "Webometrics Algérie",
+    "SCImago Algérie",
+    "universités publiques algériennes",
+    ...SITE_KEYWORDS,
+  ],
   openGraph: {
     title: `Rankings | ${SITE_NAME}`,
     description:
