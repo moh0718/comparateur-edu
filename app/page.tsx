@@ -249,8 +249,8 @@ export default function HomePage() {
                   className="h-40 w-full object-cover md:h-48"
                 />
                 <figcaption className="px-4 py-3 text-xs text-slate-700">
-                  <span className="font-semibold">Parents</span> qui cherchent une école adaptée
-                  aux contraintes de budget, de transport et de niveau.
+                  <span className="font-semibold">Savoir où inscrire son enfant. Enfin.</span>{" "}
+                  Plus de décisions prises dans le flou.
                 </figcaption>
               </figure>
               <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
@@ -260,8 +260,8 @@ export default function HomePage() {
                   className="h-40 w-full object-cover md:h-48"
                 />
                 <figcaption className="px-4 py-3 text-xs text-slate-700">
-                  <span className="font-semibold">Étudiants</span> qui comparent programmes,
-                  langues et reconnaissance des diplômes.
+                  <span className="font-semibold">Choisir sa filière. Pas la subir.</span>{" "}
+                  Débouchés, salaires, avis réels — tout est là.
                 </figcaption>
               </figure>
               <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
@@ -271,8 +271,8 @@ export default function HomePage() {
                   className="h-40 w-full object-cover md:h-48"
                 />
                 <figcaption className="px-4 py-3 text-xs text-slate-700">
-                  <span className="font-semibold">Vie d&apos;établissement</span> :
-                  infrastructures, ambiance et services du quotidien.
+                  <span className="font-semibold">Être vu par les bons profils.</span>{" "}
+                  Les étudiants qui vous cherchent vous trouveront.
                 </figcaption>
               </figure>
             </div>
