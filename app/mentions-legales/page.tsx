@@ -182,13 +182,14 @@ export default function MentionsLegalesPage() {
             </h2>
             <div className="space-y-3 text-sm leading-relaxed text-slate-700">
               <p>
-                Le site {LEGAL_SITE_NAME} a pour objet de fournir des informations sur les services bancaires en Algérie, d&apos;agir en tant que comparateur de banques et d&apos;aider les utilisateurs à trouver les solutions adaptées à leur profil.
+                Le site {LEGAL_SITE_NAME} a pour objet de mettre en avant les formations et établissements scolaires en Algérie (publics et privés) et de faciliter la vie des{" "}
+                <strong className="text-slate-800">étudiants, des parents et des établissements eux‑mêmes</strong> en centralisant les informations utiles.
               </p>
               <p>
-                <strong className="text-slate-800">Important :</strong> Ce site agit uniquement en tant que conseiller en marketing et intermédiaire d&apos;information. Il ne dispense pas de conseils financiers ou juridiques. Les décisions financières relèvent de la seule responsabilité de l&apos;utilisateur.
+                Concrètement, kompar - edu agit comme un <strong className="text-slate-800">comparateur et agrégateur d&apos;information</strong> : fiches établissements, critères pédagogiques et pratiques, fourchettes de budget, langues d&apos;enseignement, reconnaissance des diplômes, etc.
               </p>
               <p>
-                Les informations présentées sont collectées auprès des établissements bancaires algériens à titre indicatif et peuvent ne pas refléter les conditions en vigueur au moment de la consultation. Il appartient à l&apos;utilisateur de vérifier les informations directement auprès de sa banque. Ce site est géré à titre privé et n&apos;est affilié à aucun établissement bancaire.
+                <strong className="text-slate-800">Important :</strong> le site ne remplace ni les services officiels du Ministère, ni les services d&apos;orientation classiques. Les informations sont fournies à titre indicatif et doivent toujours être vérifiées directement auprès des établissements concernés.
               </p>
             </div>
           </section>
