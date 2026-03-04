@@ -21,7 +21,7 @@ from pydantic import BaseModel, field_validator
 load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
 load_dotenv()
 
-﻿# --- Config (toutes les clés via os.getenv) ---
+# --- Config (toutes les clés via os.getenv) ---
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL") or os.getenv("SUPABASE_URL")
 # Limite Google Places API (2 appels/établissement : Find + Details). 100 = 200 appels/run. Gratuit : 5000/mois par SKU.
 CRAWLER_PLACES_MAX = int(os.getenv("CRAWLER_PLACES_MAX", "100"))
