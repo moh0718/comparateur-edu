@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Plus_Jakarta_Sans, DM_Serif_Display } from "next/font/google";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_KEYWORDS, getBaseUrl } from "@/lib/seo";
 import "./globals.css";
 import { ConsentModal } from "@/components/ConsentModal";
+import { I18nProvider } from "@/components/i18n/I18nProvider";
+import type { Lang } from "@/lib/i18n";
 
 const baseUrl = getBaseUrl();
 
@@ -79,22 +82,26 @@ const jsonLdWebSite = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = cookies();
+  const langCookie = cookieStore.get("lang")?.value as Lang | undefined;
+  const currentLang: Lang = langCookie === "ar" ? "ar" : "fr";
+  const dir = currentLang === "ar" ? "rtl" : "ltr";
+
   return (
-    <html lang="fr" className={`${fontSans.variable} ${fontDisplay.variable}`}>
+    <html lang={currentLang} dir={dir} className={`${fontSans.variable} ${fontDisplay.variable}`}>
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }} />
       </head>
       <body className="min-h-screen bg-slate-50 font-sans text-slate-900 antialiased">
-        <ConsentModal />
-        {children}
+        <I18nProvider initialLang={currentLang}>
+          <ConsentModal />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );
 }
+
 

@@ -6,8 +6,10 @@ import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 export function Header() {
+  const { lang, setLang, t } = useI18n();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -63,7 +65,7 @@ export function Header() {
               onEtablissements && "font-semibold"
             )}
           >
-            Annuaire établissements
+            {t("nav.etablissements")}
           </Link>
 
           {/* Métiers & Salons — dropdown au survol */}
@@ -83,7 +85,7 @@ export function Header() {
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
             >
-              Métiers & Salons
+              {t("nav.metiersSalons")}
             </span>
             <div
               className={cn(
@@ -138,15 +140,43 @@ export function Header() {
           </Link>
         </nav>
 
-        {/* CTA Lead Gen — doit "sauter aux yeux" */}
-        <div className="ml-auto shrink-0">
+        {/* Sélecteur langue + CTA Lead Gen */}
+        <div className="ml-auto flex shrink-0 items-center gap-3">
+          <div className="hidden items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-1.5 py-0.5 text-[11px] font-medium text-slate-600 sm:flex">
+            <button
+              type="button"
+              onClick={() => {
+                setLang("fr");
+                if (typeof window !== "undefined") window.location.reload();
+              }}
+              className={cn(
+                "rounded-full px-2 py-0.5",
+                lang === "fr" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500"
+              )}
+            >
+              FR
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setLang("ar");
+                if (typeof window !== "undefined") window.location.reload();
+              }}
+              className={cn(
+                "rounded-full px-2 py-0.5",
+                lang === "ar" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500"
+              )}
+            >
+              AR
+            </button>
+          </div>
           <Button
             asChild
             variant="primary"
             size="sm"
             className="whitespace-nowrap text-sm font-semibold shadow-md md:text-base"
           >
-            <Link href={LEAD_FORM_HREF}>Trouver mon École</Link>
+            <Link href={LEAD_FORM_HREF}>{t("nav.cta")}</Link>
           </Button>
         </div>
       </div>
