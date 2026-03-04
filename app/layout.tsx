@@ -82,8 +82,8 @@ const jsonLdWebSite = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = cookies();
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
   const langCookie = cookieStore.get("lang")?.value as Lang | undefined;
   const currentLang: Lang = langCookie === "ar" ? "ar" : "fr";
   const dir = currentLang === "ar" ? "rtl" : "ltr";

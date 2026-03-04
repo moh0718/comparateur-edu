@@ -31,8 +31,8 @@ const CATEGORIES = [
   { id: "Prescolaire", label: "Préscolaire", icon: "👶", href: "/etablissements?categorie=Prescolaire" },
 ];
 
-export default function HomePage() {
-  const cookieStore = cookies();
+export default async function HomePage() {
+  const cookieStore = await cookies();
   const langCookie = cookieStore.get("lang")?.value as Lang | undefined;
   const lang: Lang = langCookie === "ar" ? "ar" : "fr";
 
