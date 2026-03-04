@@ -21,10 +21,13 @@ from pydantic import BaseModel, field_validator
 load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
 load_dotenv()
 
-# --- Config (toutes les clés via os.getenv) ---
+﻿# --- Config (toutes les clés via os.getenv) ---
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL") or os.getenv("SUPABASE_URL")
 # Limite Google Places API (2 appels/établissement : Find + Details). 100 = 200 appels/run. Gratuit : 5000/mois par SKU.
 CRAWLER_PLACES_MAX = int(os.getenv("CRAWLER_PLACES_MAX", "100"))
+CRAWLER_MAX_INSTITUTIONS = int(os.getenv("CRAWLER_MAX_INSTITUTIONS", "40"))
+CRAWLER_SLEEP_MIN = int(os.getenv("CRAWLER_SLEEP_MIN", "5"))
+CRAWLER_SLEEP_MAX = int(os.getenv("CRAWLER_SLEEP_MAX", "10"))
 SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY")
 GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY")
@@ -42,6 +45,40 @@ INSTITUTIONS_FALLBACK = [
 ]
 
 ALLOWED_LANGUAGES = {"FR", "EN", "AR", "Bilingue"}
+
+
+def _normalize_name(name: str) -> str:
+    """Normalisation simple pour matcher les noms d'établissements."""
+    s = name.lower()
+    s = re.sub(r"\(.*?\)", "", s)  # enlever le contenu entre parenthèses
+    s = re.sub(r"[^a-z0-9]+", " ", s)
+    return s.strip()
+
+
+# Petites surcharges manuelles pour certains établissements clés
+MANUAL_WEBSITES = {
+    # Supérieur / management / commerce
+    "ifag": "https://ifag.edu.dz",
+    "insim": "https://insim.dz",
+    "esg educaform": "https://esgalgerie.com",
+    "em alger": "https://insag.edu.dz",
+    "insag": "https://insag.edu.dz",
+    "esst": "https://esst-sup.com",
+    "eftg sup": "https://eftg-sup.com",
+    "ncuk algeria": "https://ncukalgeria.com",
+    "cesi algerie": "https://cesi-algerie.com",
+    "caci formation": "https://formations.caci.dz",
+    "isg": "https://isg.dz",
+    "esaa": "https://esaa.dz",
+}
+
+
+def get_manual_website(name: str) -> Optional[str]:
+    norm = _normalize_name(name)
+    for key, url in MANUAL_WEBSITES.items():
+        if key in norm:
+            return url
+    return None
 
 
 # --- Schéma InstitutionData (adapté éducation) ---
@@ -645,9 +682,17 @@ def main() -> None:
         send_resend_alert("[Crawler Edu] Aucune institution", "Supabase et fallback vides.")
         return
 
-    for i, inst in enumerate(institutions):
+    # On borne le nombre d'établissements traités par run pour garder un temps raisonnable.
+    total = min(len(institutions), max(CRAWLER_MAX_INSTITUTIONS, 1))
+
+    for i, inst in enumerate(institutions[:total]):
         name = inst.get("name") or "Inconnu"
         try:
+            # Injection éventuelle d'un site officiel connu manuellement
+            manual_site = get_manual_website(name)
+            if manual_site and not inst.get("website_url"):
+                inst["website_url"] = manual_site
+
             combined, sources_used, enriched_fields = collect_sources(inst, places_rank=i)
             base_data = InstitutionData(name=name, **enriched_fields)
 
@@ -680,8 +725,12 @@ def main() -> None:
             supabase_upsert_institution_and_log(inst, InstitutionData(name=name), [], "ERREUR", msg)
             send_resend_alert(f"[Crawler Edu] Échec — {name}", msg)
 
-        if i < len(institutions) - 1:
-            time.sleep(random.randint(10, 20))
+        # Pause entre chaque établissement pour respecter les limites d'API,
+        # mais avec une plage plus courte pour accélérer le run global.
+        if i < total - 1:
+            lo = max(CRAWLER_SLEEP_MIN, 1)
+            hi = max(CRAWLER_SLEEP_MAX, lo)
+            time.sleep(random.randint(lo, hi))
 
     trigger_revalidate()
     print("Crawler terminé.")
