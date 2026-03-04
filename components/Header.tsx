@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
@@ -9,6 +10,7 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -22,6 +24,12 @@ export function Header() {
 
   const navLinkClass = "hover:text-slate-900";
   const navLinkBrandClass = "text-brand hover:text-brand-dark";
+
+  const onEtablissements = pathname.startsWith(ROUTES.etablissements);
+  const onFichesMetiers = pathname.startsWith(ROUTES.fichesMetiers);
+  const onSalons = pathname.startsWith(ROUTES.salonsEtudiants);
+  const onBlog = pathname.startsWith(ROUTES.blog);
+  const onContact = pathname.startsWith(ROUTES.contact);
 
   return (
     <header className="border-b border-slate-100 bg-white shadow-[0_1px_0_0_rgba(0,0,0,0.05)]">
@@ -42,8 +50,18 @@ export function Header() {
         </Link>
 
         {/* Navigation desktop */}
-        <nav aria-label="Navigation principale" className="hidden flex-1 items-center justify-center gap-1 text-sm font-medium text-slate-700 md:flex">
-          <Link href={ROUTES.etablissements} className={cn("rounded-lg px-3 py-2", navLinkBrandClass)}>
+        <nav
+          aria-label="Navigation principale"
+          className="hidden flex-1 items-center justify-center gap-1 text-sm font-medium text-slate-700 md:flex"
+        >
+          <Link
+            href={ROUTES.etablissements}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              navLinkBrandClass,
+              onEtablissements && "font-semibold"
+            )}
+          >
             Annuaire établissements
           </Link>
 
@@ -57,7 +75,9 @@ export function Header() {
             <span
               className={cn(
                 "inline-flex cursor-default rounded-lg px-3 py-2",
-                dropdownOpen ? "text-brand" : navLinkBrandClass
+                dropdownOpen || onFichesMetiers || onSalons
+                  ? "text-brand font-semibold"
+                  : navLinkBrandClass
               )}
               aria-haspopup="true"
               aria-expanded={dropdownOpen}
@@ -85,10 +105,24 @@ export function Header() {
             </div>
           </div>
 
-          <Link href={ROUTES.blog} className={cn("rounded-lg px-3 py-2", navLinkClass)}>
+          <Link
+            href={ROUTES.blog}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              navLinkClass,
+              onBlog && "font-semibold text-slate-900"
+            )}
+          >
             Le Mag&apos;
           </Link>
-          <Link href={ROUTES.contact} className={cn("rounded-lg px-3 py-2", navLinkClass)}>
+          <Link
+            href={ROUTES.contact}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              navLinkClass,
+              onContact && "font-semibold text-slate-900"
+            )}
+          >
             Contact
           </Link>
         </nav>
@@ -118,13 +152,61 @@ export function Header() {
       {/* Navigation mobile */}
       <nav aria-label="Navigation mobile" className="border-t border-slate-100 py-2 text-xs font-medium text-slate-700 md:hidden">
         <div className="mx-auto flex max-w-7xl flex-wrap gap-2 px-5 pb-1 pt-1 sm:px-6 md:px-8">
-          <Link href={ROUTES.etablissements} className="rounded-lg bg-slate-100 px-3 py-2 text-brand">
+          <Link
+            href={ROUTES.etablissements}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              onEtablissements
+                ? "bg-emerald-100 text-emerald-900 font-semibold"
+                : "bg-slate-100 text-slate-700"
+            )}
+          >
             Annuaire établissements
           </Link>
-          <Link href={ROUTES.fichesMetiers} className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700">Fiches métiers</Link>
-          <Link href={ROUTES.salonsEtudiants} className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700">Salons étudiants</Link>
-          <Link href={ROUTES.blog} className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700">Le Mag&apos;</Link>
-          <Link href={ROUTES.contact} className="rounded-lg bg-slate-100 px-3 py-2 text-slate-700">Contact</Link>
+          <Link
+            href={ROUTES.fichesMetiers}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              onFichesMetiers
+                ? "bg-emerald-100 text-emerald-900 font-semibold"
+                : "bg-slate-100 text-slate-700"
+            )}
+          >
+            Fiches métiers
+          </Link>
+          <Link
+            href={ROUTES.salonsEtudiants}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              onSalons
+                ? "bg-emerald-100 text-emerald-900 font-semibold"
+                : "bg-slate-100 text-slate-700"
+            )}
+          >
+            Salons étudiants
+          </Link>
+          <Link
+            href={ROUTES.blog}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              onBlog
+                ? "bg-emerald-100 text-emerald-900 font-semibold"
+                : "bg-slate-100 text-slate-700"
+            )}
+          >
+            Le Mag&apos;
+          </Link>
+          <Link
+            href={ROUTES.contact}
+            className={cn(
+              "rounded-lg px-3 py-2",
+              onContact
+                ? "bg-emerald-100 text-emerald-900 font-semibold"
+                : "bg-slate-100 text-slate-700"
+            )}
+          >
+            Contact
+          </Link>
         </div>
       </nav>
     </header>

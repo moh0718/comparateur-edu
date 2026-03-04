@@ -54,22 +54,22 @@ export default function FichesMetiersPage() {
           </div>
         </section>
 
-        {/* Objectif de la section */}
-        <section className="border-t border-slate-200/80 bg-white px-5 py-10 sm:px-6 md:px-8 md:py-14">
+        {/* Objectif de la section — bloc plus compact pour laisser voir la liste */}
+        <section className="border-t border-slate-200/80 bg-white px-5 py-7 sm:px-6 md:px-8 md:py-9">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl">
+            <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
               Pourquoi cette section ?
             </h2>
-            <p className="mt-4 text-slate-600 leading-relaxed">
+            <p className="mt-3 text-sm text-slate-600 leading-relaxed sm:text-base">
               Chaque fiche décrit ce que fait le professionnel au quotidien, la formation idéale (avec les établissements algériens quand c&apos;est possible),
               les salaires indicatifs du marché, le potentiel freelance et les perspectives d&apos;avenir. Les montants indiqués sont des estimations
               et varient selon la wilaya, l&apos;employeur, l&apos;expérience et le statut (salarié ou indépendant).
             </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <Button asChild variant="primary" size="lg" className="rounded-full px-8">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+              <Button asChild variant="primary" size="md" className="rounded-full px-6">
                 <Link href={LEAD_FORM_HREF}>Trouver mon École</Link>
               </Button>
-              <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+              <Button asChild variant="secondary" size="md" className="rounded-full px-6">
                 <Link href={ROUTES.etablissements}>Voir l&apos;annuaire des établissements</Link>
               </Button>
             </div>

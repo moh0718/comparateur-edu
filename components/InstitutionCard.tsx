@@ -66,10 +66,8 @@ export function InstitutionCard({ institution, className }: InstitutionCardProps
       )}
 
       <div className="mt-3 flex items-center justify-between gap-2 border-t border-slate-100 pt-3">
-        {institution.annual_cost_range ? (
+        {institution.annual_cost_range && (
           <span className="text-sm font-medium text-slate-800">{institution.annual_cost_range}</span>
-        ) : (
-          <span className="text-xs text-slate-500">Demander le tarif</span>
         )}
         <Link
           href={`/etablissements/${institution.slug}`}

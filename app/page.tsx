@@ -46,7 +46,7 @@ export default function HomePage() {
                   id="hero-title"
                   className="mx-auto max-w-3xl text-balance font-display text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl md:mx-0"
                 >
-                  Une décision simplifiée pour votre orientation en Algérie
+                  Une décision simplifiée pour vos études en Algérie
                 </h1>
                 <p className="mx-auto mt-4 max-w-2xl text-base text-slate-700 sm:text-lg md:mx-0">
                   Agrégateur d&apos;informations vérifiées : tableaux comparatifs, filtres dynamiques. Alger, Blida, Tipaza, Boumerdès.
