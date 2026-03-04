@@ -783,10 +783,6 @@ export function RankingsClient() {
             <p className="mt-1 text-sm text-emerald-100">
               1<sup>er</sup> pays du monde arabe en nombre d&apos;établissements représentés.
             </p>
-            <p className="mt-3 text-[11px] text-emerald-200">
-              En parallèle, l&apos;Université Badji Mokhtar (Annaba) devient n°1 nationale dans QS Arab, tandis que
-              Djillali Liabès (Sidi Bel Abbès) et El Oued se partagent la tête dans les classements THE.
-            </p>
           </div>
         </div>
       </section>
