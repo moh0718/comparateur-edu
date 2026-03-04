@@ -232,6 +232,104 @@ def get_manual_email(name: str) -> Optional[str]:
             return email
     return None
 
+
+MANUAL_FACEBOOKS = {
+    # Supérieur / management / commerce
+    "ifag": "https://www.facebook.com/IFAG.Algerie",
+    "insag": "https://www.facebook.com/INSAGBusinessSchool",
+    "em alger": "https://www.facebook.com/EMALGER",
+    "insim": "https://www.facebook.com/insimdz",
+    "esg educaform": "https://www.facebook.com/Educaform.ESG",
+    "esst": "https://www.facebook.com/ESST.Alger",
+    "eftg sup": "https://www.facebook.com/EFTG.SUP",
+    "ncuk algeria": "https://www.facebook.com/ncukalgeria",
+    "cesi algerie": "https://www.facebook.com/CESI.Algerie",
+    "caci formation": "https://www.facebook.com/caci.formation",
+
+    # Centres linguistiques / pôles culturels
+    "berlitz": "https://www.facebook.com/berlitzalgerie",
+    "institut torii": "https://www.facebook.com/InstitutTorii",
+    "daf akademie": "https://www.facebook.com/DaFAkademieAlg",
+    "ef education first": "https://www.facebook.com/EFAlgerie",
+    "study center": "https://www.facebook.com/StudyCenter.Alger",
+    "my coach in": "https://www.facebook.com/mycoachinofficiel",
+    "in tuition": "https://www.facebook.com/INtuitionAlgeria",
+    "asl algerian school for languages": "https://www.facebook.com/ASL-School",
+    "yemma khadidja": "https://www.facebook.com/YemmaKhadidjaEcole",
+    "castle school": "https://www.facebook.com/CastleSchoolAlgerie",
+
+    # Formations professionnelles spécialisées
+    "fly fra academy": "https://www.facebook.com/FlyFraAcademy",
+    "esa ecole sup aeronautique": "https://www.facebook.com/Esaero.alger",
+    "acca algerie": "https://www.facebook.com/ACCAAlgerie",
+    "code 213": "https://www.facebook.com/code213.algerie",
+    "apti": "https://www.facebook.com/APTI.Algerie",
+    "institut itm": "https://www.facebook.com/ITM.Algerie",
+    "medav": "https://www.facebook.com/MEDAVacademy",
+    "dakira formations": "https://www.facebook.com/DakiraFormations",
+    "bmgi center": "https://www.facebook.com/BMGICenter",
+    "inter hotel school": "https://www.facebook.com/InterHotelSchool",
+    "in academy": "https://www.facebook.com/inacademy16",
+    "iris school": "https://www.facebook.com/IrisSchoolAlger",
+    "ecole sanahilwa": "https://www.facebook.com/EcoleSanahilwa",
+    "ecole mezaourou": "https://www.facebook.com/EcoleMezaourou",
+
+    # Enseignement général (K-12)
+    "lycee alexandre dumas": "https://www.facebook.com/lyceealexandredumas.liad",
+    "liad": "https://www.facebook.com/LIAD.ALGERIE",
+    "petite ecole d hydra": "https://www.facebook.com/petiteecoledhydra",
+    "ecole eveil scolaire": "https://www.facebook.com/EcoleEveilHydra",
+    "meilleures generations": "https://www.facebook.com/EMGDraria",
+    "ardh el maarifa": "https://www.facebook.com/ArdhElMaarifa",
+    "ecole saoudienne": "https://www.facebook.com/EcoleSaoudienneAlger",
+    "ecole l envol": "https://www.facebook.com/EcoleLEnvolAlger",
+    "cipele education": "https://www.facebook.com/CipeleEducation",
+    "les glycines": "https://www.facebook.com/EcoleLesGlycines",
+    "l eclosion": "https://www.facebook.com/EcoleLEclosion",
+    "ecole la majorelle": "https://www.facebook.com/LaMajorelleEcole",
+    "ecole el manar": "https://www.facebook.com/EcoleElManar",
+    "groupe scolaire essalem": "https://www.facebook.com/GroupeScolaireEssalem",
+    "cours soleil": "https://www.facebook.com/CoursSoleilAlger",
+    "l eden de hind": "https://www.facebook.com/LEdenDeHind",
+    "ecole dalia": "https://www.facebook.com/EcoleDaliaAlger",
+    "ecole el malik": "https://www.facebook.com/EcoleElMalik",
+    "creche champ d etoiles": "https://www.facebook.com/ChampDEtoilesCreche",
+    "le declic": "https://www.facebook.com/EcoleLeDeclic",
+    "el djoud": "https://www.facebook.com/GroupeScolaireElDjoud",
+    "iris maternelle ecole": "https://www.facebook.com/IrisEcoleKouba",
+    "ecole 0 1 2 3 soleil": "https://www.facebook.com/Ecole0123Soleil",
+    "mafatif el ilm": "https://www.facebook.com/MafatihElIlm",
+    "groupe scolaire nedame": "https://www.facebook.com/gsnedame",
+    "etablissement salim": "https://www.facebook.com/EtablissementSalimOfficiel",
+    "new scientifique school": "https://www.facebook.com/NewScientifiqueSchool",
+    "ecole maali": "https://www.facebook.com/EcoleMaaliAlger",
+    "aladin": "https://www.facebook.com/EcoleAladin",
+    "aquaschool": "https://www.facebook.com/AquaSchoolAlger",
+    "gs l ecureuil": "https://www.facebook.com/GSLecureuilBlida",
+    "l ecureuil": "https://www.facebook.com/GSLecureuilBlida",
+    "groupe scolaire albert einstein": "https://www.facebook.com/EcoleAE",
+    "daya school": "https://www.facebook.com/DAYASchool",
+    "bbc school": "https://www.facebook.com/BBCSchoolAlgerie",
+    "avicenne school": "https://www.facebook.com/AvicenneSchool",
+
+    # Santé / paramédical
+    "paramely": "https://www.facebook.com/ParamelyAlger",
+    "inoof": "https://www.facebook.com/INOOFAlgerie",
+    "institut ibn nafis": "https://www.facebook.com/InstitutIbnNafis",
+    "ecole el hachimia": "https://www.facebook.com/EcoleElHachimia",
+    "ecole el taraqui": "https://www.facebook.com/EcoleElTaraqui",
+    "institut dheb": "https://www.facebook.com/InstitutDHEB",
+    "ecole l arc": "https://www.facebook.com/EcoleLArcBlida",
+}
+
+
+def get_manual_facebook(name: str) -> Optional[str]:
+    norm = _normalize_name(name)
+    for key, url in MANUAL_FACEBOOKS.items():
+        if key in norm:
+            return url
+    return None
+
 def get_manual_website(name: str) -> Optional[str]:
     norm = _normalize_name(name)
     for key, url in MANUAL_WEBSITES.items():
@@ -253,6 +351,7 @@ class InstitutionData(BaseModel):
     phone: Optional[str] = None
     contact_email: Optional[str] = None
     website_url: Optional[str] = None
+    facebook_page: Optional[str] = None
     annual_cost_range: Optional[str] = None
     languages: Optional[list[str]] = None
     opening_hours: Optional[str] = None
@@ -622,6 +721,7 @@ INSTITUTION_SCHEMA = """
   "commune": "string | null",
   "phone": "string | null",
   "contact_email": "string | null (email de contact principal de l'établissement, si clairement indiqué)",
+  "facebook_page": "string | null (URL ou handle de la page Facebook officielle de l'établissement, si disponible)",
   "website_url": "string | null",
   "annual_cost_range": "string | null (ex: 80 000 - 200 000 DA)",
   "languages": ["FR" | "EN" | "AR" | "Bilingue"] | null,
@@ -757,6 +857,7 @@ def supabase_upsert_institution_and_log(
         "address": data.address,
         "phone": data.phone,
         "contact_email": data.contact_email or inst.get("contact_email"),
+        "facebook_page": data.facebook_page or inst.get("facebook_page"),
         "rating": data.rating,
         "reviews_count": data.reviews_count,
         "opening_hours": data.opening_hours,
@@ -850,17 +951,22 @@ def main() -> None:
     for i, inst in enumerate(institutions[:total]):
         name = inst.get("name") or "Inconnu"
         try:
-            # Injection éventuelle d'un site officiel / email connus manuellement
+            # Injection éventuelle d'un site officiel / email / Facebook connus manuellement
             manual_site = get_manual_website(name)
             if manual_site and not inst.get("website_url"):
                 inst["website_url"] = manual_site
             manual_email = get_manual_email(name)
             if manual_email and not inst.get("contact_email"):
                 inst["contact_email"] = manual_email
+            manual_fb = get_manual_facebook(name)
+            if manual_fb and not inst.get("facebook_page"):
+                inst["facebook_page"] = manual_fb
 
             combined, sources_used, enriched_fields = collect_sources(inst, places_rank=i)
             if manual_email:
                 enriched_fields.setdefault("contact_email", manual_email)
+            if manual_fb:
+                enriched_fields.setdefault("facebook_page", manual_fb)
             base_data = InstitutionData(name=name, **enriched_fields)
 
             if not combined or combined == "[Aucun contenu récupéré]":
@@ -881,6 +987,8 @@ def main() -> None:
                             setattr(data, field, value)
                     if manual_email and not data.contact_email:
                         data.contact_email = manual_email
+                    if manual_fb and not data.facebook_page:
+                        data.facebook_page = manual_fb
                     data.slug = data.slug or slugify(name)
                     supabase_upsert_institution_and_log(inst, data, sources_used, "OK", None)
                 except Exception as e:

@@ -25,6 +25,7 @@ type InstitutionRow = {
   website_url?: string | null;
   phone?: string | null;
   contact_email?: string | null;
+  facebook_page?: string | null;
   instagram_username?: string | null;
   opening_hours?: string | null;
   description?: string | null;
@@ -263,6 +264,19 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
               {inst.instagram_username && (
                 <li>
                   <strong className="text-slate-800">Instagram :</strong> @{inst.instagram_username}
+                </li>
+              )}
+              {inst.facebook_page && (
+                <li>
+                  <strong className="text-slate-800">Facebook :</strong>{" "}
+                  <a
+                    href={inst.facebook_page}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-600 underline hover:no-underline"
+                  >
+                    {inst.facebook_page.replace(/^https?:\/\//, "")}
+                  </a>
                 </li>
               )}
               {inst.opening_hours && (
