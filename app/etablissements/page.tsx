@@ -6,6 +6,9 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { createClient } from "@/lib/supabase/server";
 import { institutionsMock, type Institution } from "@/data/institutions-mock";
 
+// Utilisation de Supabase (cookies) → route rendue dynamiquement
+export const dynamic = "force-dynamic";
+
 async function loadInstitutions(): Promise<Institution[]> {
   try {
     const supabase = await createClient();
