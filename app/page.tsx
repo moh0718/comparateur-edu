@@ -220,7 +220,7 @@ export default function HomePage() {
               asChild
               variant="secondary"
               size="lg"
-              className="mt-6 rounded-full border-2 border-white bg-white/5 px-8 text-emerald-50 hover:bg-white/15 hover:text-emerald-50"
+              className="mt-6 rounded-full border-2 border-white bg-white/5 px-8 text-white hover:bg-white/15 hover:text-white"
             >
               <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
             </Button>
