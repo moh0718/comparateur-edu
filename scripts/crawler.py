@@ -129,6 +129,109 @@ MANUAL_WEBSITES = {
 }
 
 
+MANUAL_EMAILS = {
+    # Supérieur / management / commerce
+    "insag": "contact@insag.edu.dz",
+    "ifag": "contact@insag.edu.dz",
+    "em alger": "contact@em-alger.com",
+    "insim": "info@insim-dz.com",
+    "esg educaform": "contact@esg-algerie.com",
+    "esst": "contact@esst-dz.com",
+    "eftg sup": "contact@eftg-sup.com",
+    "ncuk algeria": "info@ncuk.ac.uk",
+    "mgp": "contact@mgp-algerie.com",
+    "cesi algerie": "contact@cesi-algerie.dz",
+    "caci formation": "formation@caci.dz",
+
+    # Centres linguistiques / pôles culturels
+    "berlitz": "info@berlitz.dz",
+    "institut torii": "contact@institut-torii.com",
+    "daf akademie": "info@daf-akademie.dz",
+    "dsia": "info@daf-akademie.dz",
+    "ef education first": "info@ef.com",
+    "study center": "contact@studycenter-dz.com",
+    "my coach in": "contact@mycoach-in.com",
+    "in tuition": "info@intuition-dz.com",
+    "asl algerian school for languages": "contact@asl-dz.com",
+    "yemma khadidja": "contact@yemma-khadidja.dz",
+    "castle school": "info@castleschool-dz.com",
+
+    # Formations professionnelles spécialisées
+    "fly fra academy": "contact@flyfra.com",
+    "fly fra": "contact@flyfra.com",
+    "esa ecole sup aeronautique": "info@esa-algerie.com",
+    "esaero": "info@esa-algerie.com",
+    "acca algerie": "contact@acca-algerie.dz",
+    "code 213": "contact@code213.dz",
+    "apti": "contact@apti-dz.com",
+    "institut itm": "contact@itm-algerie.com",
+    "masterful institute": "info@masterful-dz.com",
+    "medav": "contact@ecolemedav.com",
+    "dakira formations": "contact@dakira-dz.com",
+    "bmgi center": "contact@bmgi-dz.com",
+    "inter hotel school": "contact@ihs-dz.com",
+    "in academy": "contact@in-academy.dz",
+    "iris school": "info@iris-school.dz",
+    "ecole sanahilwa": "contact@sanahilwa.dz",
+    "ecole mezaourou": "contact@mezaourou-dz.com",
+
+    # Enseignement général (K-12)
+    "lycee alexandre dumas": "secretariat.proviseur@liad-alger.fr",
+    "liad": "secretariat.proviseur@liad-alger.fr",
+    "petite ecole d hydra": "direction@peh-alger.org",
+    "ecole eveil scolaire": "contact@eveil-scolaire.dz",
+    "meilleures generations": "contact@emg-algerie.com",
+    "ardh el maarifa": "contact@ardhelmaarifa.dz",
+    "ecole saoudienne": "hsnm.mansour@gmail.com",
+    "ecole l envol": "contact@lenvol-alger.dz",
+    "cipele education": "contact@cipele-alger.dz",
+    "les glycines": "ecolelesglycines@gmail.com",
+    "l eclosion": "contact@leclosion-dz.com",
+    "ecole la majorelle": "contact@lamajorelle.dz",
+    "ecole el manar": "info@elmanar-dz.com",
+    "groupe scolaire essalem": "contact@gs-essalem.dz",
+    "cours soleil": "contact@courssoleil.com",
+    "l eden de hind": "contact@ledendehind.dz",
+    "ecole dalia": "contact@ecole-elmalik.dz",
+    "ecole el malik": "contact@ecole-elmalik.dz",
+    "creche champ d etoiles": "contact@champdetoiles.dz",
+    "le declic": "contact@ledeclic-dz.com",
+    "el djoud": "contact@ecole-eldjoud.dz",
+    "iris maternelle ecole": "info@iris-ecole.dz",
+    "ecole 0 1 2 3 soleil": "contact@123soleil-dz.com",
+    "mafatif el ilm": "contact@mafatihelilm.dz",
+    "groupe scolaire nedame": "contact@gs-nedame.dz",
+    "etablissement salim": "contact@ets-salim.com",
+    "new scientifique school": "contact@nss-dz.com",
+    "ecole maali": "contact@ecolemaali.dz",
+    "aladin": "contact@ecole-aladin.dz",
+    "aquaschool": "contact@aquaschool-dz.com",
+    "l ecureuil": "contact@ecole-lecureuil.dz",
+    "gs l ecureuil": "contact@ecole-lecureuil.dz",
+    "albert einstein": "contact@gae-dz.com",
+    "daya school": "contact@dayaschool.dz",
+    "bbc school": "contact@bbcschool-dz.com",
+    "avicenne school": "contact@avicenne-dz.com",
+
+    # Santé / paramédical
+    "paramely": "contact@paramely-dz.com",
+    "inoof": "contact@inoof.dz",
+    "institut ibn nafis": "contact@ibnnafis-dz.com",
+    "ecole el hachimia": "contact@elhachimia-dz.com",
+    "ecole el taraqui": "contact@eltaraqui.dz",
+    "institut dheb": "contact@institut-dheb.com",
+    "el manar paramedical": "info@elmanar-sante.dz",
+    "ecole l arc": "contact@ecole-larc.dz",
+}
+
+
+def get_manual_email(name: str) -> Optional[str]:
+    norm = _normalize_name(name)
+    for key, email in MANUAL_EMAILS.items():
+        if key in norm:
+            return email
+    return None
+
 def get_manual_website(name: str) -> Optional[str]:
     norm = _normalize_name(name)
     for key, url in MANUAL_WEBSITES.items():
@@ -148,6 +251,7 @@ class InstitutionData(BaseModel):
     address: Optional[str] = None
     commune: Optional[str] = None
     phone: Optional[str] = None
+    contact_email: Optional[str] = None
     website_url: Optional[str] = None
     annual_cost_range: Optional[str] = None
     languages: Optional[list[str]] = None
@@ -517,6 +621,7 @@ INSTITUTION_SCHEMA = """
   "address": "string | null",
   "commune": "string | null",
   "phone": "string | null",
+  "contact_email": "string | null (email de contact principal de l'établissement, si clairement indiqué)",
   "website_url": "string | null",
   "annual_cost_range": "string | null (ex: 80 000 - 200 000 DA)",
   "languages": ["FR" | "EN" | "AR" | "Bilingue"] | null,
@@ -651,6 +756,7 @@ def supabase_upsert_institution_and_log(
         "commune": data.commune or inst.get("commune"),
         "address": data.address,
         "phone": data.phone,
+        "contact_email": data.contact_email or inst.get("contact_email"),
         "rating": data.rating,
         "reviews_count": data.reviews_count,
         "opening_hours": data.opening_hours,
@@ -744,12 +850,17 @@ def main() -> None:
     for i, inst in enumerate(institutions[:total]):
         name = inst.get("name") or "Inconnu"
         try:
-            # Injection éventuelle d'un site officiel connu manuellement
+            # Injection éventuelle d'un site officiel / email connus manuellement
             manual_site = get_manual_website(name)
             if manual_site and not inst.get("website_url"):
                 inst["website_url"] = manual_site
+            manual_email = get_manual_email(name)
+            if manual_email and not inst.get("contact_email"):
+                inst["contact_email"] = manual_email
 
             combined, sources_used, enriched_fields = collect_sources(inst, places_rank=i)
+            if manual_email:
+                enriched_fields.setdefault("contact_email", manual_email)
             base_data = InstitutionData(name=name, **enriched_fields)
 
             if not combined or combined == "[Aucun contenu récupéré]":
@@ -768,6 +879,8 @@ def main() -> None:
                     for field, value in enriched_fields.items():
                         if getattr(data, field, None) in (None, "", []):
                             setattr(data, field, value)
+                    if manual_email and not data.contact_email:
+                        data.contact_email = manual_email
                     data.slug = data.slug or slugify(name)
                     supabase_upsert_institution_and_log(inst, data, sources_used, "OK", None)
                 except Exception as e:

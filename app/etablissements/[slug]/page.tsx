@@ -24,6 +24,7 @@ type InstitutionRow = {
   address?: string | null;
   website_url?: string | null;
   phone?: string | null;
+  contact_email?: string | null;
   instagram_username?: string | null;
   opening_hours?: string | null;
   description?: string | null;
@@ -243,6 +244,14 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
                   <strong className="text-slate-800">Site web :</strong>{" "}
                   <a href={inst.website_url} target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:no-underline">
                     {inst.website_url.replace(/^https?:\/\//, "")}
+                  </a>
+                </li>
+              )}
+              {inst.contact_email && (
+                <li>
+                  <strong className="text-slate-800">Email :</strong>{" "}
+                  <a href={`mailto:${inst.contact_email}`} className="text-green-600 underline hover:no-underline">
+                    {inst.contact_email}
                   </a>
                 </li>
               )}
