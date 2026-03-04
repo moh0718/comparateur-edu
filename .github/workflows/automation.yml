@@ -26,7 +26,6 @@ jobs:
   crawl-etablissements:
     name: Crawl établissements
     runs-on: ubuntu-latest
-    if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,7 +61,6 @@ jobs:
   generation-blog:
     name: Génération blog
     runs-on: ubuntu-latest
-    if: github.event.schedule == '0 8 * * 3' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
