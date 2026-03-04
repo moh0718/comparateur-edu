@@ -1098,11 +1098,11 @@ function RankingBlock({ ranking }: RankingBlockProps) {
         <table className="min-w-[760px] text-left text-xs text-slate-700">
           <thead className="border-b border-slate-200 bg-slate-50 text-[11px] uppercase tracking-wide text-slate-500">
             <tr>
-              <th className="px-3 py-2">Établissement</th>
-              <th className="px-3 py-2">Rang national</th>
-              <th className="px-3 py-2">Rang régional / mondial</th>
-              <th className="px-3 py-2">Disciplines fortes</th>
-              <th className="px-3 py-2">Pourquoi classé ici</th>
+              <th className="px-3 py-2 text-left">Établissement</th>
+              <th className="px-3 py-2 text-center">Rang national</th>
+              <th className="px-3 py-2 text-center">Rang régional / mondial</th>
+              <th className="px-3 py-2 text-left">Disciplines fortes</th>
+              <th className="px-3 py-2 text-left">Pourquoi classé ici</th>
             </tr>
           </thead>
           <tbody>
@@ -1111,7 +1111,7 @@ function RankingBlock({ ranking }: RankingBlockProps) {
               const isMilitary = row.name.includes("École Militaire Polytechnique");
               return (
                 <tr key={row.name} className="border-b border-slate-100 last:border-0">
-                  <td className="px-3 py-2 align-top">
+                  <td className="px-3 py-2 align-middle">
                     {profile ? (
                       <Link
                         href={profile}
@@ -1133,14 +1133,14 @@ function RankingBlock({ ranking }: RankingBlockProps) {
                       <p className="mt-0.5 text-[10px] text-slate-500">{row.note}</p>
                     )}
                   </td>
-                  <td className="px-3 py-2 align-top text-xs">
+                  <td className="px-3 py-2 align-middle text-center text-xs">
                     {row.nationalRank !== null ? `#${row.nationalRank}` : "Classée"}
                   </td>
-                  <td className="px-3 py-2 align-top text-xs">{renderRankCell(row)}</td>
-                  <td className="px-3 py-2 align-top text-xs">
+                  <td className="px-3 py-2 align-middle text-center text-xs">{renderRankCell(row)}</td>
+                  <td className="px-3 py-2 align-middle text-xs">
                     {row.disciplines.length ? row.disciplines.join(" · ") : "N/C"}
                   </td>
-                  <td className="px-3 py-2 align-top text-xs">{row.why || "N/C"}</td>
+                  <td className="px-3 py-2 align-middle text-xs">{row.why || "N/C"}</td>
                 </tr>
               );
             })}
