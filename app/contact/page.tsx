@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import type { Lang } from "@/lib/i18n";
+import { t } from "@/lib/i18n";
 import { SITE_NAME, getBaseUrl } from "@/lib/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -16,7 +19,11 @@ export const metadata: Metadata = {
   alternates: { canonical: `${getBaseUrl()}/contact` },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const cookieStore = await cookies();
+  const langCookie = cookieStore.get("lang")?.value as Lang | undefined;
+  const lang: Lang = langCookie === "ar" ? "ar" : "fr";
+
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
@@ -25,7 +32,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-lg rounded-2xl bg-white p-5 shadow-sm sm:p-6 md:p-8">
             <h1 className="text-center text-lg font-bold text-slate-900 sm:text-xl">
-              Contactez-nous
+              {t(lang, "contact.title")}
             </h1>
 
             <ContactForm />

@@ -97,13 +97,13 @@ export function Header() {
                 href={ROUTES.fichesMetiers}
                 className="block px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900"
               >
-                Fiches métiers
+                {t("nav.fichesMetiers")}
               </Link>
               <Link
                 href={ROUTES.salonsEtudiants}
                 className="block px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900"
               >
-                Salons étudiants en Algérie
+                {t("nav.salons")}
               </Link>
             </div>
           </div>
@@ -185,7 +185,7 @@ export function Header() {
       <div className="border-t border-slate-100 bg-emerald-50/80">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-5 py-1.5 text-center sm:px-6 md:px-8">
           <p className="text-[11px] font-medium text-emerald-800 sm:text-xs">
-            <span className="font-semibold">1er comparateur neutre d&apos;établissements scolaires en Algérie</span> — publics et privés, données vérifiées, filtres avancés et recommandations gratuites par WhatsApp.
+            {t("header.tagline")}
           </p>
         </div>
       </div>
@@ -202,7 +202,7 @@ export function Header() {
                 : "bg-slate-100 text-slate-700"
             )}
           >
-            Annuaire établissements
+            {t("nav.etablissements")}
           </Link>
           <Link
             href={ROUTES.fichesMetiers}
@@ -213,7 +213,7 @@ export function Header() {
                 : "bg-slate-100 text-slate-700"
             )}
           >
-            Fiches métiers
+            {t("nav.metiersSalons")}
           </Link>
           <Link
             href={ROUTES.salonsEtudiants}
@@ -224,7 +224,7 @@ export function Header() {
                 : "bg-slate-100 text-slate-700"
             )}
           >
-            Salons étudiants
+            {t("nav.salons")}
           </Link>
           <Link
             href={ROUTES.blog}
@@ -235,7 +235,7 @@ export function Header() {
                 : "bg-slate-100 text-slate-700"
             )}
           >
-            Le Mag&apos;
+            {t("nav.blog")}
           </Link>
           <Link
             href={ROUTES.rankings}
@@ -246,7 +246,7 @@ export function Header() {
                 : "bg-slate-100 text-slate-700"
             )}
           >
-            Rankings
+            {t("nav.rankings")}
           </Link>
           <Link
             href={ROUTES.contact}
@@ -257,7 +257,7 @@ export function Header() {
                 : "bg-slate-100 text-slate-700"
             )}
           >
-            Contact
+            {t("nav.contact")}
           </Link>
         </div>
       </nav>

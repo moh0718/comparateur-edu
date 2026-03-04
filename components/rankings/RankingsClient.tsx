@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { LEAD_FORM_HREF } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 type RankingKey =
   | "qsArab"
@@ -693,6 +694,7 @@ const sourcesLinks = [
 ];
 
 export function RankingsClient() {
+  const { t } = useI18n();
   const [activeTab, setActiveTab] = useState<RankingKey>("qsArab");
   const [podiumRegion, setPodiumRegion] = useState<"" | "Alger">("");
   const [openFaq, setOpenFaq] = useState<string | null>(faqItems[0].question);
@@ -741,17 +743,16 @@ export function RankingsClient() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-100 ring-1 ring-emerald-400/40">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-              <span>Données issues de sources officielles internationales — mises à jour 2025/2026</span>
+              <span>{t("rankings.hero.badge")}</span>
               <span className="ml-1 rounded-full bg-emerald-300 px-2 py-0.5 text-[10px] font-semibold text-emerald-900">
                 Nouveau
               </span>
             </div>
             <h1 className="mt-4 text-balance font-display text-3xl font-semibold tracking-tight text-emerald-50 sm:text-4xl md:text-5xl">
-              Rankings
+              {t("rankings.hero.title")}
             </h1>
             <p className="mt-3 max-w-xl text-sm text-emerald-100 sm:text-base">
-              Où se situent les universités algériennes dans le monde ? Une vue claire et honnête des principaux
-              classements internationaux.
+              {t("rankings.hero.subtitle")}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button
@@ -760,7 +761,7 @@ export function RankingsClient() {
                 size="lg"
                 className="rounded-full bg-emerald-100 px-6 text-emerald-900 hover:bg-emerald-50"
               >
-                <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
+                <Link href={LEAD_FORM_HREF}>{t("rankings.hero.cta.primary")}</Link>
               </Button>
               <Button
                 type="button"
@@ -769,19 +770,19 @@ export function RankingsClient() {
                 onClick={handleShare}
                 className="rounded-full border-emerald-200 bg-transparent px-5 text-emerald-50 hover:bg-emerald-50/10"
               >
-                Partager cette page
+                {t("rankings.hero.cta.share")}
               </Button>
             </div>
           </div>
           <div className="rounded-2xl bg-slate-900/40 p-5 text-sm shadow-inner sm:p-6">
             <p className="text-xs font-semibold uppercase tracking-wide text-emerald-300">
-              Fait marquant 2026
+              {t("rankings.hero.highlight.title")}
             </p>
             <p className="mt-2 text-base font-semibold text-emerald-50">
-              46 universités algériennes classées dans QS Arab 2026
+              {t("rankings.hero.highlight.line1")}
             </p>
             <p className="mt-1 text-sm text-emerald-100">
-              1<sup>er</sup> pays du monde arabe en nombre d&apos;établissements représentés.
+              {t("rankings.hero.highlight.line2")}
             </p>
           </div>
         </div>
