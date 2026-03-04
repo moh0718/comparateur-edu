@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { cookies } from "next/headers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { SITE_NAME, SITE_DESCRIPTION, getBaseUrl } from "@/lib/seo";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
+import { t } from "@/lib/i18n";
+import type { Lang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "Comparateur gratuit — Décision simplifiée | Écoles & universités en Algérie",
@@ -29,6 +32,10 @@ const CATEGORIES = [
 ];
 
 export default function HomePage() {
+  const cookieStore = cookies();
+  const langCookie = cookieStore.get("lang")?.value as Lang | undefined;
+  const lang: Lang = langCookie === "ar" ? "ar" : "fr";
+
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Header />
@@ -40,20 +47,20 @@ export default function HomePage() {
             <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
               <div className="text-center md:text-left">
                 <p className="mx-auto mb-2 max-w-xl text-sm font-semibold uppercase tracking-wide text-emerald-600 md:mx-0">
-                  Comparateur gratuit · Tiers de confiance
+                  {t(lang, "home.hero.badge")}
                 </p>
                 <h1
                   id="hero-title"
                   className="mx-auto max-w-3xl text-balance font-display text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl md:mx-0"
                 >
-                  Une décision simplifiée pour vos études en Algérie
+                  {t(lang, "home.hero.title")}
                 </h1>
                 <p className="mx-auto mt-4 max-w-2xl text-base text-slate-700 sm:text-lg md:mx-0">
-                  Agrégateur d&apos;informations vérifiées : tableaux comparatifs, filtres dynamiques. Alger, Blida, Tipaza, Boumerdès.
+                  {t(lang, "home.hero.subtitle")}
                 </p>
                 <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
                   <Button asChild variant="primary" size="lg" className="rounded-full px-8 shadow-md">
-                    <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
+                    <Link href={LEAD_FORM_HREF}>{t(lang, "home.hero.primaryCta")}</Link>
                   </Button>
                   <Button
                     asChild
@@ -61,7 +68,7 @@ export default function HomePage() {
                     size="lg"
                     className="rounded-full border-2 border-emerald-600 px-8 text-emerald-800 hover:bg-emerald-50 hover:text-emerald-900"
                   >
-                    <Link href={ROUTES.etablissements}>Comparer les établissements</Link>
+                    <Link href={ROUTES.etablissements}>{t(lang, "home.hero.secondaryCta")}</Link>
                   </Button>
                 </div>
               </div>
@@ -107,21 +114,21 @@ export default function HomePage() {
           </section>
 
           {/* 2. Barre de recherche rapide */}
-          <section aria-label="Recherche rapide" className="rounded-2xl bg-white p-4 shadow-card md:p-5">
+          <section aria-label={t(lang, "home.search.aria")} className="rounded-2xl bg-white p-4 shadow-card md:p-5">
             <form action={ROUTES.etablissements} method="get" className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <input
                 type="search"
                 name="q"
-                placeholder="Nom d'établissement..."
+                placeholder={t(lang, "home.search.placeholder")}
                 className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
                 aria-label="Recherche par nom"
               />
               <select
                 name="categorie"
                 className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none"
-                aria-label="Catégorie"
+                aria-label={t(lang, "home.search.category")}
               >
-                <option value="">Catégorie</option>
+                <option value="">{t(lang, "home.search.category")}</option>
                 {CATEGORIES.map((c) => (
                   <option key={c.id} value={c.id}>{c.label}</option>
                 ))}
@@ -129,16 +136,16 @@ export default function HomePage() {
               <select
                 name="wilaya"
                 className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 focus:border-emerald-500 focus:outline-none"
-                aria-label="Wilaya"
+                aria-label={t(lang, "home.search.wilaya")}
               >
-                <option value="">Wilaya</option>
+                <option value="">{t(lang, "home.search.wilaya")}</option>
                 <option value="Alger">Alger</option>
                 <option value="Blida">Blida</option>
                 <option value="Tipaza">Tipaza</option>
                 <option value="Boumerdès">Boumerdès</option>
               </select>
               <Button type="submit" variant="primary" className="rounded-xl">
-                Rechercher
+                {t(lang, "home.search.submit")}
               </Button>
             </form>
           </section>
@@ -146,7 +153,7 @@ export default function HomePage() {
           {/* 3. Catégories chips */}
           <section aria-labelledby="categories-title">
             <h2 id="categories-title" className="sr-only">
-              Catégories d&apos;établissements
+              {t(lang, "home.categories.title")}
             </h2>
             <div className="flex flex-wrap justify-center gap-2">
               {CATEGORIES.map((c) => (
@@ -169,10 +176,10 @@ export default function HomePage() {
             className="rounded-2xl bg-white p-6 shadow-card md:p-8"
           >
             <h2 id="pourquoi-title" className="mb-6 text-center font-display text-xl font-semibold text-slate-900 md:text-2xl">
-              Pourquoi kompar - edu ?
+              {t(lang, "home.why.title")}
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-center text-slate-700">
-              On ne vend pas le rêve : on vous aide à <strong>simplifier votre décision</strong>. Le formulaire d&apos;orientation est l&apos;échange valeur/information pour mériter une recommandation personnalisée.
+              {t(lang, "home.why.lead")}
             </p>
             <div className="grid gap-8 md:grid-cols-3">
               <article className="text-center">
@@ -181,7 +188,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-semibold text-slate-900">Agrégateur d&apos;informations</h3>
                 <p className="mt-1 text-sm text-slate-700">
-                  Données vérifiées (sites officiels, Google Maps). Pas d&apos;annuaire statique : tableaux comparatifs et filtres dynamiques.
+                  {t(lang, "home.why.card1.text")}
                 </p>
               </article>
               <article className="text-center">
@@ -190,7 +197,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-semibold text-slate-900">Comparatif transparent</h3>
                 <p className="mt-1 text-sm text-slate-700">
-                  Comparez côte à côte : coût, reconnaissance MESRS, langues, options. Outils de simulation pour affiner votre choix.
+                  {t(lang, "home.why.card2.text")}
                 </p>
               </article>
               <article className="text-center">
@@ -199,7 +206,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="font-semibold text-slate-900">Décision simplifiée</h3>
                 <p className="mt-1 text-sm text-slate-700">
-                  Quelques questions → recommandations personnalisées. Échange de valeur : vous donnez vos critères, on vous oriente. Gratuit.
+                  {t(lang, "home.why.card3.text")}
                 </p>
               </article>
             </div>
@@ -211,10 +218,10 @@ export default function HomePage() {
             className="rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-10 text-center text-emerald-50 shadow-card md:px-10 md:py-12"
           >
             <h2 id="cta-title" className="font-display text-xl font-semibold md:text-2xl">
-              Décision simplifiée : trouvez votre école en quelques clics
+              {t(lang, "home.cta.title")}
             </h2>
             <p className="mt-2 text-emerald-50">
-              Le formulaire est le passage pour mériter une recommandation personnalisée. Échange valeur/information, pas de contrainte.
+              {t(lang, "home.cta.text")}
             </p>
             <Button
               asChild
@@ -222,7 +229,7 @@ export default function HomePage() {
               size="lg"
               className="mt-6 rounded-full border-2 border-white bg-white/5 px-8 text-white hover:bg-white/15 hover:text-white"
             >
-              <Link href={LEAD_FORM_HREF}>Trouver mon école</Link>
+              <Link href={LEAD_FORM_HREF}>{t(lang, "home.cta.button")}</Link>
             </Button>
           </section>
 
@@ -235,11 +242,10 @@ export default function HomePage() {
               id="visuels-title"
               className="mb-4 text-center font-display text-xl font-semibold text-slate-900 md:text-2xl"
             >
-              L&apos;éducation privée, en images
+              {t(lang, "home.visuals.title")}
             </h2>
             <p className="mx-auto mb-6 max-w-2xl text-center text-sm text-slate-600">
-              Un aperçu concret des situations que nous aidons à éclairer&nbsp;: parents en recherche
-              d&apos;une école, étudiants en supérieur, vie au sein d&apos;un établissement.
+              {t(lang, "home.visuals.text")}
             </p>
             <div className="grid gap-4 md:grid-cols-3">
               <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
@@ -248,10 +254,7 @@ export default function HomePage() {
                   alt="Parents échangeant avec un conseiller pour choisir une école"
                   className="h-40 w-full object-cover md:h-48"
                 />
-                <figcaption className="px-4 py-3 text-xs text-slate-700">
-                  <span className="font-semibold">Savoir où inscrire son enfant. Enfin.</span>{" "}
-                  Plus de décisions prises dans le flou.
-                </figcaption>
+                <figcaption className="px-4 py-3 text-xs text-slate-700">{t(lang, "home.visuals.card1")}</figcaption>
               </figure>
               <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
                 <img
@@ -259,10 +262,7 @@ export default function HomePage() {
                   alt="Étudiants en enseignement supérieur en amphi"
                   className="h-40 w-full object-cover md:h-48"
                 />
-                <figcaption className="px-4 py-3 text-xs text-slate-700">
-                  <span className="font-semibold">Choisir sa filière. Pas la subir.</span>{" "}
-                  Débouchés, salaires, avis réels — tout est là.
-                </figcaption>
+                <figcaption className="px-4 py-3 text-xs text-slate-700">{t(lang, "home.visuals.card2")}</figcaption>
               </figure>
               <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
                 <img
@@ -270,10 +270,7 @@ export default function HomePage() {
                   alt="Vue chaleureuse d'un établissement avec élèves"
                   className="h-40 w-full object-cover md:h-48"
                 />
-                <figcaption className="px-4 py-3 text-xs text-slate-700">
-                  <span className="font-semibold">Être vu par les bons profils.</span>{" "}
-                  Les étudiants qui vous cherchent vous trouveront.
-                </figcaption>
+                <figcaption className="px-4 py-3 text-xs text-slate-700">{t(lang, "home.visuals.card3")}</figcaption>
               </figure>
             </div>
           </section>
