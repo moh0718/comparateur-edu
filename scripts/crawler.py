@@ -188,9 +188,9 @@ def source1_official_website(website: Optional[str], name: str) -> tuple[str, bo
 
 
 # --- SOURCE 2 : Google Places (FindPlaceFromText + Place Details) ---
-def source2_google_places(name: str, commune: Optional[str]) -> tuple[str, bool]:
+def source2_google_places(name: str, commune: Optional[str]) -> tuple[str, bool, dict[str, Any]]:
     if not GOOGLE_PLACES_API_KEY:
-        return "", False
+        return "", False, {}
     query = f"{name} {commune or ''} Algerie".strip()
     try:
         # FindPlaceFromText
@@ -199,8 +199,9 @@ def source2_google_places(name: str, commune: Optional[str]) -> tuple[str, bool]
             params={
                 "input": query,
                 "inputtype": "textquery",
-                # On récupère aussi le site web pour aider Gemini à extraire website_url
-                "fields": "place_id,name,formatted_address,formatted_phone_number,website,rating,photos",
+                # On récupère aussi le site web + volume d'avis pour alimenter directement la fiche,
+                # même si Gemini est en rate limit ou indisponible.
+                "fields": "place_id,name,formatted_address,formatted_phone_number,website,rating,user_ratings_total,photos",
                 "key": GOOGLE_PLACES_API_KEY,
             },
             timeout=15,
@@ -209,9 +210,17 @@ def source2_google_places(name: str, commune: Optional[str]) -> tuple[str, bool]
         data = r.json()
         candidates = data.get("candidates", [])
         if not candidates:
-            return "", False
+            return "", False, {}
         place = candidates[0]
         place_id = place.get("place_id")
+        base_fields: dict[str, Any] = {
+            "address": place.get("formatted_address") or None,
+            "phone": place.get("formatted_phone_number") or None,
+            "website_url": place.get("website") or None,
+            "rating": place.get("rating"),
+            "reviews_count": place.get("user_ratings_total"),
+            "commune": commune or None,
+        }
         parts = [
             "--- Google Maps ---",
             f"Nom: {place.get('name', '')}",
@@ -241,9 +250,11 @@ def source2_google_places(name: str, commune: Optional[str]) -> tuple[str, bool]
                 hours = det.get("opening_hours", {}).get("weekday_text", [])
                 if hours:
                     parts.append("Horaires: " + "; ".join(hours))
-        return "\n".join(parts), True
+                    # Alimente directement le champ opening_hours si absent
+                    base_fields.setdefault("opening_hours", "; ".join(hours))
+        return "\n".join(parts), True, base_fields
     except Exception:
-        return "", False
+        return "", False, {}
 
 
 # --- SOURCE 3 : Instagram (Apify) ---
@@ -363,13 +374,14 @@ def source4_serper_firecrawl(name: str) -> tuple[str, bool]:
 
 
 # --- Collecte 4 sources pour un établissement ---
-def collect_sources(inst: dict[str, Any], places_rank: int = 0) -> tuple[str, list[str]]:
+def collect_sources(inst: dict[str, Any], places_rank: int = 0) -> tuple[str, list[str], dict[str, Any]]:
     name = inst.get("name") or "Établissement"
     website = inst.get("website_url")
     commune = inst.get("commune")
     instagram = inst.get("instagram_username")
-    combined = []
-    sources_used = []
+    combined: list[str] = []
+    sources_used: list[str] = []
+    enriched_fields: dict[str, Any] = {}
 
     s1, u1 = source1_official_website(website, name)
     if s1:
@@ -378,11 +390,13 @@ def collect_sources(inst: dict[str, Any], places_rank: int = 0) -> tuple[str, li
         sources_used.append("site_officiel")
 
     if places_rank < CRAWLER_PLACES_MAX:
-        s2, u2 = source2_google_places(name, commune)
+        s2, u2, fields2 = source2_google_places(name, commune)
         if s2:
             combined.append(s2)
         if u2:
             sources_used.append("google_places")
+        # On conserve les données structurées issues directement de Google Places
+        enriched_fields.update({k: v for k, v in (fields2 or {}).items() if v not in (None, "", [])})
 
     s3, u3 = source3_instagram(instagram)
     if s3:
@@ -397,7 +411,7 @@ def collect_sources(inst: dict[str, Any], places_rank: int = 0) -> tuple[str, li
         sources_used.append("serper_firecrawl")
 
     text = "\n\n".join(combined).strip() if combined else ""
-    return text or "[Aucun contenu récupéré]", sources_used
+    return text or "[Aucun contenu récupéré]", sources_used, enriched_fields
 
 
 # --- Schéma JSON pour Gemini ---
@@ -634,14 +648,33 @@ def main() -> None:
     for i, inst in enumerate(institutions):
         name = inst.get("name") or "Inconnu"
         try:
-            combined, sources_used = collect_sources(inst, places_rank=i)
+            combined, sources_used, enriched_fields = collect_sources(inst, places_rank=i)
+            base_data = InstitutionData(name=name, **enriched_fields)
+
             if not combined or combined == "[Aucun contenu récupéré]":
-                supabase_upsert_institution_and_log(inst, InstitutionData(name=name), [], "ERREUR", "Aucune source disponible")
-                send_resend_alert(f"[Crawler Edu] Échec — {name}", "Aucune donnée récupérée (4 sources).")
+                # Aucune source texte exploitable : on garde quand même les infos structurées (adresse, téléphone, etc.)
+                supabase_upsert_institution_and_log(
+                    inst,
+                    base_data,
+                    sources_used,
+                    "ERREUR",
+                    "Aucune source texte disponible (sources structurées uniquement)",
+                )
             else:
-                data = gemini_extract(combined, name)
-                data.slug = data.slug or slugify(name)
-                supabase_upsert_institution_and_log(inst, data, sources_used, "OK", None)
+                try:
+                    data = gemini_extract(combined, name)
+                    # Si Gemini manque certaines infos basiques, on les remplit avec ce que Google Places a fourni.
+                    for field, value in enriched_fields.items():
+                        if getattr(data, field, None) in (None, "", []):
+                            setattr(data, field, value)
+                    data.slug = data.slug or slugify(name)
+                    supabase_upsert_institution_and_log(inst, data, sources_used, "OK", None)
+                except Exception as e:
+                    # En cas de rate limit Gemini (429) ou autre erreur IA,
+                    # on ne perd pas les infos Google Places : on upsert au moins base_data.
+                    msg = str(e)[:500]
+                    supabase_upsert_institution_and_log(inst, base_data, sources_used, "ERREUR", msg)
+                    send_resend_alert(f"[Crawler Edu] Échec (fallback Google Places) — {name}", msg)
         except Exception as e:
             msg = str(e)[:500]
             supabase_upsert_institution_and_log(inst, InstitutionData(name=name), [], "ERREUR", msg)
