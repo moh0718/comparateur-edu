@@ -234,34 +234,13 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
             </div>
           </section>
 
-          {/* Résumé & valeur ajoutée du comparateur */}
-          <section className="mb-8 grid gap-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-            <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
+          {/* Description de l'établissement */}
+          {inst.description && (
+            <section className="mb-8 rounded-xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
               <h2 className="mb-3 text-lg font-semibold text-slate-900">En un coup d&apos;œil</h2>
-              <p className="text-sm text-slate-700">
-                {inst.description
-                  ? inst.description
-                  : `Fiche ${categoryLabel.toLowerCase()} pour vous aider à comparer rapidement les options d'enseignement privé en Algérie : coûts, langues, reconnaissance et services (transport, internat, etc.).`}
-              </p>
-              <ul className="mt-4 space-y-1.5 text-sm text-slate-700">
-                <li>• Positionnement de l&apos;établissement dans son secteur ({categoryLabel.toLowerCase()}).</li>
-                <li>• Fourchette de frais de scolarité pour situer le budget.</li>
-                <li>• Langues d&apos;enseignement et reconnaissance éventuelle par le MESRS.</li>
-                <li>• Services pratiques : transport, internat, horaires, réseaux sociaux.</li>
-              </ul>
-            </div>
-            <div className="rounded-xl bg-emerald-50/70 p-5 text-sm text-slate-800 shadow-sm md:p-6">
-              <h3 className="mb-2 text-sm font-semibold text-emerald-900">
-                Pourquoi passer par kompar - edu plutôt que d&apos;appeler chaque école ?
-              </h3>
-              <ul className="space-y-1.5">
-                <li>• Vue normalisée des critères clés (budget, langues, reconnaissance, services).</li>
-                <li>• Sélection priorisée des établissements avec données vérifiées en premier.</li>
-                <li>• Recommandations gratuites par WhatsApp selon votre profil, sans engagement.</li>
-                <li>• Projet indépendant : objectif d&apos;éviter le &quot;marketing de rêve&quot; et de faciliter une décision lucide.</li>
-              </ul>
-            </div>
-          </section>
+              <p className="text-sm text-slate-700">{inst.description}</p>
+            </section>
+          )}
 
           {/* Section 1 — Infos pratiques */}
           <section className="mb-8 rounded-xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">

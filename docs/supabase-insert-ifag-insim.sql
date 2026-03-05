@@ -37,13 +37,13 @@ VALUES (
   'Équivalence RNCP France, WES USA/Canada pour MBA',
   '["Multinationales", "Grandes entreprises", "PME/PMI — +48 partenaires actifs"]'::jsonb,
   '["Groupe INSAG Business School", "Universités algériennes"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MESRS (arrêté n°341 du 11/04/2018)',
     'Taux d''insertion 95,76 % (groupe INSAG)',
     '+48 entreprises partenaires',
     'Stage PFE obligatoire',
     'Équivalence possible RNCP France, WES USA/Canada'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -109,13 +109,13 @@ VALUES (
   'Vers Bachelor (Bac+3) ou MBA (Bac+5) après le BTS',
   '["Sonatrach", "Air Algérie", "multinationales du secteur privé"]'::jsonb,
   '["Collège de Sherbrooke", "UQAM", "5 partenaires étrangers"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MFEP depuis 1994',
     'Taux de réussite >95 %',
     '6 mois stage + mémoire',
     'Passerelles Sherbrooke, UQAM',
     'Réseau Sonatrach, Air Algérie'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -171,12 +171,12 @@ VALUES (
   TRUE,
   'Sélective — dossier (modalités exactes non publiées)',
   '["Partenariats internationaux (non détaillés publiquement)"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MESRS (arrêté n°845 du 30/10/2022)',
     'Licence + Master LMD nationaux',
     'Enseignement bilingue FR/EN — spécialités en anglais',
     'Partenariats académiques internationaux'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -227,13 +227,13 @@ VALUES (
   'Ouverte — bacheliers, licenciés, salariés en reprise d''études',
   '["8 partenaires entreprises"]'::jsonb,
   '["ENAP Québec (Canada)"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MESRS',
     'Partenariat ENAP Québec (Canada)',
     '30 enseignants-chercheurs · ~700 alumni',
     'Taux de réussite 95 % aux examens',
     'Admission ouverte — bacheliers, licenciés, salariés'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -287,13 +287,13 @@ VALUES (
   'Sélective',
   '95,76 % (groupe INSAG — étude Emploitic 2025)',
   '["5 Business Schools internationales"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MESRS — l''un des premiers historiquement',
     'RNCP France + WES (équivalence Master USA/Canada)',
     '+8 000 alumni depuis 1991',
     '5 Business Schools partenaires internationales',
     'Taux d''insertion 95,76 % (groupe INSAG — Emploitic 2025)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -348,13 +348,13 @@ VALUES (
   TRUE,
   '["Condor", "Mobilis", "Novartis", "Ooredoo"]'::jsonb,
   '["EFREI Paris (France)"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MESRS — 1er établissement privé dédié sciences & tech',
     'Partenariat EFREI Paris (France)',
     'Partenaires industriels : Condor, Mobilis, Novartis, Ooredoo',
     'Stage obligatoire dès L2 · Taux de réussite 100 % (2025)',
     'Admission sélective — séries scientifiques (M, TM, S)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -406,13 +406,13 @@ VALUES (
   'Licence LMD (Bac+3) + Master (Bac+5) · Option double diplôme international',
   TRUE,
   'Dossier + inscriptions ouvertes Licence 1',
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MESRS (arrêté n°397/2018) — 1ère agréée dès 1992',
     'Enseignement trilingue FR · EN · ES',
     'Incubateur GEM-START (accompagnement entrepreneurial)',
     'Option double diplôme international',
     'Stage intégré + soutenance mémoire professionnel'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -462,13 +462,13 @@ VALUES (
   FALSE,
   'UK ENIC · Accès direct universités UK, Australie, USA, Canada',
   'Bac min. 10/20 + Password Test (anglais, 5 000 DA)',
-  ARRAY[
+  to_jsonb(ARRAY[
     'Qualification UK (UK ENIC) — accès direct universités UK, Australie, USA, Canada',
     '99 % succès visa · 90 % obtiennent université 1er choix',
     'Enseignement 100 % anglais — locuteurs natifs',
     'Accompagnement complet : orientation, dossiers, visa, logement à l''étranger',
     'Password Test 5 000 DA — Bac min. 10/20 requis'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -516,11 +516,11 @@ VALUES (
   TRUE,
   'Licence + Master en management — diplômes nationaux',
   TRUE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MESRS — l''un des premiers privés historiquement',
     'Management · Finance · Commerce international',
     'Modèle pédagogique type grande école'
-  ],
+  ]),
   'medium',
   TRUE,
   TRUE
@@ -565,12 +565,12 @@ VALUES (
   FALSE,
   'Certifications RNCP françaises via groupe CESI France',
   '["280 entreprises partenaires (dont Sonatrach)"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MFEP depuis 2003 — filiale CESI France',
     '+5 000 formés/an · 280 entreprises partenaires (dont Sonatrach)',
     'Certifications RNCP France · Titre ingénieur CESI (Exia)',
     '+200 experts intervenants · +1 000 diplômés'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -616,11 +616,11 @@ VALUES (
   FALSE,
   'Certifications et attestations de formation · Pas de diplôme national LMD',
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Formation continue cadres et dirigeants',
     'Séminaires 2–5 jours · FMD · Partenaire DRH et DG',
     'Prestations Hyatt Regency ou au siège'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -666,11 +666,11 @@ VALUES (
   TRUE,
   'Technicien Supérieur (TS) agréé État — Commerce · RH · Marketing',
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Rattaché à la CACI (Chambre de Commerce officielle)',
     'Diplôme TS agréé État — Commerce · RH · Marketing',
     'Réseau des entreprises membres de la chambre'
-  ],
+  ]),
   'medium',
   TRUE,
   TRUE
@@ -714,13 +714,13 @@ VALUES (
   ARRAY['FR', 'EN', 'ES', 'DE', 'KR', 'JA', 'RU'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Franchise Berlitz International depuis 2002',
     'Immersion totale — langue cible dès la 1re leçon',
     '13 salles · Groupes max 9 · Présentiel + en ligne',
     'Préparation IELTS, TOEFL, TOEIC',
     'Particuliers, entreprises, gouvernements'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -765,12 +765,12 @@ VALUES (
   FALSE,
   'Certifications reconnues par gouvernements japonais, coréen et chinois',
   'instituttorii',
-  ARRAY[
+  to_jsonb(ARRAY[
     'Référence nationale langues asiatiques — JLPT · TOPIK · HSK',
     'Bourses MEXT (Japon) · NIIED (Corée) · CSC (Chine)',
     'Certifications reconnues gouvernements JP/KR/CN',
     '+15 000 abonnés Instagram'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -816,12 +816,12 @@ VALUES (
   FALSE,
   'Reconnu par ambassades Allemagne/Autriche et universités allemandes',
   '["Goethe-Institut Algérie"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Partenaire Goethe-Institut Algérie',
     'Examens officiels A1→C2 (CECRL) · TestDaF · ÖSD',
     'Reconnu ambassades Allemagne/Autriche — visas études et travail',
     'Accès universités allemandes (souvent gratuites)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -865,12 +865,12 @@ VALUES (
   FALSE,
   FALSE,
   'TOEFL/GRE pour USA/Canada · TEF pour immigration Canada',
-  ARRAY[
+  to_jsonb(ARRAY[
     'Depuis 2003 · Réseau 16 wilayas',
     'Préparation TOEFL · GRE · TEF (immigration Canada)',
     'Formations sur mesure entreprises',
     'Présentiel et en ligne'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -912,10 +912,10 @@ VALUES (
   ARRAY['EN'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Spécialité TOEFL et IELTS',
     'Préparation admission à l''étranger et mobilité professionnelle'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -956,11 +956,11 @@ VALUES (
   ARRAY['EN'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Franchise EF — groupe international, +50 pays',
     'Séjours linguistiques (UK, USA, Irlande, Australie…)',
     'Cours premium en présentiel à Alger'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1001,10 +1001,10 @@ VALUES (
   ARRAY['EN', 'FR', 'DE', 'ES', 'TR'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Multi-langues : EN, FR, DE, ES, Turc',
     'Présence Hydra et Alger Centre'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1045,11 +1045,11 @@ VALUES (
   ARRAY['EN'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Anglais actif et soft skills',
     'Prise de parole · Communication professionnelle · Leadership',
     'Usage pratique en contextes professionnels'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1091,12 +1091,12 @@ VALUES (
   ARRAY['FR', 'EN'],
   TRUE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé DACM / ANAC (Aviation Civile)',
     'Formation PNC complète — CSS obligatoire',
     'Débouchés compagnies aériennes algériennes et internationales',
     'Depuis 2018'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1138,12 +1138,12 @@ VALUES (
   ARRAY['FR', 'EN'],
   TRUE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé ANAC',
     'CSS — qualification obligatoire PNC',
     'Accompagnement jusqu''au recrutement en compagnie aérienne',
     'Formateurs experts certifiés aviation'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1186,12 +1186,12 @@ VALUES (
   FALSE,
   FALSE,
   '["Simplon.co (France)"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MFEP · Partenariat Simplon.co (France)',
     'Sans diplôme requis — sélection motivation et aptitudes',
     'Stage 6 mois garanti · Bourses partielles',
     'Soutien Wilaya d''Alger + Banque Mondiale'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1235,12 +1235,12 @@ VALUES (
   ARRAY['FR'],
   NULL,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MFEP · Pearson Vue et Certiport',
     'Certifications Microsoft, Oracle, Cisco, Linux, Adobe',
     'Formations courtes 2 à 5 jours',
     'Projet de mise en situation professionnelle évalué par jury'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1283,12 +1283,12 @@ VALUES (
   ARRAY['FR'],
   NULL,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé État (MFEP) · Formation à distance / hybride',
     'Accès à vie aux contenus vidéo + diplôme officiel',
     'Tarifs très accessibles (~15 000 DA / pack)',
     'Montage vidéo · Design · Bureautique · Comptabilité · Agile'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1330,11 +1330,11 @@ VALUES (
   ARRAY['FR'],
   NULL,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé État — certifications chantiers industriels',
     'HSE · Fibre optique FTTH · Électricité industrielle',
     'Secteurs Pétrole & Gaz · Télécoms · BTP'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1376,11 +1376,11 @@ VALUES (
   ARRAY['FR'],
   NULL,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Référence nationale arts culinaires et pâtisserie',
     'CAP et CQP agréés État · Chefs Salah Eddine Amour, Billel Djehiche',
     'Cuisines et laboratoires professionnels · Master Classes'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1421,10 +1421,10 @@ VALUES (
   ARRAY['FR'],
   TRUE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé MFEP · BTS Informatique Bac+2',
     'Diplôme d''État reconnu'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1467,11 +1467,11 @@ VALUES (
   FALSE,
   'Bac français reconnu dans ~180 pays',
   '["AEFE — 500+ établissements dans 139 pays"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Homologué AEFE · Programme français officiel',
     'Bac français reconnu dans ~180 pays · Réseau AEFE 500+ établissements',
     '~2 000 élèves · Maternelle à Terminale'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1516,11 +1516,11 @@ VALUES (
   FALSE,
   FALSE,
   '["Mission Laïque Française (MLF)"]'::jsonb,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Mission Laïque Française (MLF) · Homologué MEN France',
     'Maternelle → CM2 · Programme français bilingue',
     'Passerelle vers LIAD et établissements AEFE'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1562,11 +1562,11 @@ VALUES (
   ARRAY['FR', 'EN'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Bilingue FR/EN dès la petite section · +450 élèves',
     'FabLab · Initiation STEM et IA dès le collège',
     'Agréé État algérien (MEN)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1607,11 +1607,11 @@ VALUES (
   ARRAY['FR', 'AR', 'EN'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Plateforme e-learning pour suivi des élèves',
     'Rigueur académique · Langues étrangères',
     'Agréé État algérien (MEN)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1652,11 +1652,11 @@ VALUES (
   ARRAY['AR', 'FR', 'EN'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Trilingue AR · FR · EN · Fort accent langues',
     'Maternelle → Lycée · Bac algérien',
     'Agréé État algérien (MEN)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1697,11 +1697,11 @@ VALUES (
   ARRAY['AR', 'FR', 'EN'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Trilinguisme dès la maternelle — AR · FR · EN',
     'Taux de réussite 98 % aux examens nationaux',
     'Agréé État algérien (MEN)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1743,11 +1743,11 @@ VALUES (
   FALSE,
   FALSE,
   TRUE,
-  ARRAY[
+  to_jsonb(ARRAY[
     '3 sites : Alger Plage · Bordj El Bahri · Rouiba',
     'Accompagnement personnalisé · Classes d''examen BEM/Bac',
     'Internat disponible'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1789,11 +1789,11 @@ VALUES (
   ARRAY['FR', 'AR'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Depuis 2004 · Blida',
     'Maternelle → Lycée · Bac algérien',
     'Inscription à tout moment de l''année scolaire'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1834,11 +1834,11 @@ VALUES (
   ARRAY['FR', 'AR'],
   FALSE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Pédagogies actives (Montessori, apprentissage par projets)',
     'Bien-être · Autodiscipline · Empathie',
     'Agréé État algérien (MEN)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1880,11 +1880,11 @@ VALUES (
   FALSE,
   FALSE,
   'Label France — passerelles vers système éducatif français',
-  ARRAY[
+  to_jsonb(ARRAY[
     'Label France (MEN France) — continuité pédagogique garantie',
     'Préscolaire → Lycée · Bac algérien',
     'Passerelles vers système éducatif français'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1926,11 +1926,11 @@ VALUES (
   ARRAY['FR'],
   TRUE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé Ministère de la Santé',
     'Diplôme d''État opticien-lunetier (Bac+2)',
     'Stages pratiques · Insertion rapide (pénurie d''opticiens)'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -1969,11 +1969,11 @@ VALUES (
   ARRAY['FR'],
   TRUE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé Ministère de la Santé',
     'Infirmier · Aide-soignant · Manipulateur radiologie',
     'Stages cliniques obligatoires'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -2010,11 +2010,11 @@ VALUES (
   ARRAY['FR'],
   TRUE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé État (Ministère Santé / MFEP)',
     'TS Santé (Bac+2) — spécialités paramédicales',
     'Stages cliniques obligatoires'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
@@ -2051,11 +2051,11 @@ VALUES (
   ARRAY['FR'],
   TRUE,
   FALSE,
-  ARRAY[
+  to_jsonb(ARRAY[
     'Agréé État',
     'TS Santé — spécialités paramédicales',
     'Stages cliniques obligatoires'
-  ],
+  ]),
   'high',
   TRUE,
   TRUE
