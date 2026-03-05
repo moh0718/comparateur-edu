@@ -177,11 +177,17 @@ export default function MentionsLegalesPage() {
             </h2>
             <div className="space-y-3 text-sm leading-relaxed text-slate-700">
               <p>
-                Le site {LEGAL_SITE_NAME} a pour objet de mettre en avant les formations et établissements scolaires en Algérie (publics et privés) et de faciliter la vie des{" "}
-                <strong className="text-slate-800">étudiants, des parents et des établissements eux‑mêmes</strong> en centralisant les informations utiles.
+                Le site {LEGAL_SITE_NAME} est un{" "}
+                <strong className="text-slate-800">
+                  portail indépendant de référence sur l&apos;enseignement en Algérie
+                </strong>
+                , centralisant fiches métiers, annuaire des établissements et outils d&apos;aide à l&apos;orientation pour
+                simplifier l&apos;accès à l&apos;information éducative.
               </p>
               <p>
-                Concrètement, kompar - edu agit comme un <strong className="text-slate-800">comparateur et agrégateur d&apos;information</strong> : fiches établissements, critères pédagogiques et pratiques, fourchettes de frais d&apos;inscription, langues d&apos;enseignement, reconnaissance des diplômes, etc.
+                Il vise à faciliter la vie des{" "}
+                <strong className="text-slate-800">étudiants, des parents et des établissements eux‑mêmes</strong> en
+                regroupant des informations claires et structurées sur les formations, les écoles et les débouchés.
               </p>
               <p>
                 <strong className="text-slate-800">Important :</strong> le site ne remplace ni les services officiels du Ministère, ni les services d&apos;orientation classiques. Les informations sont fournies à titre indicatif et doivent toujours être vérifiées directement auprès des établissements concernés.

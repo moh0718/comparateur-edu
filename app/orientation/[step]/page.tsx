@@ -161,7 +161,7 @@ export default function OrientationStepPage() {
               {currentStep === 1 && (
                 <>
                   <p className="mb-4 text-center text-sm font-medium text-green-600">
-                    Décision simplifiée en quelques questions — recommandation personnalisée sur WhatsApp.
+                    L’orientation sur-mesure pour un parcours sans faute.
                   </p>
                   <p className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50/80 px-4 py-3 text-center text-xs font-medium text-emerald-800">
                     <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. La mise en relation se fait exclusivement par WhatsApp, avec votre consentement.

@@ -16,6 +16,8 @@ const fr: Messages = {
   "header.tagline":
     "1er comparateur neutre d'établissements scolaires en Algérie — publics et privés, données vérifiées, filtres avancés et recommandations gratuites par WhatsApp.",
   "home.hero.badge": "Comparateur gratuit · Tiers de confiance",
+  "home.hero.subtitle":
+    "Plateforme d'orientation scolaire et professionnelle pour mieux choisir vos études et votre avenir en Algérie.",
   "home.hero.title": "Une décision simplifiée pour vos études en Algérie",
   "home.hero.subtitle":
     "Agrégateur d'informations vérifiées : tableaux comparatifs, filtres dynamiques. Alger, Blida, Tipaza, Boumerdès.",
@@ -43,9 +45,9 @@ const fr: Messages = {
   "home.cta.text":
     "Le formulaire est le passage pour mériter une recommandation personnalisée. Échange valeur/information, pas de contrainte.",
   "home.cta.button": "Trouver mon école",
-  "home.visuals.title": "L'éducation privée, en images",
+  "home.visuals.title": "L'éducation en Algérie, enfin simplifiée.",
   "home.visuals.text":
-    "Un aperçu concret des situations que nous aidons à éclairer : parents en recherche d'une école, étudiants en supérieur, vie au sein d'un établissement.",
+    "Le premier carrefour qui connecte parents, étudiants et établissements. Trouvez la bonne info, au bon moment, pour le bon choix.",
   "home.visuals.card1":
     "Savoir où inscrire son enfant. Enfin. Plus de décisions prises dans le flou.",
   "home.visuals.card2":

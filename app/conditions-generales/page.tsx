@@ -57,7 +57,7 @@ const SECTIONS: Array<{
     num: 1,
     title: "Notre rôle",
     content:
-      "Nous sommes un comparateur bancaire et conseiller marketing, destiné à vous aider à trouver la banque et l'offre qui correspondent le mieux à votre profil.",
+      "Portail indépendant de référence sur l'enseignement en Algérie, centralisant fiches métiers, annuaire des établissements et outils d'aide à l'orientation pour simplifier l'accès à l'information éducative. Notre rôle est de vous aider à mieux comprendre les filières, les écoles et les débouchés possibles, sans remplacer les conseils officiels des établissements ou des services publics d'orientation.",
   },
   {
     num: 2,

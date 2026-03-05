@@ -57,6 +57,10 @@ export function Footer({ className = "", variant = "default" }: FooterProps) {
           {t("footer.copyright")}
         </p>
 
+        <p className="text-[11px] font-medium text-slate-700">
+          Tout l&apos;enseignement algérien, en un seul endroit.
+        </p>
+
         <p className="text-[11px] leading-relaxed text-slate-600 md:text-xs">
           {t("footer.disclaimer")}
         </p>

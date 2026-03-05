@@ -10,7 +10,7 @@ import { ContactForm } from "./ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contactez Comparateur Edu pour toute question sur les établissements publics et privés en Algérie. Réponse rapide.",
+    "Contactez kompar - edu pour toute question sur l'orientation, les établissements ou les fiches métiers en Algérie. Réponse rapide.",
   openGraph: {
     title: `Contact | ${SITE_NAME}`,
     description: "Contactez-nous pour toute question ou remarque.",
@@ -34,6 +34,9 @@ export default async function ContactPage() {
             <h1 className="text-center text-lg font-bold text-slate-900 sm:text-xl">
               {t(lang, "contact.title")}
             </h1>
+            <p className="mt-2 text-center text-sm text-slate-600 sm:text-base">
+              Une question spécifique ? Notre équipe est là pour vous.
+            </p>
 
             <ContactForm />
           </div>

@@ -95,6 +95,9 @@ export function EtablissementsClient({ institutions }: EtablissementsClientProps
             Filtrez par wilaya, frais d&apos;inscription et services pour explorer les écoles, ou laissez{" "}
             <span className="font-semibold">kompar - edu</span> vous proposer une sélection personnalisée.
           </p>
+          <p className="mt-1 text-xs font-medium text-slate-500">
+            L&apos;annuaire le plus complet d&apos;Algérie, mis à jour pour vous.
+          </p>
         </div>
         <div className="flex justify-start md:justify-end">
           <Button asChild variant="primary" size="lg" className="rounded-full px-6">

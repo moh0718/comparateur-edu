@@ -48,6 +48,9 @@ export default function FichesMetiersPage() {
             <p className="mt-4 text-lg text-slate-600 sm:text-xl">
               Découvrez les métiers, formations et salaires indicatifs pour vous orienter en Algérie.
             </p>
+            <p className="mt-2 text-sm font-medium text-slate-700 sm:text-base">
+              L&apos;école passe, le métier reste. Faites le bon choix.
+            </p>
             <div className="mt-10">
               <SearchMetiers metiers={metiersMock} />
             </div>

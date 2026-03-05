@@ -17,8 +17,10 @@ const FAQ_ITEMS: Array<{
     id: "1",
     question: "Qu'est-ce que ce site?",
     emoji: "🏠",
-    preview: "Notre site est un comparateur bancaire et conseiller marketing qui vous aide à trouver la banque et l'offre qui correspondent le mieux à votre profil et vos besoins.",
-    full: "Notre site est un comparateur bancaire et conseiller marketing qui vous aide à trouver la banque et l'offre qui correspondent le mieux à votre profil et vos besoins. Nous centralisons les informations sur les offres des banques algériennes et vous orientons vers les solutions les plus adaptées, sans dispenser de conseil financier personnalisé.",
+    preview:
+      "Portail indépendant de référence sur l'enseignement en Algérie, centralisant fiches métiers, annuaire des établissements et outils d'aide à l'orientation pour simplifier l'accès à l'information éducative.",
+    full:
+      "Portail indépendant de référence sur l'enseignement en Algérie, centralisant fiches métiers, annuaire des établissements et outils d'aide à l'orientation pour simplifier l'accès à l'information éducative. Notre objectif est de vous aider à mieux comprendre les options qui s'offrent à vous et à préparer vos choix d'orientation scolaire et professionnelle, sans remplacer les conseils officiels des établissements ou des services d'orientation publics.",
   },
   {
     id: "2",
