@@ -73,7 +73,7 @@ export const salonsMock: SalonEtudiant[] = [
     dates: "1er Août 2026",
     adresse: "Hôtel Holiday Inn, Cheraga, Alger",
     lieu: "Alger",
-    conditions_inscription: "Accès libre.",
+    conditions_inscription: "Entrée libre.",
     annee: 2026,
   },
   {
