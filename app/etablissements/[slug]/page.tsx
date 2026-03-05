@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -209,12 +208,29 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
           <section className="mb-8 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div className="flex items-start gap-4">
               {inst.logo_url ? (
-                <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-white shadow-sm">
-                  <Image src={inst.logo_url} alt="" fill className="object-contain" sizes="96px" />
+                <div className="relative flex h-20 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-100 bg-white p-2 shadow-sm">
+                  {/* img natif pour accepter toute URL logo sans config Next.js */}
+                  <img
+                    src={inst.logo_url}
+                    alt=""
+                    className="max-h-full max-w-full object-contain"
+                    width={96}
+                    height={80}
+                  />
                 </div>
               ) : (
-                <div className="flex h-20 w-24 shrink-0 items-center justify-center rounded-xl bg-white text-4xl shadow-sm">
-                  🎓
+                <div
+                  className="flex h-20 w-24 shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-slate-50 text-xl font-semibold text-slate-400 shadow-sm"
+                  aria-hidden
+                >
+                  {(() => {
+                    const clean = inst.name.replace(/\s*(?:·|-)\s*.*$/, "").trim();
+                    const words = clean.split(/\s+/).filter(Boolean);
+                    if (words.length >= 2) {
+                      return (words[0][0] + words[1][0]).toUpperCase();
+                    }
+                    return (clean.slice(0, 2) || "?").toUpperCase();
+                  })()}
                 </div>
               )}
               <div>

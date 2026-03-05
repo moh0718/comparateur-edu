@@ -21,7 +21,6 @@ export function InstitutionCard({ institution, className }: InstitutionCardProps
   const category = institution.category || "General";
   const categoryClass = CATEGORY_COLORS[category] || "bg-slate-100 text-slate-800";
   const logoUrl = institution.logo_url;
-  const pointsForts = institution.points_forts?.slice(0, 2) ?? [];
 
   return (
     <article
@@ -50,16 +49,6 @@ export function InstitutionCard({ institution, className }: InstitutionCardProps
           )}
         </div>
       </div>
-
-      {pointsForts.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-1">
-          {pointsForts.map((p) => (
-            <span key={p} className="rounded bg-slate-100 px-2 py-0.5 text-[11px] text-slate-700">
-              {p}
-            </span>
-          ))}
-        </div>
-      )}
 
       <div className="mt-3 flex items-center justify-between gap-2 border-t border-slate-100 pt-3">
         {institution.annual_cost_range && (
