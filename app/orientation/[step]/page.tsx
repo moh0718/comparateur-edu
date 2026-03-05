@@ -429,13 +429,10 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
         </form>
       </div>
 
-      <div className="flex justify-center gap-4">
+      <div className="flex justify-center">
         <button type="button" onClick={onPrev} className="text-sm font-medium text-slate-500 underline hover:text-slate-700">
           Précédent
         </button>
-        <Link href={ROUTES.etablissements} className="text-sm font-medium text-green-600 hover:underline">
-          Voir tout l&apos;annuaire
-        </Link>
       </div>
     </div>
   );
