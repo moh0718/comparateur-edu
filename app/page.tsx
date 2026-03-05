@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ScrollReveal } from "@/components/ScrollReveal";
+import { ScrollReveal, ScrollRevealStagger } from "@/components/ScrollReveal";
 import { SITE_NAME, SITE_DESCRIPTION, getBaseUrl } from "@/lib/seo";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 import { t } from "@/lib/i18n";
@@ -42,10 +42,9 @@ export default async function HomePage() {
 
       <main className="flex-1 px-5 pb-16 pt-8 sm:px-6 md:px-8 md:pb-24 md:pt-12">
         <div className="mx-auto max-w-7xl space-y-10 md:space-y-14">
-          {/* 1. Hero — positionnement : comparateur gratuit, décision simplifiée */}
-          <ScrollReveal variant="fade-up">
-            <section aria-labelledby="hero-title">
-              <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+          {/* 1. Hero — texte puis carte en 3D */}
+          <section aria-labelledby="hero-title" className="grid items-center gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+            <ScrollReveal variant="fade-up-strong">
               <div className="text-center md:text-left">
                 <p className="mx-auto mb-2 max-w-xl text-sm font-semibold uppercase tracking-wide text-emerald-600 md:mx-0">
                   {t(lang, "home.hero.badge")}
@@ -73,8 +72,8 @@ export default async function HomePage() {
                   </Button>
                 </div>
               </div>
-
-              {/* Visuel comparateur pour ajouter du peps */}
+            </ScrollReveal>
+            <ScrollReveal variant="card-3d" delay={180}>
               <div className="hidden justify-end md:flex">
                 <div className="relative w-full max-w-sm">
                   <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-emerald-200 via-sky-200 to-amber-100 blur-2xl" aria-hidden />
@@ -111,12 +110,11 @@ export default async function HomePage() {
                   </div>
                 </div>
               </div>
-            </div>
-            </section>
-          </ScrollReveal>
+            </ScrollReveal>
+          </section>
 
           {/* 2. Barre de recherche rapide */}
-          <ScrollReveal variant="fade-up" delay={80}>
+          <ScrollReveal variant="fade-up-strong" delay={100}>
             <section aria-label={t(lang, "home.search.aria")} className="rounded-2xl bg-white p-4 shadow-card md:p-5">
             <form action={ROUTES.etablissements} method="get" className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <input
@@ -175,53 +173,53 @@ export default async function HomePage() {
             </section>
           </ScrollReveal>
 
-          {/* 4. Pourquoi nous — tiers de confiance, décision simplifiée, échange valeur */}
+          {/* 4. Pourquoi nous — titre + cartes en cascade */}
           <ScrollReveal variant="slide-up-3d">
             <section
-            id="pourquoi"
-            aria-labelledby="pourquoi-title"
-            className="rounded-2xl bg-white p-6 shadow-card md:p-8"
-          >
-            <h2 id="pourquoi-title" className="mb-6 text-center font-display text-xl font-semibold text-slate-900 md:text-2xl">
-              {t(lang, "home.why.title")}
-            </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-center text-slate-700">
-              {t(lang, "home.why.lead")}
-            </p>
-            <div className="grid gap-8 md:grid-cols-3">
-              <article className="text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-2xl">
-                  ✓
-                </div>
-                <h3 className="font-semibold text-slate-900">Agrégateur d&apos;informations</h3>
-                <p className="mt-1 text-sm text-slate-700">
-                  {t(lang, "home.why.card1.text")}
-                </p>
-              </article>
-              <article className="text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-2xl">
-                  ⚖️
-                </div>
-                <h3 className="font-semibold text-slate-900">Comparatif transparent</h3>
-                <p className="mt-1 text-sm text-slate-700">
-                  {t(lang, "home.why.card2.text")}
-                </p>
-              </article>
-              <article className="text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-2xl">
-                  💬
-                </div>
-                <h3 className="font-semibold text-slate-900">Décision simplifiée</h3>
-                <p className="mt-1 text-sm text-slate-700">
-                  {t(lang, "home.why.card3.text")}
-                </p>
-              </article>
-            </div>
+              id="pourquoi"
+              aria-labelledby="pourquoi-title"
+              className="rounded-2xl bg-white p-6 shadow-card md:p-8"
+            >
+              <h2 id="pourquoi-title" className="mb-6 text-center font-display text-xl font-semibold text-slate-900 md:text-2xl">
+                {t(lang, "home.why.title")}
+              </h2>
+              <p className="mx-auto mb-8 max-w-2xl text-center text-slate-700">
+                {t(lang, "home.why.lead")}
+              </p>
+              <ScrollRevealStagger className="grid gap-8 md:grid-cols-3" staggerMs={140}>
+                <article className="text-center">
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-2xl">
+                    ✓
+                  </div>
+                  <h3 className="font-semibold text-slate-900">Agrégateur d&apos;informations</h3>
+                  <p className="mt-1 text-sm text-slate-700">
+                    {t(lang, "home.why.card1.text")}
+                  </p>
+                </article>
+                <article className="text-center">
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-2xl">
+                    ⚖️
+                  </div>
+                  <h3 className="font-semibold text-slate-900">Comparatif transparent</h3>
+                  <p className="mt-1 text-sm text-slate-700">
+                    {t(lang, "home.why.card2.text")}
+                  </p>
+                </article>
+                <article className="text-center">
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-2xl">
+                    💬
+                  </div>
+                  <h3 className="font-semibold text-slate-900">Décision simplifiée</h3>
+                  <p className="mt-1 text-sm text-slate-700">
+                    {t(lang, "home.why.card3.text")}
+                  </p>
+                </article>
+              </ScrollRevealStagger>
             </section>
           </ScrollReveal>
 
           {/* 5. CTA — formulaire = passage obligé pour la décision simplifiée */}
-          <ScrollReveal variant="scale" delay={50}>
+          <ScrollReveal variant="card-3d" delay={80}>
             <section
             aria-labelledby="cta-title"
             className="rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-10 text-center text-emerald-50 shadow-card md:px-10 md:py-12"
@@ -243,22 +241,23 @@ export default async function HomePage() {
             </section>
           </ScrollReveal>
 
-          {/* 6. Visuels — donner de la chaleur humaine */}
-          <ScrollReveal variant="slide-up-3d" delay={80}>
-            <section
+          {/* 6. Visuels — titre + images en cascade */}
+          <section
             aria-labelledby="visuels-title"
             className="rounded-2xl bg-white p-6 shadow-card md:p-8"
           >
-            <h2
-              id="visuels-title"
-              className="mb-4 text-center font-display text-xl font-semibold text-slate-900 md:text-2xl"
-            >
-              {t(lang, "home.visuals.title")}
-            </h2>
-            <p className="mx-auto mb-6 max-w-2xl text-center text-sm text-slate-600">
-              {t(lang, "home.visuals.text")}
-            </p>
-            <div className="grid gap-4 md:grid-cols-3">
+            <ScrollReveal variant="fade-up-strong">
+              <h2
+                id="visuels-title"
+                className="mb-4 text-center font-display text-xl font-semibold text-slate-900 md:text-2xl"
+              >
+                {t(lang, "home.visuals.title")}
+              </h2>
+              <p className="mx-auto mb-6 max-w-2xl text-center text-sm text-slate-600">
+                {t(lang, "home.visuals.text")}
+              </p>
+            </ScrollReveal>
+            <ScrollRevealStagger className="grid gap-4 md:grid-cols-3" staggerMs={120}>
               <figure className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
                 <img
                   src="/images/parents-orientation.jpg"
@@ -283,9 +282,8 @@ export default async function HomePage() {
                 />
                 <figcaption className="px-4 py-3 text-xs text-slate-700">{t(lang, "home.visuals.card3")}</figcaption>
               </figure>
-            </div>
-            </section>
-          </ScrollReveal>
+            </ScrollRevealStagger>
+          </section>
         </div>
       </main>
 
