@@ -297,7 +297,6 @@ export default function MentionsLegalesPage() {
               <li><strong className="text-slate-800">Email :</strong>{" "}
                 <a href={`mailto:${LEGAL_EMAIL}`} className="rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-slate-800 hover:bg-slate-100">{LEGAL_EMAIL}</a>
               </li>
-              <li><strong className="text-slate-800">Téléphone :</strong> {LEGAL_PHONE}</li>
             </ul>
           </section>
         </div>
