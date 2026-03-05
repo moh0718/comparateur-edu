@@ -50,10 +50,7 @@ export function InstitutionCard({ institution, className }: InstitutionCardProps
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between gap-2 border-t border-slate-100 pt-3">
-        {institution.annual_cost_range && (
-          <span className="text-sm font-medium text-slate-800">{institution.annual_cost_range}</span>
-        )}
+      <div className="mt-3 flex items-center justify-end border-t border-slate-100 pt-3">
         <Link
           href={`/etablissements/${institution.slug}`}
           className="shrink-0 rounded-full border border-emerald-600 bg-emerald-50 px-4 py-1.5 text-xs font-semibold text-emerald-900 shadow-sm hover:bg-emerald-100 hover:text-emerald-950"
