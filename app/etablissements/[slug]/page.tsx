@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `${getBaseUrl()}/etablissements/${slug}`;
   const description =
     data.description ??
-    `Fiche détaillée de ${data.name}, établissement scolaire${city ? ` situé à ${city}` : ""} : programmes, langues d'enseignement, budget estimatif et services pratiques.`;
+    `Fiche détaillée de ${data.name}, établissement scolaire${city ? ` situé à ${city}` : ""} : programmes, langues d'enseignement, frais d'inscription estimatifs et services pratiques.`;
 
   return {
     title,

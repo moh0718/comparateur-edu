@@ -137,11 +137,6 @@ export default function MentionsLegalesPage() {
             </h2>
             <ul className="space-y-2 text-sm text-slate-700">
               <li><strong className="text-slate-800">Nom du site :</strong> {LEGAL_SITE_NAME}</li>
-              <li><strong className="text-slate-800">Raison sociale :</strong> {LEGAL_RAISON_SOCIALE}</li>
-              <li><strong className="text-slate-800">Adresse :</strong> {LEGAL_ADDRESS}</li>
-              <li><strong className="text-slate-800">Numéro de registre de commerce :</strong> {LEGAL_RCCM}</li>
-              <li><strong className="text-slate-800">Numéro fiscal :</strong> {LEGAL_NIF}</li>
-              <li><strong className="text-slate-800">Téléphone :</strong> {LEGAL_PHONE}</li>
               <li><strong className="text-slate-800">Email :</strong>{" "}
                 <a href={`mailto:${LEGAL_EMAIL}`} className="text-green-700 underline hover:text-green-800">{LEGAL_EMAIL}</a>
               </li>
@@ -186,7 +181,7 @@ export default function MentionsLegalesPage() {
                 <strong className="text-slate-800">étudiants, des parents et des établissements eux‑mêmes</strong> en centralisant les informations utiles.
               </p>
               <p>
-                Concrètement, kompar - edu agit comme un <strong className="text-slate-800">comparateur et agrégateur d&apos;information</strong> : fiches établissements, critères pédagogiques et pratiques, fourchettes de budget, langues d&apos;enseignement, reconnaissance des diplômes, etc.
+                Concrètement, kompar - edu agit comme un <strong className="text-slate-800">comparateur et agrégateur d&apos;information</strong> : fiches établissements, critères pédagogiques et pratiques, fourchettes de frais d&apos;inscription, langues d&apos;enseignement, reconnaissance des diplômes, etc.
               </p>
               <p>
                 <strong className="text-slate-800">Important :</strong> le site ne remplace ni les services officiels du Ministère, ni les services d&apos;orientation classiques. Les informations sont fournies à titre indicatif et doivent toujours être vérifiées directement auprès des établissements concernés.

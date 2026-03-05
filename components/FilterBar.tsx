@@ -29,6 +29,7 @@ const CATEGORIES: FilterCategory[] = ["Superieur", "Langues", "Formation Pro", "
 const WILAYAS = ["Alger", "Blida", "Tipaza", "Boumerdès"];
 const LEVELS = ["Maternelle", "Primaire", "CEM", "Lycee"];
 const BUDGETS = [
+  { value: "gratuit", label: "Gratuit (public)" },
   { value: "moins200", label: "Moins 200K DA" },
   { value: "200-500", label: "200-500K DA" },
   { value: "500-1M", label: "500K-1M DA" },
@@ -115,7 +116,7 @@ export function FilterBar({ filters, onChange, className, openOnMobile = false }
         )}
 
         <div>
-          <label className="mb-2 block text-xs font-medium text-slate-600">Budget annuel</label>
+          <label className="mb-2 block text-xs font-medium text-slate-600">Frais d'inscription annuels</label>
           <select
             value={filters.budget}
             onChange={(e) => onChange({ budget: e.target.value })}

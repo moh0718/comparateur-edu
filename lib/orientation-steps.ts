@@ -13,7 +13,7 @@ export type StepConfig = {
   id: StepId;
   title?: string;
   question: string;
-  inputType?: "buttons" | "select" | "radio";
+  inputType?: "buttons" | "select" | "radio" | "checkboxes";
   selectPlaceholder?: string;
   options: Array<{ value: string; label: string; icon?: string }>;
 };
@@ -45,9 +45,10 @@ export const ORIENTATION_STEPS: Record<StepId, StepConfig> = {
   },
   3: {
     id: 3,
-    title: "Budget",
-    question: "Quel budget annuel approximatif (en DA) ?",
+    title: "Frais d'inscription",
+    question: "Quels frais d'inscription annuels approximatifs (en DA) ?",
     options: [
+      { value: "gratuit", label: "Gratuit (public)" },
       { value: "moins200", label: "Moins de 200 000 DA" },
       { value: "200-500", label: "200 000 - 500 000 DA" },
       { value: "500-1M", label: "500 000 - 1 000 000 DA" },
@@ -58,7 +59,7 @@ export const ORIENTATION_STEPS: Record<StepId, StepConfig> = {
     id: 4,
     title: "Critères",
     question: "Avez-vous des critères particuliers ?",
-    inputType: "radio",
+    inputType: "checkboxes",
     options: [
       { value: "mesrs", label: "Établissement reconnu MESRS" },
       { value: "bac_non_requis", label: "Bac non requis" },
@@ -100,16 +101,49 @@ export function isOrientationResultStep(step: number): boolean {
   return step > TOTAL_STEPS;
 }
 
+const CRITERE_LABELS: Record<string, string> = {
+  mesrs: "Établissement reconnu MESRS",
+  bac_non_requis: "Bac non requis",
+  internat: "Internat",
+  transport: "Transport scolaire",
+  bilingue: "Enseignement bilingue",
+  aucun: "Aucun en particulier",
+};
+
+const BUDGET_LABELS: Record<string, string> = {
+  gratuit: "Gratuit (public)",
+  moins200: "Moins de 200 000 DA",
+  "200-500": "200 000 - 500 000 DA",
+  "500-1M": "500 000 - 1 000 000 DA",
+  plus1M: "Plus d'1 million DA",
+};
+
 /** Construit le résumé des réponses pour le message WhatsApp. */
 export function buildOrientationWhatsAppMessage(answers: OrientationAnswers, whatsappNumber: string): string {
+  const critValuesRaw = answers.critere || "";
+  const critValues = critValuesRaw
+    .split(",")
+    .map((v) => v.trim())
+    .filter(Boolean);
+  const critLabels =
+    critValues.length > 0
+      ? critValues.map((v) => CRITERE_LABELS[v] || v)
+      : [];
+
+  const budgetLabel =
+    answers.budget && BUDGET_LABELS[answers.budget]
+      ? BUDGET_LABELS[answers.budget]
+      : answers.budget;
+
   const lines = [
     "📚 Orientation — Comparateur Edu",
     "────────────────────────────",
     answers.wilaya ? `📍 Wilaya : ${answers.wilaya}` : "",
     answers.category ? `🎓 Type : ${answers.category}` : "",
-    answers.budget ? `💰 Budget : ${answers.budget}` : "",
-    answers.critere ? `✓ Critère : ${answers.critere}` : "",
+    budgetLabel ? `💰 Frais d'inscription : ${budgetLabel}` : "",
+    critLabels.length ? `✓ Critère(s) : ${critLabels.join(", ")}` : "",
     answers.langue ? `🌍 Langue : ${answers.langue}` : "",
+    answers.recommended ? `🏫 Recommandations automatiques : ${answers.recommended}` : "",
     "────────────────────────────",
     "Je souhaite recevoir des recommandations d'établissements adaptées à mon profil.",
   ].filter(Boolean);

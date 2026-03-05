@@ -45,7 +45,8 @@ export function computeInstitutionScore(
   if (answers.budget && institution.annual_cost_range) {
     const range = institution.annual_cost_range;
     const w = 20;
-    if (answers.budget === "moins200" && /^\s*[0-9\s-]*\s*[0-9]{2,3}\s*000/.test(range)) score += w;
+    if (answers.budget === "gratuit" && /gratu/i.test(range)) score += w;
+    else if (answers.budget === "moins200" && /^\s*[0-9\s-]*\s*[0-9]{2,3}\s*000/.test(range)) score += w;
     else if (answers.budget === "200-500" && range.includes("-")) score += w;
     else if (answers.budget === "500-1M" || answers.budget === "plus1M") score += w * 0.8;
     weightLeft -= w;

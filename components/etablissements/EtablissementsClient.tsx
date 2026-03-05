@@ -27,10 +27,14 @@ function filterInstitutions(list: Institution[], f: FilterState): Institution[] 
     if (f.bilingue === true && (!inst.languages || !inst.languages.includes("Bilingue"))) return false;
     if (f.budget) {
       const range = inst.annual_cost_range ?? "";
-      if (f.budget === "moins200" && range && parseBudgetMax(range) > 200000) return false;
-      if (f.budget === "200-500" && range && (parseBudgetMax(range) < 200000 || parseBudgetMin(range) > 500000)) return false;
-      if (f.budget === "500-1M" && range && (parseBudgetMax(range) < 500000 || parseBudgetMin(range) > 1e6)) return false;
-      if (f.budget === "plus1M" && range && parseBudgetMin(range) < 1e6) return false;
+      if (f.budget === "gratuit") {
+        if (!range || !/gratu/i.test(range)) return false;
+      } else {
+        if (f.budget === "moins200" && range && parseBudgetMax(range) > 200000) return false;
+        if (f.budget === "200-500" && range && (parseBudgetMax(range) < 200000 || parseBudgetMin(range) > 500000)) return false;
+        if (f.budget === "500-1M" && range && (parseBudgetMax(range) < 500000 || parseBudgetMin(range) > 1e6)) return false;
+        if (f.budget === "plus1M" && range && parseBudgetMin(range) < 1e6) return false;
+      }
     }
     return true;
   });
@@ -88,7 +92,7 @@ export function EtablissementsClient({ institutions }: EtablissementsClientProps
             Annuaire des établissements
           </h1>
           <p className="mt-1 max-w-xl text-sm text-slate-600">
-            Filtrez par wilaya, budget et services pour explorer les écoles, ou laissez{" "}
+            Filtrez par wilaya, frais d&apos;inscription et services pour explorer les écoles, ou laissez{" "}
             <span className="font-semibold">kompar - edu</span> vous proposer une sélection personnalisée.
           </p>
         </div>
