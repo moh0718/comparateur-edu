@@ -64,7 +64,7 @@ export default function FichesMetiersPage() {
               Pourquoi cette section ?
             </h2>
             <p className="mt-3 text-sm text-slate-600 leading-relaxed sm:text-base">
-              Chaque fiche décrit ce que fait le professionnel au quotidien, la formation idéale (avec les établissements algériens quand c&apos;est possible),
+              L&apos;école passe, le métier reste. Faites le bon choix. Chaque fiche décrit ce que fait le professionnel au quotidien, la formation idéale (avec les établissements algériens quand c&apos;est possible),
               les salaires indicatifs du marché, le potentiel freelance et les perspectives d&apos;avenir. Les montants indiqués sont des estimations
               et varient selon la wilaya, l&apos;employeur, l&apos;expérience et le statut (salarié ou indépendant).
             </p>

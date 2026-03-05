@@ -89,14 +89,11 @@ export function EtablissementsClient({ institutions }: EtablissementsClientProps
       <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">
-            Annuaire des établissements
+            L&apos;annuaire d&apos;établissements le plus complet d&apos;Algérie, mis à jour pour vous.
           </h1>
           <p className="mt-1 max-w-xl text-sm text-slate-600">
             Filtrez par wilaya, frais d&apos;inscription et services pour explorer les écoles, ou laissez{" "}
             <span className="font-semibold">kompar - edu</span> vous proposer une sélection personnalisée.
-          </p>
-          <p className="mt-1 text-xs font-medium text-slate-500">
-            L&apos;annuaire le plus complet d&apos;Algérie, mis à jour pour vous.
           </p>
         </div>
         <div className="flex justify-start md:justify-end">
