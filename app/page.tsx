@@ -11,7 +11,7 @@ import { t } from "@/lib/i18n";
 import type { Lang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Comparateur gratuit — Décision simplifiée | Écoles & universités en Algérie",
+  title: "Plateforme d'orientation & comparateur gratuit | Écoles & universités en Algérie",
   description: SITE_DESCRIPTION,
   keywords: ["comparateur gratuit", "décision simplifiée", "écoles Alger", "orientation Algérie", "Alger", "Blida", "Tipaza", "Boumerdès"],
   openGraph: {

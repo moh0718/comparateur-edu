@@ -16,11 +16,9 @@ const fr: Messages = {
   "header.tagline":
     "1er comparateur neutre d'établissements scolaires en Algérie — publics et privés, données vérifiées, filtres avancés et recommandations gratuites par WhatsApp.",
   "home.hero.badge": "Comparateur gratuit · Tiers de confiance",
-  "home.hero.subtitle":
-    "Plateforme d'orientation scolaire et professionnelle pour mieux choisir vos études et votre avenir en Algérie.",
   "home.hero.title": "Une décision simplifiée pour vos études en Algérie",
   "home.hero.subtitle":
-    "Agrégateur d'informations vérifiées : tableaux comparatifs, filtres dynamiques. Alger, Blida, Tipaza, Boumerdès.",
+    "Plateforme d'orientation scolaire et professionnelle pour mieux choisir vos études et votre avenir en Algérie.",
   "home.hero.primaryCta": "Trouver mon école",
   "home.hero.secondaryCta": "Comparer les établissements",
   "home.search.aria": "Recherche rapide",
@@ -31,7 +29,7 @@ const fr: Messages = {
   "home.categories.title": "Catégories d'établissements",
   "home.why.title": "Pourquoi kompar - edu ?",
   "home.why.lead":
-    "On ne vend pas le rêve : on vous aide à simplifier votre décision. Le formulaire d'orientation est l'échange valeur/information pour mériter une recommandation personnalisée.",
+    "On ne vend pas le rêve : on vous aide à clarifier vos options. Plateforme d'orientation scolaire et professionnelle, connectée à l'offre réelle d'enseignement en Algérie.",
   "home.why.card1.title": "Agrégateur d'informations",
   "home.why.card1.text":
     "Données vérifiées (sites officiels, Google Maps). Pas d'annuaire statique : tableaux comparatifs et filtres dynamiques.",
@@ -40,10 +38,10 @@ const fr: Messages = {
     "Comparez côte à côte : coût, reconnaissance MESRS, langues, options. Outils de simulation pour affiner votre choix.",
   "home.why.card3.title": "Décision simplifiée",
   "home.why.card3.text":
-    "Quelques questions → recommandations personnalisées. Échange de valeur : vous donnez vos critères, on vous oriente. Gratuit.",
+    "Quelques questions → recommandations personnalisées. Vous partagez vos critères, nous vous orientons gratuitement via WhatsApp.",
   "home.cta.title": "Décision simplifiée : trouvez votre école en quelques clics",
   "home.cta.text":
-    "Le formulaire est le passage pour mériter une recommandation personnalisée. Échange valeur/information, pas de contrainte.",
+    "Le formulaire vous permet de recevoir une recommandation personnalisée, envoyée gratuitement sur WhatsApp. Aucun stockage de données sur le site.",
   "home.cta.button": "Trouver mon école",
   "home.visuals.title": "L'éducation en Algérie, enfin simplifiée.",
   "home.visuals.text":
@@ -66,7 +64,7 @@ const fr: Messages = {
   "rankings.hero.badge": "Données issues de sources officielles internationales — mises à jour 2025/2026",
   "rankings.hero.title": "Rankings",
   "rankings.hero.subtitle":
-    "Où se situent les universités algériennes dans le monde ? Une vue claire et honnête des principaux classements internationaux.",
+    "Où se situent les universités algériennes dans le monde ? Une vue claire et honnête des principaux classements internationaux, appuyée sur l'annuaire le plus complet d'Algérie, mis à jour pour vous.",
   "rankings.hero.cta.primary": "Trouver mon école",
   "rankings.hero.cta.share": "Partager cette page",
   "rankings.hero.highlight.title": "Fait marquant 2026",

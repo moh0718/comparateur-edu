@@ -1,13 +1,13 @@
 /**
- * SEO & GEO — Comparateur Edu.
- * Positionnement : comparateur gratuit = agrégateur d'informations = tiers de confiance.
- * Décision simplifiée (pas de vente de "rêve") — formulaire = échange de valeur.
+ * SEO & GEO — kompar - edu.
+ * Positionnement : plateforme d'orientation scolaire et professionnelle + comparateur gratuit = agrégateur d'informations = tiers de confiance.
+ * Décision simplifiée (pas de vente de "rêve") — recommandations personnalisées envoyées sur WhatsApp, sans stockage de données sur le site.
  */
 
 export const SITE_NAME = "kompar - edu";
 
 export const SITE_DESCRIPTION =
-  "Comparateur gratuit d'établissements en Algérie. Agrégateur d'informations vérifiées : tableaux comparatifs, filtres dynamiques, décision simplifiée. Alger, Blida, Tipaza, Boumerdès.";
+  "Plateforme d'orientation scolaire et professionnelle en Algérie : portail indépendant de référence centralisant fiches métiers, annuaire des établissements et comparateur gratuit d'établissements. Agrégateur d'informations vérifiées pour une décision simplifiée. Alger, Blida, Tipaza, Boumerdès.";
 
 /** Mots-clés SEO : positionnement + géo (wilayas, Algérie). */
 export const SITE_KEYWORDS = [
