@@ -10,10 +10,10 @@ import { ContactForm } from "./ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contactez kompar - edu pour toute question sur l'orientation, les établissements ou les fiches métiers en Algérie. Réponse rapide.",
+    "Une question sur l'orientation, les établissements ou les fiches métiers en Algérie ? Notre équipe vous répond rapidement.",
   openGraph: {
     title: `Contact | ${SITE_NAME}`,
-    description: "Contactez-nous pour toute question ou remarque.",
+    description: "Une question sur l'orientation ou les établissements ? Notre équipe vous répond.",
     url: `${getBaseUrl()}/contact`,
   },
   alternates: { canonical: `${getBaseUrl()}/contact` },
@@ -36,6 +36,9 @@ export default async function ContactPage() {
             </h1>
             <p className="mt-2 text-center text-sm text-slate-600 sm:text-base">
               Une question spécifique ? Notre équipe est là pour vous.
+            </p>
+            <p className="mt-2 text-center text-xs text-slate-500 sm:text-sm">
+              Posez vos questions sur les écoles, les formations ou l&apos;orientation. Réponse sous 48 h.
             </p>
 
             <ContactForm />

@@ -93,6 +93,9 @@ export function EtablissementsClient({ institutions }: EtablissementsClientProps
             <br />
             mis à jour pour vous.
           </h1>
+          <p className="mt-3 max-w-2xl text-sm text-slate-600 sm:text-base">
+            Écoles privées, universités, formations pro et établissements publics : comparez les formations, frais d&apos;inscription et critères (Alger, Blida, Tipaza, Boumerdès). Filtrez par wilaya, catégorie et services pour trouver l&apos;établissement qui vous correspond.
+          </p>
         </div>
       </div>
 

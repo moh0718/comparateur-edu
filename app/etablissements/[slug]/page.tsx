@@ -99,9 +99,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const city = [data.commune, data.wilaya].filter(Boolean).join(", ");
   const title = `${data.name} – Fiche établissement scolaire${city ? ` à ${city}` : ""}`;
   const url = `${getBaseUrl()}/etablissements/${slug}`;
-  const description =
+  const rawDescription =
     data.description ??
     `Fiche détaillée de ${data.name}, établissement scolaire${city ? ` situé à ${city}` : ""} : programmes, langues d'enseignement, frais d'inscription estimatifs et services pratiques.`;
+  const description = rawDescription.length > 158 ? rawDescription.slice(0, 155).trim() + "…" : rawDescription;
 
   return {
     title,

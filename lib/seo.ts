@@ -7,7 +7,11 @@
 export const SITE_NAME = "kompar - edu";
 
 export const SITE_DESCRIPTION =
-  "Plateforme d'orientation scolaire et professionnelle en Algérie : portail indépendant de référence centralisant fiches métiers, annuaire des établissements et comparateur gratuit d'établissements. Agrégateur d'informations vérifiées pour une décision simplifiée. Alger, Blida, Tipaza, Boumerdès.";
+  "Plateforme d'orientation scolaire et professionnelle en Algérie : portail indépendant de référence centralisant fiches métiers, annuaire des établissements et comparateur gratuit d'établissements. Agrégateur d'informations vérifiées pour une décision simplifiée. Alger, Blida, Tipaza, Boumerdès";
+
+/** Version courte pour meta description (≈ 150 caractères, incitation au clic). */
+export const SITE_DESCRIPTION_META =
+  "Comparateur d'écoles et établissements en Algérie. Annuaire, fiches métiers et orientation personnalisée. Alger, Blida, Tipaza, Boumerdès.";
 
 /** Mots-clés SEO : positionnement + géo (wilayas, Algérie). */
 export const SITE_KEYWORDS = [
@@ -28,7 +32,9 @@ export const SITE_KEYWORDS = [
 export const GEO_WILAYAS = ["Alger", "Blida", "Tipaza", "Boumerdès"] as const;
 
 export function getBaseUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL || "https://comparateur-edu.vercel.app";
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "https://comparateur-edu.vercel.app";
 }
 
 export function absoluteUrl(path: string): string {

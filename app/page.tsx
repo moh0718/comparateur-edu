@@ -5,18 +5,18 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal, ScrollRevealStagger } from "@/components/ScrollReveal";
-import { SITE_NAME, SITE_DESCRIPTION, getBaseUrl } from "@/lib/seo";
+import { SITE_NAME, SITE_DESCRIPTION_META, getBaseUrl } from "@/lib/seo";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 import { t } from "@/lib/i18n";
 import type { Lang } from "@/lib/i18n";
 
 export const metadata: Metadata = {
-  title: "Plateforme d'orientation & comparateur gratuit | Écoles & universités en Algérie",
-  description: SITE_DESCRIPTION,
+  title: "Orientation écoles Algérie — Comparateur établissements",
+  description: SITE_DESCRIPTION_META,
   keywords: ["comparateur gratuit", "décision simplifiée", "écoles Alger", "orientation Algérie", "Alger", "Blida", "Tipaza", "Boumerdès"],
   openGraph: {
-    title: `${SITE_NAME} | Comparateur gratuit — Décision simplifiée en Algérie`,
-    description: SITE_DESCRIPTION,
+    title: "Orientation écoles Algérie — Comparateur établissements",
+    description: SITE_DESCRIPTION_META,
     url: getBaseUrl(),
   },
   alternates: { canonical: getBaseUrl() },

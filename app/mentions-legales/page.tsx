@@ -8,10 +8,10 @@ import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 export const metadata: Metadata = {
   title: "Mentions légales",
   description:
-    "Mentions légales de kompar - edu : éditeur, hébergement, objet du site d'orientation scolaire en Algérie. Aucune donnée personnelle stockée — mise en relation exclusivement par WhatsApp avec consentement.",
+    "Mentions légales de kompar - edu : éditeur, hébergement, objet du site d'orientation scolaire en Algérie.",
   openGraph: {
     title: `Mentions légales | ${SITE_NAME}`,
-    description: "Éditeur, hébergeur, objet du comparateur d'établissements scolaires et informations légales.",
+    description: "Mentions légales : éditeur, hébergement et objet du site d'orientation en Algérie.",
     url: `${getBaseUrl()}/mentions-legales`,
   },
   alternates: { canonical: `${getBaseUrl()}/mentions-legales` },

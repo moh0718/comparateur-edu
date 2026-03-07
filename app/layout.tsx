@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Plus_Jakarta_Sans, DM_Serif_Display } from "next/font/google";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_KEYWORDS, getBaseUrl } from "@/lib/seo";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_DESCRIPTION_META, SITE_KEYWORDS, getBaseUrl } from "@/lib/seo";
 import "./globals.css";
 import { ConsentModal } from "@/components/ConsentModal";
 import { I18nProvider } from "@/components/i18n/I18nProvider";
@@ -25,10 +25,10 @@ const fontDisplay = DM_Serif_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: `${SITE_NAME} | Comparateur gratuit — Décision simplifiée en Algérie`,
+    default: `Orientation écoles Algérie — ${SITE_NAME}`,
     template: `%s | ${SITE_NAME}`,
   },
-  description: SITE_DESCRIPTION,
+  description: SITE_DESCRIPTION_META,
   keywords: SITE_KEYWORDS,
   authors: [{ name: SITE_NAME, url: baseUrl }],
   creator: SITE_NAME,
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: baseUrl,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Comparateur gratuit — Décision simplifiée en Algérie`,
-    description: SITE_DESCRIPTION,
+    title: `Orientation écoles Algérie — ${SITE_NAME}`,
+    description: SITE_DESCRIPTION_META,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Comparateur gratuit — Décision simplifiée en Algérie`,
-    description: SITE_DESCRIPTION,
+    title: `Orientation écoles Algérie — ${SITE_NAME}`,
+    description: SITE_DESCRIPTION_META,
   },
   robots: {
     index: true,

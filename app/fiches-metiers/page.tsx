@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Fiches métiers — Orientation et débouchés en Algérie",
   description:
-    "Fiches métiers pour l'orientation en Algérie : description, missions, diplômes requis, salaires indicatifs et perspectives. Santé, ingénierie, informatique, droit, commerce et plus.",
+    "Fiches métiers pour l'orientation en Algérie : missions, diplômes, salaires indicatifs. Santé, ingénierie, informatique, droit, commerce.",
   keywords: [
     "fiches métiers",
     "orientation Algérie",
