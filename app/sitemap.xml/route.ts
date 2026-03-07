@@ -12,15 +12,17 @@ function escapeXml(s: string): string {
     .replace(/'/g, "&apos;");
 }
 
-function toIso(date: Date): string {
-  return date.toISOString().replace(/\.\d{3}Z$/, "Z");
+function toIso(date: Date | string | undefined): string {
+  if (!date) return new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
+  const d = typeof date === "string" ? new Date(date) : date;
+  return d.toISOString().replace(/\.\d{3}Z$/, "Z");
 }
 
 export async function GET() {
   const entries = await getSitemapEntries();
   const urlElements = entries.map((entry) => {
     const loc = escapeXml(entry.url.trim());
-    const lastmod = entry.lastModified ? toIso(entry.lastModified) : toIso(new Date());
+    const lastmod = toIso(entry.lastModified);
     const changefreq = entry.changeFrequency ?? "weekly";
     const priority = entry.priority ?? 0.8;
     return `<url><loc>${loc}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
