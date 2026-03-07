@@ -20,14 +20,25 @@ function toIso(date: Date | string | undefined): string {
 
 export async function GET() {
   const entries = await getSitemapEntries();
-  const urlElements = entries.map((entry) => {
-    const loc = escapeXml(entry.url.trim());
-    const lastmod = toIso(entry.lastModified);
-    const changefreq = entry.changeFrequency ?? "weekly";
-    const priority = entry.priority ?? 0.8;
-    return `<url><loc>${loc}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
-  });
-  const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="${XML_NS}">${urlElements.join("")}</urlset>`;
+  const xmlLines = entries.map((e) => {
+    const url = escapeXml(e.url.replace(/[\r\n\s]+/g, "").trim());
+    const lastmod = toIso(e.lastModified);
+    const freq = e.changeFrequency ?? "weekly";
+    const priority = e.priority ?? 0.8;
+    return (
+      "<url>" +
+      "<loc>" + url + "</loc>" +
+      "<lastmod>" + lastmod + "</lastmod>" +
+      "<changefreq>" + freq + "</changefreq>" +
+      "<priority>" + priority + "</priority>" +
+      "</url>"
+    );
+  }).join("");
+  const xml =
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+    "<urlset xmlns=\"" + XML_NS + "\">" +
+    xmlLines +
+    "</urlset>";
   return new NextResponse(xml, {
     headers: {
       "Content-Type": "application/xml",
