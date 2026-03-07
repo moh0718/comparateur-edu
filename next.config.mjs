@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: "/google48a9bad5586aa6d8.html",
+        destination: "/api/google-verification",
+      },
+    ];
+  },
   async redirects() {
     return [
       { source: "/comparatif", destination: "/comparer", permanent: true },
