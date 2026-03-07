@@ -25,7 +25,7 @@ async function getEtablissementSlugs(): Promise<string[]> {
   return (data ?? []).map((r) => r.slug).filter(Boolean);
 }
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
   const base = getBaseUrl();
 
   const staticPages: MetadataRoute.Sitemap = [
