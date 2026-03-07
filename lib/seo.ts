@@ -31,10 +31,11 @@ export const SITE_KEYWORDS = [
 /** Wilayas ciblées pour GEO. */
 export const GEO_WILAYAS = ["Alger", "Blida", "Tipaza", "Boumerdès"] as const;
 
+/** URL canonique du site (sitemap, canonical, openGraph). Ne pas surcharger avec une autre valeur. */
+const CANONICAL_BASE = "https://comparateur-edu-site.vercel.app";
+
 export function getBaseUrl(): string {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "https://comparateur-edu-site.vercel.app";
+  return CANONICAL_BASE;
 }
 
 export function absoluteUrl(path: string): string {
