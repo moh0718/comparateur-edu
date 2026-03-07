@@ -91,6 +91,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={currentLang} dir={dir} className={`${fontSans.variable} ${fontDisplay.variable}`}>
       <head>
+        <meta name="google-site-verification" content="google48a9bad5586aa6d8" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }} />
       </head>
