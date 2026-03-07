@@ -34,7 +34,7 @@ export const GEO_WILAYAS = ["Alger", "Blida", "Tipaza", "Boumerdès"] as const;
 export function getBaseUrl(): string {
   if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "https://comparateur-edu.vercel.app";
+  return "https://comparateur-edu-site.vercel.app";
 }
 
 export function absoluteUrl(path: string): string {

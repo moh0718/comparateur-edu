@@ -714,7 +714,7 @@ export function RankingsClient() {
       const url =
         typeof window !== "undefined"
           ? window.location.href
-          : "https://comparateur-edu.vercel.app/rankings";
+          : "https://comparateur-edu-site.vercel.app/rankings";
       if (navigator.share) {
         await navigator.share({ title: "Rankings – kompar - edu", url });
       } else if (navigator.clipboard) {
