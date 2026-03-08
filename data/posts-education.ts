@@ -1174,4 +1174,75 @@ Les étudiants binationaux accèdent au système en tant qu'étudiants algérien
 
 Conseil : bien documenter son parcours dès la première année — relevés de notes, attestations, traductions certifiées — facilite considérablement les procédures de reconnaissance à l'étranger par la suite.`,
   },
+  {
+    slug: "hijra-enfants-transition-scolaire-algerie",
+    title: "Faire la hijra avec des enfants : comment bien préparer la transition scolaire",
+    excerpt: "Adaptation selon l'âge, préparation linguistique et émotionnelle : les conseils pratiques pour une installation réussie en Algérie.",
+    category: "Vie pratique",
+    date: "2026-03-02",
+    imageUrl: image("22"),
+    source: "manual",
+    tags: ["hijra", "diaspora", "transition scolaire", "arabe classique"],
+    relatedSlugs: [
+      "systeme-scolaire-algerien-guide-diaspora",
+      "ecoles-privees-bilingues-programme-international-alger",
+      "bac-algerien-ou-programme-international-etudes-europe",
+    ],
+    content: `Vous avez pris la décision, ou vous y réfléchissez sérieusement. La hijra mûrit depuis des mois. Et comme beaucoup de parents, une question revient : comment les enfants vont-ils vivre cette transition à l'école ?
+
+Des centaines de familles sont passées par là avant vous. Leur expérience collective dessine des repères utiles, sans romantisme inutile.
+
+Avant 10 ans : une adaptation naturelle
+Les familles qui ont vécu ce passage s'accordent sur un point : plus l'enfant est jeune, plus l'adaptation est fluide et rapide. Un enfant de 6 ou 7 ans intégré dans une bonne école privée algérienne s'adapte généralement en quelques mois. La langue, loin d'être un obstacle à cet âge, devient une opportunité — celle de grandir naturellement trilingue, en arabe, français et anglais.
+
+Le vrai travail à cet âge est émotionnel plus que scolaire. Perdre ses repères, ses amis, ses habitudes demande du temps et de l'attention. Maintenir les liens avec la famille en France, créer rapidement de nouveaux liens dans le quartier, et laisser l'enfant s'approprier son nouvel environnement à son rythme fait toute la différence.
+
+Entre 10 et 14 ans : anticiper et accompagner
+C'est l'âge qui demande le plus de préparation. L'identité se construit, les amitiés deviennent centrales, et le changement est vécu plus intensément. La stratégie que les familles expérimentées recommandent : faire découvrir l'Algérie plusieurs étés consécutifs avant le départ définitif, impliquer l'enfant dans la décision autant que possible, et choisir une école habituée à accueillir des enfants de la diaspora — elles savent gérer cette transition et accompagner ces profils particuliers.
+
+Sur le plan scolaire, une école à double programme français-algérien est souvent le meilleur choix à cet âge. Elle permet de préserver le niveau acquis tout en s'intégrant progressivement dans l'environnement local.
+
+Après 15 ans : la continuité avant tout
+Pour un lycéen en plein cycle terminal, la continuité du programme est prioritaire. Les familles dans cette situation optent souvent pour le Lycée International Alexandre Dumas pour maintenir le programme français, ou pour le CNED en attendant de trouver la bonne structure. Quelques familles choisissent aussi de laisser l'aîné terminer son lycée en France, le temps que l'installation soit stabilisée — une décision difficile mais parfois la plus sage scolairement.
+
+La préparation la plus utile avant le départ
+Presque unanimement, les familles qui ont vécu cette transition citent la même priorité : commencer l'arabe classique bien avant le départ. C'est la clé pour que l'enfant ne soit pas déstabilisé dès les premières semaines. Six mois de cours sérieux font une différence énorme. Des ressources de qualité existent en ligne depuis n'importe quel pays.
+
+Astuce : rejoindre les groupes de familles de la diaspora installées en Algérie avant même de partir. Ces communautés partagent leurs expériences, recommandent des écoles et peuvent mettre en contact avec des parents dont les enfants ont vécu la même transition avec succès.`,
+  },
+  {
+    slug: "opportunites-business-education-privee-algerie",
+    title: "Les opportunités de business dans l'éducation privée en Algérie",
+    excerpt: "Écoles agréées, centres de langues, e-learning : panorama des secteurs porteurs pour les investisseurs de la diaspora.",
+    category: "Écoles privées",
+    date: "2026-03-02",
+    imageUrl: image("23"),
+    source: "manual",
+    tags: ["business", "investissement", "écoles privées", "digital"],
+    relatedSlugs: [
+      "ecoles-privees-alger-guide-tarifs-inscriptions-2026",
+      "formation-professionnelle-privee-filieres-qui-embauchent-algerie",
+    ],
+    content: `Il y a des secteurs où le timing est favorable. En Algérie, l'éducation privée en est un. La demande est structurelle, la classe moyenne aspire à mieux pour ses enfants, et les acteurs privés structurés restent encore peu nombreux face à l'ampleur du marché. Pour un entrepreneur de la diaspora qui veut investir dans son pays d'origine, c'est un terrain intéressant.
+
+Pourquoi le marché est porteur
+L'Algérie compte plus de 10 millions d'élèves scolarisés. Une partie croissante des familles urbaines cherche une alternative privée de qualité, avec des classes à effectifs réduits, des programmes bilingues et des infrastructures modernes. La demande de compétences en langues étrangères explose avec l'ouverture économique progressive du pays et les aspirations des nouvelles générations.
+
+L'école privée agréée
+Ouvrir une école primaire ou un collège privé est le projet le plus structurant. La procédure d'agrément passe par le ministère de l'Éducation Nationale et demande de la préparation — comptez entre 12 et 24 mois. Il faut des locaux conformes, un projet pédagogique solide et un directeur pédagogique diplômé. Le modèle économique repose sur des frais de scolarité mensuels dont le niveau varie selon le standing et la ville. À Alger et Oran, les établissements bilingues bien positionnés affichent complet chaque rentrée.
+
+L'école de langues
+C'est la porte d'entrée la plus accessible pour qui veut démarrer rapidement. La demande d'anglais est portée par des générations qui voient cette langue comme la clé de l'employabilité internationale. Les centres de préparation aux certifications reconnues (IELTS, TOEFL, DELF, Cambridge) fonctionnent très bien dans les grandes agglomérations. Le modèle est léger, peu capitalistique et facilement reproductible d'une ville à l'autre.
+
+Le soutien scolaire structuré
+Le soutien scolaire privé est une pratique culturellement ancrée en Algérie. Les familles y consacrent un budget réel, mais le marché reste très artisanal et sans acteur dominant structuré. Créer un centre organisé avec des professeurs recrutés et formés, un suivi de progression clair et une communication professionnelle répond à une demande qui existe déjà — elle attend simplement une offre à la hauteur.
+
+Le digital éducatif
+Le e-learning adapté au programme algérien est encore peu développé. Une plateforme de cours en ligne alignée sur le curriculum national, avec des professeurs de qualité, des contenus en arabe et en français, et un modèle d'abonnement accessible représente un potentiel considérable. L'avantage de ce modèle : il peut se construire depuis la diaspora, sans résider en Algérie au départ, et toucher l'ensemble du territoire national dès le lancement.
+
+Ce qu'il faut garder en tête
+Le cadre réglementaire algérien évolue, et le secteur éducatif est soumis à des règles spécifiques. Travailler avec un associé local solide qui connaît bien l'environnement administratif est une condition de succès importante. La patience est également non-négociable : l'Algérie récompense ceux qui construisent dans la durée avec sérieux et cohérence.
+
+Le retour d'expérience de ceux qui ont réussi est constant : commencer avec un seul établissement, en faire une référence locale, puis développer. Une réputation bien construite dans l'éducation vaut plus que n'importe quel budget marketing.`,
+  },
 ];
