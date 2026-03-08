@@ -1361,4 +1361,74 @@ Tableau Récapitulatif : Où aller selon votre besoin ?
 Conseil d'Expert pour la Diaspora
 Les inscriptions pour les conservatoires et les clubs de sport publics se font souvent en septembre. Préparez un dossier avec : photos d'identité, extrait de naissance et surtout un certificat médical d'aptitude. Pour le privé, les inscriptions sont ouvertes toute l'année mais les meilleures places s'envolent dès juin.`,
   },
+  {
+    slug: "etudes-etranger-depuis-algerie-passerelles-formation",
+    title: "Études à l'Étranger depuis l'Algérie : Les Passerelles de Formation (CNED, IFA, British Council)",
+    excerpt: "CNED, Bac français en candidat libre, Institut Français et British Council : comment construire un parcours international reconnu depuis l'Algérie.",
+    category: "Orientation",
+    date: "2026-03-02",
+    imageUrl: image("27"),
+    source: "manual",
+    tags: ["études à l'étranger", "CNED", "Institut Français", "British Council", "Bac français"],
+    relatedSlugs: [
+      "bac-algerien-ou-programme-international-etudes-europe",
+      "ecoles-privees-bilingues-programme-international-alger",
+      "etudier-en-algerie-depuis-la-france-guide",
+    ],
+    content: `Pour les familles de la diaspora ou les expatriés installés en Algérie, maintenir un lien avec les standards éducatifs internationaux est une priorité. Que ce soit pour une mobilité future vers l'Europe, l'Amérique du Nord ou pour valider un niveau d'excellence, plusieurs organismes officiels permettent de construire un parcours reconnu mondialement depuis le sol algérien.
+
+1. Le CNED : L'école française à distance
+Le Centre National d'Enseignement à Distance (CNED) est l'organisme public français de référence. Il permet de suivre le programme de l'Éducation Nationale française depuis n'importe où en Algérie.
+
+Pour qui ? Les enfants en instruction en famille (école à la maison) ou ceux inscrits dans le système algérien souhaitant une "double diplomation" officieuse.
+
+Deux formules principales :
+• Classe Complète : L'élève suit toutes les matières. Cela nécessite une grande discipline parentale.
+• Scolarité Complémentaire Internationale (SCI) : L'élève suit uniquement 3 matières fondamentales (souvent Français, Histoire-Géo et une autre) en plus de son école locale.
+
+Organisation des cours : C'est essentiellement du e-learning asynchrone. L'élève accède à une plateforme avec des supports PDF, des vidéos et des exercices interactifs. Des devoirs sont à envoyer régulièrement pour correction par des professeurs en France. Il n'y a pas de cours en visio "one-to-one" par défaut, mais des forums d'échange avec les enseignants.
+
+Inscription : Directement sur le site du CNED. La campagne d'inscription débute généralement en juillet pour une rentrée en septembre.
+
+2. Le Bac Français en Candidat Libre (via le LIAD)
+Il est tout à fait possible de passer le Baccalauréat français en Algérie sans être scolarisé au Lycée International Alexandre Dumas (LIAD).
+
+Le concept : On s'inscrit en tant que Candidat Libre (non scolarisé dans l'établissement).
+Administratif : L'inscription se fait sur la plateforme Cyclades du ministère français de l'Éducation. Le LIAD (Alger, Oran ou Annaba) sert uniquement de centre d'examen physique.
+Calendrier : Les inscriptions ouvrent souvent entre octobre et novembre. Les épreuves ont lieu en juin, selon le calendrier de la zone Afrique.
+Diplôme obtenu : Le Baccalauréat général français, identique à celui délivré en France.
+
+3. L'Institut Français d'Algérie (IFA) : Langue et Mobilité
+L'IFA (réparti sur Alger, Oran, Constantine, Annaba et Tlemcen) est le passage obligé pour certifier son niveau de français et entamer des études supérieures en France.
+
+Les Certifications (DELF/DALF/TCF) :
+• Le DELF/DALF sont des diplômes valables à vie.
+• Le TCF est un test de niveau valable 2 ans, exigé pour la procédure Campus France.
+
+L'Espace Campus France : Situé au sein de l'IFA, c'est l'organisme qui gère la procédure "Études en France". Il guide les étudiants pour leurs vœux en université, les entretiens pédagogiques et la préparation du dossier de visa étudiant.
+
+Organisation : Cours en présentiel (généralement en fin de journée ou le week-end) ou ateliers intensifs.
+
+4. Le British Council : L'ouverture anglophone
+Pour ceux qui visent le Canada anglophone, les USA ou le Royaume-Uni, le British Council à Alger est l'institution de référence.
+
+Utilité : Préparer et passer l'IELTS, le test d'anglais le plus reconnu au monde pour l'immigration et les études.
+Services : Ils proposent des ressources de préparation en ligne et des sessions d'examen régulières tout au long de l'année.
+Format : L'examen peut se faire sur papier ou sur ordinateur dans leurs centres agréés.
+
+Synthèse des parcours possibles
+
+| Organisme | Public visé | Diplôme / Certificat | Type d'enseignement |
+|---|---|---|---|
+| CNED | Primaire / Secondaire | Attestation de niveau | E-learning autonome |
+| LIAD (Examens) | Lycéens | Baccalauréat Français | Examen final uniquement |
+| IFA | Étudiants / Adultes | TCF, DELF, DALF | Présentiel ou hybride |
+| British Council | Étudiants / Professionnels | IELTS | Certification de niveau |
+| Campus France | Candidats L1/L3/Master | Admission universitaire | Accompagnement admin |
+
+Pourquoi est-ce utile ?
+• Flexibilité : Vous pouvez vivre en Algérie tout en restant "dans le moule" européen ou international.
+• Sécurité : Si la famille doit repartir à l'étranger, l'enfant n'a aucun retard de niveau ou de reconnaissance administrative.
+• Coût : Ces solutions (hors LIAD scolarisé) sont souvent plus souples financièrement tout en offrant le même diplôme final.`,
+  },
 ];
