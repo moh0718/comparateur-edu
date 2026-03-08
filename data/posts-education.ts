@@ -1245,4 +1245,120 @@ Le cadre réglementaire algérien évolue, et le secteur éducatif est soumis à
 
 Le retour d'expérience de ceux qui ont réussi est constant : commencer avec un seul établissement, en faire une référence locale, puis développer. Une réputation bien construite dans l'éducation vaut plus que n'importe quel budget marketing.`,
   },
+  {
+    slug: "etudier-en-algerie-depuis-la-france-guide",
+    title: "Envoyer son enfant étudier en Algérie depuis la France : ce qu'il faut prévoir",
+    excerpt: "Inscription universitaire, logement, santé et équivalences : le guide pratique pour les parents de la diaspora.",
+    category: "Orientation",
+    date: "2026-03-02",
+    imageUrl: image("24"),
+    source: "manual",
+    tags: ["études en Algérie", "diaspora", "université", "équivalence"],
+    relatedSlugs: [
+      "systeme-scolaire-algerien-guide-diaspora",
+      "etudes-medecine-algerie-guide-diaspora",
+      "hijra-enfants-transition-scolaire-algerie",
+    ],
+    content: `Ce scénario est plus fréquent qu'on ne le pense. Des parents installés en France qui décident d'envoyer leur fils ou leur fille faire ses études en Algérie — souvent l'université, parfois déjà le lycée. Parfois pour des raisons de valeurs, parfois pour des raisons économiques, souvent les deux. Si vous envisagez cette option, voici les points concrets à anticiper.
+
+L'inscription à l'université
+Les universités publiques algériennes sont accessibles aux étudiants algériens, y compris les binationaux. L'inscription se fait via le portail national, avec le baccalauréat algérien comme point d'entrée principal. Si votre enfant a passé son bac en France, une procédure d'équivalence auprès du ministère de l'Enseignement Supérieur algérien est nécessaire — prévoir plusieurs mois pour cette démarche. Les universités privées, en plein développement dans les filières droit, gestion, informatique et langues, offrent un accès plus souple.
+
+Le logement
+Si l'étudiant loge chez la famille, la question est naturellement simplifiée. Sinon, le marché de la colocation étudiante s'est développé dans les grandes villes universitaires. Un budget mensuel raisonnable couvre le logement, la nourriture et les déplacements dans les principales agglomérations — le coût de la vie étudiant en Algérie reste nettement plus accessible qu'en France.
+
+La couverture santé
+Un point souvent négligé : la couverture sociale. Selon la durée du séjour, l'étudiant peut maintenir sa couverture française via le régime étudiant ou s'affilier à la sécurité sociale algérienne. Dans tous les cas, souscrire une assurance complémentaire internationale est recommandé pour couvrir les situations imprévues.
+
+Préparer le retour
+Pour les étudiants qui envisagent de revenir en France après leurs études, documenter soigneusement le parcours est essentiel : relevés de notes officiels, attestations de réussite, traductions certifiées. Une procédure de reconnaissance de diplôme sera nécessaire, et un dossier bien constitué dès le départ simplifie considérablement cette étape.`,
+  },
+  {
+    slug: "travailler-en-algerie-diplome-etranger-equivalences",
+    title: "Rentrer travailler en Algérie avec un diplôme étranger : ce qu'il faut savoir",
+    excerpt: "Secteurs qui recrutent, procédure d'équivalence et valorisation de l'expérience internationale : le point pour la diaspora.",
+    category: "Orientation",
+    date: "2026-03-02",
+    imageUrl: image("25"),
+    source: "manual",
+    tags: ["travailler en Algérie", "équivalence diplôme", "diaspora", "recrutement"],
+    relatedSlugs: [
+      "systeme-lmd-portail-bachelier-orientation-apres-bac-algerie",
+      "formation-professionnelle-privee-filieres-qui-embauchent-algerie",
+      "opportunites-business-education-privee-algerie",
+    ],
+    content: `Rentrer travailler en Algérie avec un diplôme obtenu à l'étranger est non seulement possible, mais de plus en plus courant. L'économie algérienne a besoin de profils formés à l'international, et plusieurs secteurs recrutent activement des cadres de la diaspora. Voici une lecture claire de la situation.
+
+Les secteurs qui valorisent les profils internationaux
+Le secteur de l'énergie reste un employeur important de cadres expérimentés à profil international. Les sociétés pétrolières et leurs partenaires cherchent des ingénieurs, des financiers et des juristes capables de travailler en anglais et de maîtriser les standards internationaux.
+
+Le secteur bancaire privé est en transformation. Des établissements internationaux présents en Algérie recrutent des profils formés à l'étranger, notamment en finance, en conformité et en digital. Les nouvelles banques islamiques cherchent également des expertises pointues.
+
+La tech et le digital représentent probablement le secteur le plus accessible pour la diaspora, avec des startups locales en croissance, des agences digitales et des entreprises télécoms qui cherchent des développeurs, des product managers et des profils marketing formés à l'international. Ce secteur offre aussi la possibilité de travailler en remote pour des entreprises étrangères tout en résidant en Algérie.
+
+La santé reste un secteur en tension constante, particulièrement en dehors des grandes métropoles. Un médecin ou un pharmacien diplômé à l'étranger, après équivalence, sera accueilli avec beaucoup d'intérêt.
+
+La procédure d'équivalence de diplôme
+Pour exercer dans la fonction publique ou dans les professions réglementées — médecine, droit, architecture — l'équivalence du diplôme étranger est une démarche obligatoire. Elle se fait auprès du ministère concerné, avec un dossier incluant les diplômes originaux, les relevés de notes, une traduction certifiée et une attestation de l'établissement étranger. Les délais varient, mais la démarche est bien rodée pour les filières les plus courantes.
+
+Dans le secteur privé en revanche, de nombreuses entreprises recrutent directement sans exiger l'équivalence formelle. Un diplôme étranger d'une université reconnue est souvent perçu comme un atout en soi, et l'expérience internationale que vous apportez avec lui est tout aussi valorisée.
+
+Un conseil pratique : commencer les démarches d'équivalence en parallèle de la recherche d'emploi, et ne pas attendre d'avoir une offre en main. Cela évite de perdre des semaines précieuses une fois le poste trouvé.`,
+  },
+  {
+    slug: "activites-extra-scolaires-algerie-guide-complet",
+    title: "Activités Extra-Scolaires en Algérie : Le Guide pour Épanouir vos Enfants",
+    excerpt: "Sport, musique, robotique et langues : où inscrire vos enfants à Alger, Oran et Constantine pour qu'ils ne s'ennuient jamais.",
+    category: "Vie pratique",
+    date: "2026-03-02",
+    imageUrl: image("26"),
+    source: "manual",
+    tags: ["activités périscolaires", "sport", "musique", "robotique", "Alger"],
+    relatedSlugs: [
+      "ecoles-privees-activites-periscolaires-robotique-alger",
+      "hijra-enfants-transition-scolaire-algerie",
+    ],
+    content: `S'installer en Algérie avec des enfants habitués aux clubs de sport et aux conservatoires européens peut faire peur. Pourtant, l'offre explose à Alger, Oran et Constantine. Entre les institutions publiques historiques et les nouveaux centres privés ultra-modernes, voici où inscrire vos enfants pour qu'ils ne s'ennuient jamais.
+
+1. Les Institutions Publiques : Qualité et Petits Prix
+Ne négligez pas le secteur public ! Pour quelques milliers de dinars par an, vos enfants peuvent accéder à des formations d'excellence.
+Les Conservatoires de Musique : Présents dans presque chaque commune d'Alger (El Biar, Kouba, Bologhine), ils proposent des cursus sérieux (Solfège + Instrument).
+Le plus : Le diplôme est reconnu et le niveau technique très exigeant.
+Les Maisons de la Culture : Comme la Maison de la Culture Mouloud Mammeri (Tizi Ouzou) ou Zeddour Brahim (Oran). Elles proposent des ateliers de dessin, théâtre, poterie et même des échecs pour environ 1 000 DA à 1 500 DA par an.
+
+2. Le Boom de la Tech : Robotique et Codage
+Pour la diaspora, c’est souvent la priorité. Plusieurs centres se sont spécialisés dans les compétences de demain :
+RoboKids Academy (Alger) : C'est la référence pour apprendre le code et la robotique (Lego Education) aux 6-12 ans.
+Babylone Academy : Située à Alger, elle propose des ateliers de "Coding" où les enfants construisent et programment leurs propres robots.
+Meltin'Art (Alger) : Bien que très axé "Arts Plastiques", ce centre propose des stages thématiques mélangeant créativité et nouvelles technologies.
+
+3. Sport : Du Complexe Olympique au Club Privé
+Le Complexe du 5 Juillet (Alger) : Un hub multisports (natation, tennis, arts martiaux). C'est le poumon sportif de la capitale.
+L'Équitation à Bouchaoui : Incontournable. Plusieurs clubs (Haras d'Aïn Taya, Club de la Forêt) permettent aux enfants de monter à poney ou à cheval dans un cadre forestier magnifique.
+Le Tennis : Le club de l'Hydra AC ou le Tennis Club de Ben Aknoun sont très prisés par les expatriés et la diaspora.
+
+4. Langues et Arabe Intensif (Spécial Diaspora)
+Pour les enfants qui arrivent sans maîtriser l'arabe, certains centres proposent des "boosters" :
+Les Glycines (Centre d'Études Diocésain, Alger) : Propose des sessions intensives d'arabe (standard et dialectal) de très haute qualité, souvent avec des visites culturelles l'après-midi.
+ABI School (El Achour) : Un centre moderne qui propose des programmes d'anglais et d'arabe adaptés aux enfants nés à l'étranger.
+
+5. Les Écoles Privées avec "Tout Inclus"
+Certaines écoles intègrent les activités directement dans leur emploi du temps (ou juste après) :
+La British School of Algiers : Propose un large panel de "Extra-Curricular Activities" (ECA) allant du drame au sport de haut niveau.
+Le LIAD (Lycée Alexandre Dumas) : Dispose de nombreux clubs (Egal'LIAD, journalisme, sport) gérés par l'association sportive et culturelle.
+Willow Early Education : Pour les tout-petits (jusqu'à 5 ans), avec une approche Montessori et des activités d'éveil trilingues.
+
+Tableau Récapitulatif : Où aller selon votre besoin ?
+
+| Besoin | Établissement phare | Ville |
+| Musique Classique | Conservatoire d'El Biar | Alger |
+| Robotique / Code | RoboKids Academy | Alger |
+| Équitation | Forêt de Bouchaoui | Alger (Ouest) |
+| Arabe (Remise à niveau) | Les Glycines | Alger (Centre) |
+| Arts Plastiques | Meltin'Art | Hydra / Alger |
+| Natation | Complexe O. Mohamed Boudiaf | Dely Brahim |
+
+Conseil d'Expert pour la Diaspora
+Les inscriptions pour les conservatoires et les clubs de sport publics se font souvent en septembre. Préparez un dossier avec : photos d'identité, extrait de naissance et surtout un certificat médical d'aptitude. Pour le privé, les inscriptions sont ouvertes toute l'année mais les meilleures places s'envolent dès juin.`,
+  },
 ];
