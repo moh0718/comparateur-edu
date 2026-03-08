@@ -392,7 +392,7 @@ Draria offre probablement le meilleur rapport qualité-prix de la zone ouest d'A
 L'offre est plus variée qu'on ne le pense : maternelle, primaire, collège et parfois lycée dans le même établissement. C'est pratique pour les familles qui souhaitent éviter les changements d'école.
 
 Birkhadem : l'option intermédiaire bien placée
-Birkhadem se situe entre Bir Mourad Raïs et Draria, avec une offre d'écoles privées en développement ces dernières années. Les tarifs y sont proches de ceux de Draria, avec quelques établissements qui commencent à se spécialiser (informatique, langues, arts).
+Birkhadem se situe entre Bir Mourad Raïs et Draria, with une offre d'écoles privées en développement ces dernières années. Les tarifs y sont proches de ceux de Draria, with quelques établissements qui commencent à se spécialiser (informatique, langues, arts).
 Sa position centrale — proche du périphérique — en fait une commune accessible depuis plusieurs directions, un atout pour les familles dispersées géographiquement.
 
 Tableau comparatif rapide
@@ -887,14 +887,14 @@ Oran est la deuxième ville d'Algérie et son marché de l'éducation privée re
 
 El Hayat est l'un des établissements les plus connus d'Oran, avec une offre multi-niveaux et une réputation construite sur plusieurs années de résultats au Bac. Les parents l'apprécient notamment pour sa communication régulière avec les familles et son organisation interne.
 
-El Kortobi se distingue par une approche plus orientée vers les filières scientifiques. Les familles qui préparent leurs enfants aux études de médecine ou d'ingénierie y trouvent souvent un accompagnement adapté, avec un renforcement des matières scientifiques dès le collège.
+El Kortobi se distingue par une approche plus orientée vers les filières scientifiques. Les familles qui préparent leurs enfants aux études de médecine ou d'ingénierie y trouvent souvent un accompagnement adapté, with un renforcement des matières scientifiques dès le collège.
 
 Ce qui caractérise le marché oranais
 Oran présente une particularité intéressante : la concurrence entre établissements y est plus vive qu'à Constantine, ce qui a tiré vers le haut la qualité des services. Les écoles sont souvent plus proactives sur la communication digitale (pages Facebook, groupes WhatsApp parents) et sur l'offre de services périphériques.
-Les tarifs sont globalement comparables à ceux de Constantine, avec quelques établissements haut de gamme qui se rapprochent des prix algérois. L'enseignement des langues — notamment l'espagnol, héritage de la proximité culturelle avec l'Espagne — est une spécificité oranaise qu'on retrouve dans quelques établissements.
+Les tarifs sont globalement comparables à ceux de Constantine, with quelques établissements haut de gamme qui se rapprochent des prix algérois. L'enseignement des langues — notamment l'espagnol, héritage de la proximité culturelle avec l'Espagne — est une spécificité oranaise qu'on retrouve dans quelques établissements.
 
 Calendrier des inscriptions : les repères pour 2026
-Le calendrier des inscriptions à Constantine et Oran suit globalement la même logique qu'à Alger, avec quelques nuances locales.
+Le calendrier des inscriptions à Constantine et Oran suit globalement la même logique qu'à Alger, with quelques nuances locales.
 
 | Période | Ce qu'il faut faire |
 | Janvier – Mars | Visites des établissements, collecte des brochures et tarifs |
@@ -909,7 +909,7 @@ Les documents à préparer (identiques dans les deux villes)
 Le dossier standard est le même qu'à Alger : extrait de naissance, photos d'identité, carnet de santé, bulletins des deux dernières années, justificatif de domicile et pièce d'identité d'un parent. Si votre enfant change d'école, ajoutez le certificat de radiation de l'ancien établissement.
 
 Notre conseil pour les familles hors capitale
-Ne vous limitez pas aux établissements les plus connus. Dans chaque ville, il existe des écoles moins médiatisées mais tout aussi sérieuses, avec des classes moins chargées et souvent une relation plus humaine entre l'équipe pédagogique et les familles. Demandez autour de vous — le bouche-à-oreille reste le meilleur outil de sélection dans ces villes à taille humaine.`, 
+Ne vous limitez pas aux établissements les plus connus. Dans chaque ville, il existe des écoles moins médiatisées mais tout aussi sérieuses, with des classes moins chargées et souvent une relation plus humaine entre l'équipe pédagogique et les familles. Demandez autour de vous — le bouche-à-oreille reste le meilleur outil de sélection dans ces villes à taille humaine.`, 
   },
   {
     slug: "public-ou-prive-maitrise-francais-ecole-algerie",
@@ -969,7 +969,7 @@ Et si votre enfant vise une orientation internationale, il n'y a pas de débat :
       "bac-algerien-ou-programme-international-etudes-europe",
       "ecoles-privees-alger-guide-tarifs-inscriptions-2026",
     ],
-    content: `Vous venez d'avoir votre baccalauréat — ou votre enfant s'y prépare. La question qui suit immédiatement : et maintenant ? Le système universitaire algérien peut paraître opaque de l'extérieur, avec ses sigles, ses portails et ses règles d'orientation. Ce guide vous explique l'essentiel, clairement.
+    content: `Vous venez d'avoir votre baccalauréat — ou votre enfant s'y prépare. La question qui suit immédiatement : et maintenant ? Le système universitaire algérien peut paraître opaque de l'extérieur, with ses sigles, ses portails et ses règles d'orientation. Ce guide vous explique l'essentiel, clairement.
 
 Le système LMD : c'est quoi exactement ?
 LMD signifie Licence – Master – Doctorat. C'est le système adopté par la quasi-totalité des universités algériennes dans les années 2000, aligné sur le modèle européen de l'enseignement supérieur.
@@ -999,7 +999,7 @@ Conseils pratiques pour bien l'utiliser :
 
 Les passerelles entre Licence et Master
 Une question fréquente : peut-on faire un Master dans une spécialité différente de sa Licence ? La réponse est oui, sous conditions.
-Les universités algériennes acceptent des candidatures en Master de filières connexes à condition que le dossier soit solide (bonne moyenne en Licence) et que la filière visée soit cohérente avec le parcours antérieur.
+Les universités algériennes acceptent des candidatures en Master de filières connexes à condition que le dossier soit solide (bonne moyenne en Licence) et que la filière visée soit cohérente with le parcours antérieur.
 En revanche, une reconversion complète reste très difficile dans le système public. Pour ce type de reconversion, les instituts privés de formation supérieure offrent plus de souplesse.
 
 Un point important : les établissements privés et le LMD
@@ -1026,14 +1026,14 @@ Avant de vous inscrire dans un établissement supérieur privé, vérifiez syst�
 
 Pourquoi la formation professionnelle privée a le vent en poupe
 Pendant longtemps, la formation professionnelle a souffert d'une image de "voie de garage" pour ceux qui ne réussissaient pas à l'université. Cette perception est en train de changer, sous l'effet de plusieurs réalités économiques concrètes.
-D'abord, le marché du travail algérien manque cruellement de profils techniques qualifiés dans des domaines précis. Un technicien formé en 18 mois dans une bonne école privée avec du concret peut être embauché plus vite qu'un licencié en sciences qui a théorisé pendant trois ans sans jamais toucher à un outil ou un logiciel professionnel.
+D'abord, le marché du travail algérien manque cruellement de profils techniques qualifiés dans des domaines précis. Un technicien formé en 18 mois dans une bonne école privée with du concret peut être embauché plus vite qu'un licencié en sciences qui a théorisé pendant trois ans sans jamais toucher à un outil ou un logiciel professionnel.
 Ensuite, la formation par apprentissage — qui combine cours théoriques et pratique en entreprise — permet de construire un réseau et une expérience dès la formation, avant même d'être diplômé.
 
 Les filières à fort potentiel d'insertion
 
 Informatique et cybersécurité
 C'est sans doute le secteur le plus dynamique aujourd'hui. Les entreprises algériennes, sous l'impulsion de la numérisation accélérée post-2020, ont des besoins croissants en développeurs, administrateurs réseaux et surtout en profils cybersécurité.
-Des instituts comme Almaahed-IT à Sidi Abdallah proposent des formations courtes (6 à 18 mois) en programmation, administration systèmes et réseaux, avec une approche pratique et des partenariats avec des acteurs du secteur tech algérien.
+Des instituts comme Almaahed-IT à Sidi Abdallah proposent des formations courtes (6 à 18 mois) en programmation, administration systèmes et réseaux, with une approche pratique et des partenariats with des acteurs du secteur tech algérien.
 Les certifications internationales (Cisco, CompTIA Security+, CEH pour la cybersécurité) obtenues en parallèle d'une formation locale sont un vrai plus sur le CV — elles sont reconnues par les entreprises multinationales opérant en Algérie et ouvrent des portes à l'international.
 
 Hygiène, Sécurité et Environnement (HSE)
@@ -1041,7 +1041,7 @@ La réglementation algérienne sur la sécurité au travail s'est renforcée ces
 Résultat : les formations HSE privées ont des taux d'insertion élevés. Un technicien HSE formé et certifié peut rapidement accéder à des postes dans de grandes entreprises algériennes ou des filiales de groupes étrangers.
 
 Gestion, management et ressources humaines
-Des instituts de management proposent des formations en gestion des ressources humaines, comptabilité, management et administration des affaires. Ces formations combinent souvent un ancrage local (droit algérien du travail, fiscalité nationale) avec des outils de gestion modernes.
+Des instituts de management proposent des formations en gestion des ressources humaines, comptabilité, management et administration des affaires. Ces formations combinent souvent un ancrage local (droit algérien du travail, fiscalité nationale) with des outils de gestion modernes.
 Pour les jeunes qui souhaitent travailler dans des PME, des cabinets d'expertise comptable ou des services RH de grandes entreprises, ces formations offrent une entrée concrète sur le marché du travail.
 
 Tourisme, hôtellerie et esthétique
@@ -1053,7 +1053,7 @@ Le secteur privé de la formation professionnelle est régi par le Ministère de
 Avant de vous inscrire, vérifiez :
 • L'agrément de l'établissement auprès du MFEP
 • Le taux d'insertion professionnelle des promotions précédentes
-• L'existence de conventions avec des entreprises pour les stages
+• L'existence de conventions with des entreprises pour les stages
 • La qualité des formateurs : sont-ils des praticiens du secteur ou uniquement des théoriciens ?
 • Les certifications proposées : une certification internationale en plus de l'attestation locale a une vraie valeur ajoutée
 
@@ -1110,6 +1110,68 @@ Une approche efficace consiste à :
 
 Ce que le numérique ne remplacera jamais
 La relation de confiance entre un élève et un bon enseignant, la motivation générée par un professeur qui connaît le profil de l'enfant, et la structure d'une vraie séance de travail guidée restent irremplaçables pour certains profils d'élèves.
-Le numérique est un outil puissant — à condition de l'utiliser avec discernement, comme un complément et non comme une solution universelle.`, 
+Le numérique est un outil puissant — à condition de l'utiliser avec discernement, comme un complément et non comme une solution universelle.`,
+  },
+  {
+    slug: "systeme-scolaire-algerien-guide-diaspora",
+    title: "Le système scolaire algérien expliqué à quelqu'un qui a grandi en France",
+    excerpt: "Structure des cycles, place des langues et essor du privé : ce qu'il faut savoir sur l'école en Algérie en 2024 pour la diaspora.",
+    category: "Orientation",
+    date: "2026-03-02",
+    imageUrl: image("20"),
+    source: "manual",
+    tags: ["diaspora", "système scolaire", "retour en Algérie", "LMD"],
+    relatedSlugs: [
+      "ecoles-privees-bilingues-programme-international-alger",
+      "bac-algerien-ou-programme-international-etudes-europe",
+      "public-ou-prive-maitrise-francais-ecole-algerie",
+    ],
+    content: `Si vous avez grandi en France, en Belgique ou au Canada, il y a de fortes chances que vous ayez une image partielle du système scolaire algérien. Des souvenirs de cousins qui récitaient des sourates, une impression de classes animées, des profs exigeants... et c'est souvent là que s'arrête la connaissance.
+
+La reality en 2024 est bien plus riche. Le système a évolué, le secteur privé s'est développé, et les familles ont aujourd'hui plus de choix qu'à n'importe quelle autre période. Voici ce qu'il faut comprendre si vous envisagez un retour, ou simplement si vous êtes curieux.
+
+Une structure familière
+Le système algérien s'organise en trois cycles, comme la plupart des systèmes francophones. L'école primaire dure cinq ans, de 6 à 11 ans. Vient ensuite le collège, appelé CEM (Collège d'Enseignement Moyen), sur quatre ans. Puis le lycée sur trois ans, qui se conclut par le baccalauréat.
+
+Ce qui diffère principalement, c'est la place des langues. L'arabe classique est la langue principale d'enseignement au primaire et au collège. Le français reprend une place centrale dès le lycée, particulièrement dans les filières scientifiques. L'anglais est enseigné dès le collège et monte en importance avec les nouvelles générations.
+
+Le baccalauréat algérien : exigeant et reconnu
+Le baccalauréat algérien est réputé pour son niveau d'exigence, notamment en mathématiques et en sciences. Pour les familles de la diaspora, c'est une bonne nouvelle : les bacheliers algériens qui visent une poursuite d'études en France peuvent le faire via la procédure Campus France. La série scientifique avec mention ouvre même les portes des classes préparatoires françaises pour les profils les plus solides.
+
+L'essor du secteur privé
+Ces dix dernières années ont vu éclore un secteur privé éducatif dynamique. Des dizaines d'écoles bilingues, d'établissements à double programme franco-algérien et de structures pédagogiques innovantes ont vu le jour dans les grandes villes. Pour les familles qui rentrent, cette offre représente souvent le meilleur des deux mondes : ancrage local et continuité avec le système qu'elles connaissent.
+
+Le système LMD à l'université
+L'Algérie a adopté le système LMD (Licence-Master-Doctorat), aligné sur le modèle européen de Bologne. Ce choix facilite théoriquement la reconnaissance mutuelle des diplômes entre l'Algérie et les pays européens. Les procédures d'équivalence existent et fonctionnent, notamment pour les filières scientifiques, médicales et d'ingénierie.
+
+À retenir : si vos enfants ont moins de 10 ans et que vous envisagez un retour, une préparation en arabe classique en amont transforme ce qui pourrait sembler un obstacle en véritable atout de bilinguisme.`,
+  },
+  {
+    slug: "etudes-medecine-algerie-guide-diaspora",
+    title: "Faire ses études de médecine en Algérie : une voie sérieuse et accessible",
+    excerpt: "Alternative au PASS, cursus reconnu et exercice en France : pourquoi la médecine en Algérie attire de plus en plus la diaspora.",
+    category: "Orientation",
+    date: "2026-03-02",
+    imageUrl: image("21"),
+    source: "manual",
+    tags: ["médecine", "études supérieures", "diaspora", "équivalence"],
+    relatedSlugs: [
+      "systeme-lmd-portail-bachelier-orientation-apres-bac-algerie",
+      "bac-algerien-ou-programme-international-etudes-europe",
+    ],
+    content: `En France, décrocher une place en médecine est devenu un parcours très sélectif. Entre les PASS saturés et les places limitées, des milliers d'étudiants franco-algériens cherchent des alternatives sérieuses. Ce que beaucoup ignorent, c'est que l'Algérie forme des médecins de qualité, avec des facultés reconnues, un cursus solide et des frais de scolarité quasi nuls dans le public.
+
+Comment fonctionne la formation médicale
+La formation dure sept ans pour la médecine générale, suivis de quatre à cinq ans de spécialisation via le résidanat. L'entrée se fait directement après le baccalauréat scientifique, via un concours d'entrée commun aux études de santé. Les principales facultés se trouvent à Alger, Oran, Constantine et Annaba, avec des équipements modernes et des partenariats avec les CHU locaux.
+
+Les diplômes et leur portée internationale
+Le doctorat en médecine algérien est reconnu dans plusieurs pays, dont la France. Un médecin diplômé en Algérie peut exercer en France après avoir réussi la procédure d'autorisation d'exercice (PAE) et les épreuves de vérification des connaissances. Des milliers de médecins formés en Algérie exercent aujourd'hui en France, en Belgique, au Canada et dans les pays du Golfe — ce qui témoigne de la valeur réelle de cette formation.
+
+Une option stratégique pour la diaspora
+Pour un jeune Franco-Algérien qui n'a pas obtenu sa place en PASS, faire médecine en Algérie est une alternative concrète et sérieuse. Le coût de la vie est accessible, la formation est reconnue, et la perspective d'exercer en Europe ensuite est réelle. Certaines familles ont adopté cette stratégie délibérément, avec de très bons résultats.
+
+Les étudiants binationaux accèdent au système en tant qu'étudiants algériens, ce qui facilite les démarches d'inscription. Des conventions existent par ailleurs entre l'Algérie et plusieurs pays africains et arabes pour l'accueil d'étudiants étrangers.
+
+Conseil : bien documenter son parcours dès la première année — relevés de notes, attestations, traductions certifiées — facilite considérablement les procédures de reconnaissance à l'étranger par la suite.`,
   },
 ];
