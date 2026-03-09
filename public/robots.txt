@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://kompar-banques.vercel.app
+Host: https://comparateur-edu-site.vercel.app
 
 # Sitemaps
-Sitemap: https://kompar-banques.vercel.app/sitemap.xml
+Sitemap: https://comparateur-edu-site.vercel.app/sitemap.xml
