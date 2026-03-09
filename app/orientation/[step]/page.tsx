@@ -378,7 +378,15 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
       });
       const data = await res.json();
       if (res.ok && data.url) {
-        window.open(data.url, "_blank", "noopener,noreferrer");
+        // Correction : utiliser un lien direct si window.open est bloqué
+        const link = document.createElement("a");
+        link.href = data.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
         router.push(ROUTES.orientationConfirmation);
       } else {
         setError(data.error || "Impossible d'ouvrir WhatsApp.");

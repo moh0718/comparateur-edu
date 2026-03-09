@@ -97,7 +97,16 @@ export function ContactForm() {
         setFieldErrors({ submit: data.error || "Impossible d’ouvrir WhatsApp." });
         return;
       }
-      window.open(data.url, "_blank", "noopener,noreferrer");
+      
+      // Correction : utiliser un lien direct si window.open est bloqué
+      const link = document.createElement("a");
+      link.href = data.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
       router.push("/contact/confirmation");
     } catch {
       setFieldErrors({ submit: "Une erreur est survenue. Réessayez." });
