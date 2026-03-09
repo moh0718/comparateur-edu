@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://kompar-banques.vercel.app
+
+# Sitemaps
+Sitemap: https://kompar-banques.vercel.app/sitemap.xml

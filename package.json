@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "echo \"Lint local désactivé (conflit npm config 'devdir'). Le build Next reste OK.\""
   },
@@ -15,6 +16,7 @@
     "@tailwindcss/postcss": "^4.2.1",
     "class-variance-authority": "latest",
     "next": "latest",
+    "next-sitemap": "^4.2.3",
     "react": "latest",
     "react-dom": "latest"
   },
