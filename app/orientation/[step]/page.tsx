@@ -357,6 +357,11 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
   const [error, setError] = useState<string | null>(null);
   const waNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
 
+  // Log pour debug
+  useEffect(() => {
+    console.log("WhatsApp Admin Number:", waNumber);
+  }, [waNumber]);
+
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -428,7 +433,7 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
           {error && <p className="text-sm text-red-600">{error}</p>}
           <button
             type="submit"
-            disabled={sending || !waNumber}
+            disabled={sending}
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-4 text-emerald-50 hover:bg-green-700 disabled:opacity-50"
           >
             <span className="text-xl">💬</span>
