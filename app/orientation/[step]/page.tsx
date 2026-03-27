@@ -80,10 +80,12 @@ export default function OrientationStepPage() {
 
   const answerKeys: Record<number, string> = {
     1: "wilaya",
-    2: "category",
-    3: "budget",
-    4: "critere",
-    5: "langue",
+    2: "parcours",
+    3: "category",
+    4: "budget",
+    5: "critere",
+    6: "langue",
+    7: "identite",
   };
   const currentKey = answerKeys[currentStep as keyof typeof answerKeys];
   const currentValue = currentKey ? answers[currentKey] ?? answers[`q${currentStep}`] : undefined;
@@ -172,7 +174,35 @@ export default function OrientationStepPage() {
                 <p className="text-center text-sm font-bold uppercase tracking-wide text-slate-600">{config.title}</p>
               )}
               <h1 className="mt-2 text-center text-lg font-bold text-slate-900 sm:text-xl">{config.question}</h1>
-              {currentStep === 4 ? (
+              
+              {currentStep === 2 ? (
+                <ParcoursStep
+                  onNext={(data) => {
+                    const newAnswers = { ...answers, ...data };
+                    setAnswers(newAnswers);
+                    saveAnswers(newAnswers);
+                    router.push(`/orientation/3`);
+                  }}
+                  initialValues={{
+                    niveau: answers.niveau,
+                    moyenne: answers.moyenne,
+                    rentree: answers.rentree,
+                  }}
+                />
+              ) : currentStep === 7 ? (
+                <IdentityStep
+                  onNext={(data) => {
+                    const newAnswers = { ...answers, ...data };
+                    setAnswers(newAnswers);
+                    saveAnswers(newAnswers);
+                    router.push(`/orientation/${RESULT_STEP}`);
+                  }}
+                  initialValues={{
+                    nom: answers.nom,
+                    email: answers.email,
+                  }}
+                />
+              ) : currentStep === 5 ? (
                 <MultiCriteriaStep
                   config={config}
                   currentValue={currentValue}
@@ -269,6 +299,151 @@ export default function OrientationStepPage() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function ParcoursStep({
+  onNext,
+  initialValues,
+}: {
+  onNext: (data: { niveau: string; moyenne: string; rentree: string }) => void;
+  initialValues: { niveau?: string; moyenne?: string; rentree?: string };
+}) {
+  const [niveau, setNiveau] = useState(initialValues.niveau || "");
+  const [moyenne, setMoyenne] = useState(initialValues.moyenne || "");
+  const [rentree, setRentree] = useState(initialValues.rentree || "");
+
+  const NIVEAUX = [
+    "Primaire",
+    "Moyen (CEM)",
+    "Lycée (1ère/2ème année)",
+    "Baccalauréat",
+    "Licence 1",
+    "Licence 2",
+    "Licence 3",
+    "Master 1",
+    "Master 2",
+    "Doctorat",
+    "Formation Professionnelle",
+    "Autre",
+  ];
+
+  return (
+    <div className="mt-6 space-y-5 sm:mt-8">
+      <div>
+        <label htmlFor="niveau" className="mb-1.5 block text-sm font-medium text-slate-700">
+          Niveau actuel <span className="text-red-500">*</span>
+        </label>
+        <select
+          id="niveau"
+          value={niveau}
+          onChange={(e) => setNiveau(e.target.value)}
+          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-green-500 focus:ring-2 focus:ring-green-100"
+        >
+          <option value="">Sélectionnez votre niveau</option>
+          {NIVEAUX.map((n) => (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="moyenne" className="mb-1.5 block text-sm font-medium text-slate-700">
+          Dernière moyenne obtenue <span className="text-xs font-normal text-slate-400">(facultatif)</span>
+        </label>
+        <input
+          id="moyenne"
+          type="text"
+          value={moyenne}
+          onChange={(e) => setMoyenne(e.target.value)}
+          placeholder="Ex: 14.50"
+          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-100"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="rentree" className="mb-1.5 block text-sm font-medium text-slate-700">
+          Rentrée souhaitée <span className="text-red-500">*</span>
+        </label>
+        <input
+          id="rentree"
+          type="text"
+          value={rentree}
+          onChange={(e) => setRentree(e.target.value)}
+          placeholder="MM/AAAA (ex: 09/2024)"
+          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-100"
+        />
+      </div>
+
+      <button
+        type="button"
+        disabled={!niveau || !rentree}
+        onClick={() => onNext({ niveau, moyenne, rentree })}
+        className="mt-4 w-full rounded-xl bg-green-600 py-3.5 text-sm font-semibold text-emerald-50 shadow-md transition-all hover:bg-green-700 disabled:opacity-50"
+      >
+        Continuer
+      </button>
+    </div>
+  );
+}
+
+function IdentityStep({
+  onNext,
+  initialValues,
+}: {
+  onNext: (data: { nom: string; email: string }) => void;
+  initialValues: { nom?: string; email?: string };
+}) {
+  const [nom, setNom] = useState(initialValues.nom || "");
+  const [email, setEmail] = useState(initialValues.email || "");
+
+  return (
+    <div className="mt-6 space-y-5 sm:mt-8">
+      <p className="text-center text-sm text-slate-500">
+        Ces informations nous aident à personnaliser votre accompagnement.
+      </p>
+      <div>
+        <label htmlFor="nom" className="mb-1.5 block text-sm font-medium text-slate-700">
+          Nom et Prénom <span className="text-red-500">*</span>
+        </label>
+        <input
+          id="nom"
+          type="text"
+          value={nom}
+          onChange={(e) => setNom(e.target.value)}
+          placeholder="Votre nom complet"
+          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-100"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-700">
+          Email <span className="text-xs font-normal text-slate-400">(facultatif)</span>
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="votre@email.com"
+          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-100"
+        />
+        <p className="mt-1.5 text-[11px] text-slate-400">
+          Utile pour recevoir des brochures et guides d&apos;orientation.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        disabled={!nom}
+        onClick={() => onNext({ nom, email })}
+        className="mt-4 w-full rounded-xl bg-green-600 py-3.5 text-sm font-semibold text-emerald-50 shadow-md transition-all hover:bg-green-700 disabled:opacity-50"
+      >
+        Voir mes recommandations
+      </button>
     </div>
   );
 }
@@ -376,6 +551,17 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
         { ...answers, recommended: recommendedSummary } as OrientationAnswers,
         digits,
       );
+
+      // Envoi de la copie par email en parallèle (silencieux pour l'utilisateur)
+      fetch("/api/lead-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          message,
+          subject: `Nouveau Lead : ${answers.nom || "Anonyme"} (${answers.niveau || "Niveau non précisé"})`
+        }),
+      }).catch(err => console.error("Erreur envoi copie email:", err));
+
       const res = await fetch("/api/whatsapp-url", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

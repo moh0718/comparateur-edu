@@ -1,11 +1,11 @@
 /**
- * Logique des étapes du formulaire d'orientation (5 questions → recommandation école).
+ * Logique des étapes du formulaire d'orientation.
  * Utilisé par app/orientation/[step]/page.tsx.
  */
 
-export const TOTAL_STEPS = 5;
+export const TOTAL_STEPS = 7;
 
-export type StepId = 1 | 2 | 3 | 4 | 5;
+export type StepId = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export type OrientationAnswers = Record<string, string>;
 
@@ -13,7 +13,7 @@ export type StepConfig = {
   id: StepId;
   title?: string;
   question: string;
-  inputType?: "buttons" | "select" | "radio" | "checkboxes";
+  inputType?: "buttons" | "select" | "radio" | "checkboxes" | "custom";
   selectPlaceholder?: string;
   options: Array<{ value: string; label: string; icon?: string }>;
 };
@@ -32,6 +32,13 @@ export const ORIENTATION_STEPS: Record<StepId, StepConfig> = {
   },
   2: {
     id: 2,
+    title: "Parcours",
+    question: "Dites-nous en plus sur votre parcours actuel",
+    inputType: "custom",
+    options: [],
+  },
+  3: {
+    id: 3,
     title: "Type de formation",
     question: "Quel type d'établissement vous intéresse ?",
     options: [
@@ -43,8 +50,8 @@ export const ORIENTATION_STEPS: Record<StepId, StepConfig> = {
       { value: "Prescolaire", label: "Préscolaire", icon: "👶" },
     ],
   },
-  3: {
-    id: 3,
+  4: {
+    id: 4,
     title: "Frais d'inscription",
     question: "Quels frais d'inscription annuels approximatifs (en DA) ?",
     options: [
@@ -55,8 +62,8 @@ export const ORIENTATION_STEPS: Record<StepId, StepConfig> = {
       { value: "plus1M", label: "Plus d'1 million DA" },
     ],
   },
-  4: {
-    id: 4,
+  5: {
+    id: 5,
     title: "Critères",
     question: "Avez-vous des critères particuliers ?",
     inputType: "checkboxes",
@@ -69,8 +76,8 @@ export const ORIENTATION_STEPS: Record<StepId, StepConfig> = {
       { value: "aucun", label: "Aucun en particulier" },
     ],
   },
-  5: {
-    id: 5,
+  6: {
+    id: 6,
     title: "Langue",
     question: "Langue d'enseignement souhaitée ?",
     options: [
@@ -79,6 +86,13 @@ export const ORIENTATION_STEPS: Record<StepId, StepConfig> = {
       { value: "AR", label: "Arabe" },
       { value: "Bilingue", label: "Bilingue (FR/AR ou FR/EN)" },
     ],
+  },
+  7: {
+    id: 7,
+    title: "Identité",
+    question: "Qui êtes-vous ?",
+    inputType: "custom",
+    options: [],
   },
 };
 
@@ -136,16 +150,23 @@ export function buildOrientationWhatsAppMessage(answers: OrientationAnswers, wha
       : answers.budget;
 
   const lines = [
-    "📚 Orientation — Comparateur Edu",
+    "📚 Nouvelle demande d'orientation",
+    "────────────────────────────",
+    answers.nom ? `👤 Nom : ${answers.nom}` : "",
+    answers.email ? `📧 Email : ${answers.email}` : "",
+    answers.whatsapp ? `📱 WhatsApp : ${answers.whatsapp}` : "",
     "────────────────────────────",
     answers.wilaya ? `📍 Wilaya : ${answers.wilaya}` : "",
-    answers.category ? `🎓 Type : ${answers.category}` : "",
-    budgetLabel ? `💰 Frais d'inscription : ${budgetLabel}` : "",
-    critLabels.length ? `✓ Critère(s) : ${critLabels.join(", ")}` : "",
+    answers.niveau ? `🎓 Niveau actuel : ${answers.niveau}` : "",
+    answers.moyenne ? `📈 Moyenne : ${answers.moyenne}` : "",
+    answers.rentree ? `📅 Rentrée : ${answers.rentree}` : "",
+    answers.category ? `🏫 Type : ${answers.category}` : "",
+    budgetLabel ? `💰 Budget : ${budgetLabel}` : "",
+    critLabels.length ? `✓ Critères : ${critLabels.join(", ")}` : "",
     answers.langue ? `🌍 Langue : ${answers.langue}` : "",
-    answers.recommended ? `🏫 Recommandations automatiques : ${answers.recommended}` : "",
+    answers.recommended ? `✨ Recommandations : ${answers.recommended}` : "",
     "────────────────────────────",
-    "Je souhaite recevoir des recommandations d'établissements adaptées à mon profil.",
+    "Demande issue de kompar - edu",
   ].filter(Boolean);
   return lines.join("\n");
 }
