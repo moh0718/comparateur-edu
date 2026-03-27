@@ -15,7 +15,6 @@ export const metadata: Metadata = {
       "Fonctionnement de kompar - edu, utilisation de vos données, confidentialité et droits des utilisateurs en Algérie.",
     url: `${getBaseUrl()}/conditions-generales`,
   },
-  alternates: { canonical: `${getBaseUrl()}/conditions-generales` },
 };
 
 function IconLock() {

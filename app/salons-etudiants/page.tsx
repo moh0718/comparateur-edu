@@ -10,11 +10,10 @@ export const metadata: Metadata = {
   title: "Salons étudiants en Algérie — SAFEX, Alger, Oran",
   description: "Salons et événements d'orientation pour étudiants en Algérie : SAFEX Alger, salons régionaux. Dates, adresses, conditions d'inscription.",
   keywords: ["salons étudiants Algérie", "SAFEX", "orientation Alger", "salon formation Oran", "événements étudiants"],
-  openGraph: {
+    openGraph: {
     title: `Salons étudiants en Algérie | ${SITE_NAME}`,
     url: `${getBaseUrl()}/salons-etudiants`,
   },
-  alternates: { canonical: `${getBaseUrl()}/salons-etudiants` },
 };
 
 export default function SalonsEtudiantsPage() {

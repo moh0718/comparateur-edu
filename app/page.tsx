@@ -19,7 +19,6 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION_META,
     url: getBaseUrl(),
   },
-  alternates: { canonical: getBaseUrl() },
 };
 
 const CATEGORIES = [

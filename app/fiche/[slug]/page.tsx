@@ -33,7 +33,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description: `Fiche complète ${bank.name} : offres, frais, cartes, conditions. Comparez avec les autres banques algériennes.`,
     openGraph: { title: `${title} | ${SITE_NAME}`, url },
-    alternates: { canonical: url },
   };
 }
 

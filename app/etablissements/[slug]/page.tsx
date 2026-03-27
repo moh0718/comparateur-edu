@@ -122,7 +122,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url,
       type: "article",
     },
-    alternates: { canonical: url },
   };
 }
 

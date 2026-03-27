@@ -24,7 +24,6 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
       ? `Métiers correspondant à votre recherche : ${q.trim()}. Orientation et débouchés en Algérie.`
       : "Recherchez un métier par mot-clé. Fiches métiers pour l'orientation en Algérie.",
     openGraph: { title: `${title} | ${SITE_NAME}`, url },
-    alternates: { canonical: url },
     robots: q?.trim() ? undefined : { index: false },
   };
 }

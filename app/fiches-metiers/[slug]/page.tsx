@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description: metier.description ?? `Fiche métier : ${metier.titre}. Missions, diplômes, salaires, perspectives.`,
     openGraph: { title: `${title} | ${SITE_NAME}`, url },
-    alternates: { canonical: url },
   };
 }
 

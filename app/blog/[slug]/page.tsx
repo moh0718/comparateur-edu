@@ -39,13 +39,6 @@ export async function generateMetadata({ params }: PageProps) {
       images: post.imageUrl ? [{ url: post.imageUrl.startsWith("http") ? post.imageUrl : `${getBaseUrl()}${post.imageUrl.startsWith("/") ? "" : "/"}${post.imageUrl}` }] : undefined,
     },
     twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
-    alternates: { canonical: url },
-  };
-}
 
 function getRelatedPosts(current: Post, limit: number): Post[] {
   if (current.relatedSlugs && current.relatedSlugs.length > 0) {

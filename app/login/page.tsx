@@ -1,9 +1,16 @@
 "use client";
 
+import type { Metadata } from "next";
 import React, { Suspense, useState } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
+
+export const metadata: Metadata = {
+  title: "Connexion",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+};
 
 function LoginForm() {
   const router = useRouter();

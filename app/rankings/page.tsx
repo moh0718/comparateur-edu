@@ -24,7 +24,6 @@ export const metadata: Metadata = {
       "Classements internationaux des universités publiques et grandes écoles algériennes. QS Arab, THE Arab, Webometrics, SCImago, QS Sustainability, AD Scientific Index, U.S. News.",
     url: `${getBaseUrl()}/rankings`,
   },
-  alternates: { canonical: `${getBaseUrl()}/rankings` },
 };
 
 export default function RankingsPage() {

@@ -13,12 +13,11 @@ export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   robots: { index: false, follow: false },
-  openGraph: {
+    openGraph: {
     title: `${PAGE_TITLE} | ${SITE_NAME}`,
     description: PAGE_DESCRIPTION,
     url: `${getBaseUrl()}/fiche-bnp-paribas-algerie`,
   },
-  alternates: { canonical: `${getBaseUrl()}/fiche-bnp-paribas-algerie` },
 };
 
 export default function FicheBnpParibasPage() {

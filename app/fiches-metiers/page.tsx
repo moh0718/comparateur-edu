@@ -20,11 +20,10 @@ export const metadata: Metadata = {
     "débouchés formation",
     "salaires métiers Algérie",
   ],
-  openGraph: {
+    openGraph: {
     title: `Fiches métiers | ${SITE_NAME}`,
     url: `${getBaseUrl()}/fiches-metiers`,
   },
-  alternates: { canonical: `${getBaseUrl()}/fiches-metiers` },
 };
 
 export default function FichesMetiersPage() {

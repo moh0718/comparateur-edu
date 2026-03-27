@@ -56,6 +56,17 @@ function SignOutButton() {
   );
 }
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Administration",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+};
+
 export default function AdminPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [logs, setLogs] = useState<ScrapingLog[]>([]);

@@ -14,7 +14,6 @@ export const metadata: Metadata = {
     description: "Mentions légales : éditeur, hébergement et objet du site d'orientation en Algérie.",
     url: `${getBaseUrl()}/mentions-legales`,
   },
-  alternates: { canonical: `${getBaseUrl()}/mentions-legales` },
 };
 
 /*
