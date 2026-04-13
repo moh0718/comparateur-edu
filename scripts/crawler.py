@@ -939,7 +939,32 @@ def trigger_revalidate() -> None:
         send_resend_alert("[Crawler Edu] Revalidation ISR erreur", str(e))
 
 
+def ensure_scraping_logs_columns() -> None:
+    """Ajoute les colonnes manquantes à scraping_logs (auto-migration)."""
+    if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
+        return
+    sql = """
+ALTER TABLE scraping_logs
+  ADD COLUMN IF NOT EXISTS etablissement TEXT,
+  ADD COLUMN IF NOT EXISTS sources_used TEXT[];
+"""
+    try:
+        requests.post(
+            f"{SUPABASE_URL.rstrip('/')}/rest/v1/rpc/exec_sql",
+            headers={
+                "apikey": SUPABASE_SERVICE_KEY,
+                "Authorization": f"Bearer {SUPABASE_SERVICE_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={"sql": sql},
+            timeout=15,
+        )
+    except Exception:
+        pass  # Colonnes déjà présentes ou endpoint indisponible
+
+
 def main() -> None:
+    ensure_scraping_logs_columns()
     institutions = load_institutions_from_supabase()
     if not institutions:
         send_resend_alert("[Crawler Edu] Aucune institution", "Supabase et fallback vides.")

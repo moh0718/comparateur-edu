@@ -169,7 +169,42 @@ def save_post(title: str, slug: str, content: str, excerpt: str, source_url: str
     r.raise_for_status()
 
 
+def ensure_posts_table() -> None:
+    """Crée la table posts si elle n'existe pas encore (auto-migration)."""
+    if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
+        return
+    sql = """
+CREATE TABLE IF NOT EXISTS posts (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title TEXT NOT NULL,
+  slug TEXT UNIQUE,
+  status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published')),
+  source_type TEXT DEFAULT 'manual' CHECK (source_type IN ('manual', 'auto')),
+  content TEXT,
+  excerpt TEXT,
+  source_url TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_posts_status ON posts(status);
+"""
+    try:
+        requests.post(
+            f"{SUPABASE_URL.rstrip('/')}/rest/v1/rpc/exec_sql",
+            headers={
+                "apikey": SUPABASE_SERVICE_KEY,
+                "Authorization": f"Bearer {SUPABASE_SERVICE_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={"sql": sql},
+            timeout=15,
+        )
+    except Exception:
+        pass  # La table existe peut-être déjà, ou l'endpoint n'est pas disponible
+
+
 def main() -> None:
+    ensure_posts_table()
     seen_urls: set[str] = set()
     for query in SERPER_QUERIES:
         try:

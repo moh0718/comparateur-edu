@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { createClient } from "@supabase/supabase-js";
 import { getBaseUrl } from "@/lib/seo";
 import { ROUTES } from "@/lib/navigation";
-import { posts } from "@/data/posts-mock";
+import { fetchAllPosts } from "@/lib/blog";
 import { metiersMock } from "@/data/metiers-mock";
 import { institutionsMock } from "@/data/institutions-mock";
 
@@ -58,7 +58,8 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     priority: 0.75,
   }));
 
-  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
+  const allPosts = await fetchAllPosts();
+  const blogPages: MetadataRoute.Sitemap = allPosts.map((post) => ({
     url: `${base}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
