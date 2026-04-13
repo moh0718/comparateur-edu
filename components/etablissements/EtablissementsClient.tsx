@@ -41,14 +41,14 @@ function filterInstitutions(list: Institution[], f: FilterState): Institution[] 
 }
 
 function parseBudgetMin(s: string): number {
-  const m = s.match(/(\d[\\d\\s]*)\\s*000/);
-  return m ? parseInt(m[1].replace(/\\s/g, ""), 10) * 1000 : 0;
+  const m = s.match(/(\d[\d\s]*)\s*000/);
+  return m ? parseInt(m[1].replace(/\s/g, ""), 10) * 1000 : 0;
 }
 
 function parseBudgetMax(s: string): number {
   const parts = s.split(/-|à|–/);
-  const m = parts[parts.length - 1]?.match(/(\d[\\d\\s]*)\\s*000/);
-  return m ? parseInt(m[1].replace(/\\s/g, ""), 10) * 1000 : 999999999;
+  const m = parts[parts.length - 1]?.match(/(\d[\d\s]*)\s*000/);
+  return m ? parseInt(m[1].replace(/\s/g, ""), 10) * 1000 : 999999999;
 }
 
 function sortInstitutions(list: Institution[]): Institution[] {

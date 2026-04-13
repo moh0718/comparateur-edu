@@ -9,7 +9,7 @@ import { SITE_NAME, getBaseUrl } from "@/lib/seo";
 import { LEAD_FORM_HREF } from "@/lib/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export const revalidate = 0;
+export const revalidate = 3600;
 
 type PageProps = { params: Promise<{ slug: string }> };
 

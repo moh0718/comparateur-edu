@@ -41,7 +41,6 @@ export async function getSitemapEntries(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}${ROUTES.faq}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}${ROUTES.conditionsGenerales}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}${ROUTES.mentionsLegales}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/fiche-bnp-paribas-algerie`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
   ];
 
   const slugs = await getEtablissementSlugs();

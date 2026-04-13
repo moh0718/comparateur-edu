@@ -12,7 +12,8 @@ import {
   type OrientationAnswers,
 } from "@/lib/orientation-steps";
 import { sortInstitutionsByMatch } from "@/lib/matching";
-import { institutionsMock } from "@/data/institutions-mock";
+import { institutionsMock, type Institution } from "@/data/institutions-mock";
+import { createClient } from "@/lib/supabase/client";
 import { InstitutionCard } from "@/components/InstitutionCard";
 import { Footer } from "@/components/Footer";
 import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
@@ -44,15 +45,16 @@ function useStepFromParams(): number {
 }
 
 function answersToMatch(answers: OrientationAnswers) {
-  const critere = answers.critere || answers.q4;
+  const critereRaw = answers.critere || answers.q4 || "";
+  const criteres = critereRaw.split(",").map((v) => v.trim()).filter(Boolean);
   return {
     wilaya: answers.wilaya || answers.q1,
     category: answers.category || answers.q2,
     budget: answers.budget || answers.q3,
     langue: answers.langue || answers.q5,
-    internat: critere === "internat" ? "oui" : undefined,
-    transport: critere === "transport" ? "oui" : undefined,
-    bacRequis: critere === "bac_non_requis" ? "non" : undefined,
+    internat: criteres.includes("internat") ? "oui" : undefined,
+    transport: criteres.includes("transport") ? "oui" : undefined,
+    bacRequis: criteres.includes("bac_non_requis") ? "non" : undefined,
   };
 }
 
@@ -519,8 +521,21 @@ function MultiCriteriaStep({
 function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswers; onPrev: () => void }) {
   const router = useRouter();
   const matchParams = answersToMatch(answers);
+  const [allInstitutions, setAllInstitutions] = useState<Institution[]>(institutionsMock);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("institutions")
+      .select("*")
+      .eq("is_active", true)
+      .then(({ data }) => {
+        if (data && data.length > 0) setAllInstitutions(data as Institution[]);
+      });
+  }, []);
+
   const recommended = sortInstitutionsByMatch(
-    institutionsMock.filter((i) => i.is_active !== false),
+    allInstitutions.filter((i) => i.is_active !== false),
     matchParams,
   ).slice(0, 5);
   const recommendedSummary =

@@ -16,6 +16,7 @@ const nextConfig = {
       { source: "/fiches-banques", destination: "/etablissements", permanent: true },
       { source: "/recommandation", destination: "/orientation/1", permanent: true },
       { source: "/recommandation/:path*", destination: "/orientation/1", permanent: true },
+      { source: "/fiche-bnp-paribas-algerie", destination: "/etablissements", permanent: true },
     ];
   },
   images: {

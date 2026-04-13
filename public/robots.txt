@@ -1,9 +1,4 @@
-# *
 User-agent: *
 Allow: /
 
-# Host
-Host: https://comparateur-edu-site.vercel.app
-
-# Sitemaps
 Sitemap: https://comparateur-edu-site.vercel.app/sitemap.xml
