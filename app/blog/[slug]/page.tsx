@@ -6,7 +6,8 @@ import { Header } from "@/components/Header";
 import { AdSlotSkyscraper } from "@/components/AdSlot";
 import { Button } from "@/components/ui/button";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { posts, type Post } from "@/data/posts-mock";
+import { fetchPostBySlug, fetchAllPosts } from "@/lib/blog";
+import type { Post } from "@/data/posts-mock";
 import { SITE_NAME, getBaseUrl } from "@/lib/seo";
 import { Footer } from "@/components/Footer";
 import { LEAD_FORM_HREF } from "@/lib/navigation";
@@ -16,9 +17,11 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const post = posts.find((p) => p.slug === slug);
+  const post = await fetchPostBySlug(slug);
   if (!post)
     return { title: "Article introuvable", robots: { index: false, follow: true } };
   const cookieStore = await cookies();
@@ -46,17 +49,17 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-function getRelatedPosts(current: Post, limit: number): Post[] {
+function getRelatedPosts(current: Post, allPosts: Post[], limit: number): Post[] {
   if (current.relatedSlugs && current.relatedSlugs.length > 0) {
     const related: Post[] = [];
     for (const slug of current.relatedSlugs) {
-      const p = posts.find((x) => x.slug === slug);
+      const p = allPosts.find((x) => x.slug === slug);
       if (p && p.slug !== current.slug) related.push(p);
       if (related.length >= limit) break;
     }
     return related;
   }
-  const others = posts.filter((p) => p.slug !== current.slug);
+  const others = allPosts.filter((p) => p.slug !== current.slug);
   const sameCategory = others.filter((p) => p.category === current.category);
   const rest = others.filter((p) => p.category !== current.category);
   return [...sameCategory, ...rest].slice(0, limit);
@@ -203,7 +206,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const cookieStore = await cookies();
   const lang = (cookieStore.get("lang")?.value ?? "fr") as Lang;
-  const post = posts.find((p) => p.slug === slug);
+  const [post, allPosts] = await Promise.all([fetchPostBySlug(slug), fetchAllPosts()]);
 
   if (!post) {
     return (
@@ -224,7 +227,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const baseTitle = lang === "ar" && post.titleAr ? post.titleAr : post.title;
   const baseExcerpt = lang === "ar" && post.excerptAr ? post.excerptAr : post.excerpt;
 
-  const relatedPosts = getRelatedPosts(post, 3);
+  const relatedPosts = getRelatedPosts(post, allPosts, 3);
   const locale = lang === "ar" ? "ar-DZ" : "fr-FR";
   const formattedDate = new Date(post.date).toLocaleDateString(locale, {
     day: "numeric",
