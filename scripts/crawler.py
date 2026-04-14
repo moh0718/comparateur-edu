@@ -34,6 +34,7 @@ GOOGLE_PLACES_API_KEY = os.getenv("GOOGLE_PLACES_API_KEY")
 SERPER_API_KEY = os.getenv("SERPER_API_KEY")
 APIFY_API_KEY = os.getenv("APIFY_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 RESEND_API_KEY = os.getenv("RESEND_API_KEY")
 MY_EMAIL = os.getenv("MY_EMAIL")
 REVALIDATION_SECRET = os.getenv("REVALIDATION_SECRET")
@@ -785,10 +786,39 @@ Réponds UNIQUEMENT par un JSON valide, sans markdown.
 """
 
 
-def gemini_extract(text: str, institution_name: str) -> InstitutionData:
-    if not GEMINI_API_KEY:
-        raise ValueError("GEMINI_API_KEY manquant")
-    prompt = PROMPT_EXTRACTION.format(schema=INSTITUTION_SCHEMA, content=text[:120000])
+def _parse_retry_after(msg: str) -> float | None:
+    """Extrait le délai 'try again in Xs' des erreurs Groq 429."""
+    m = re.search(r"try again in\s+([\d.]+)s", msg, re.IGNORECASE)
+    return float(m.group(1)) if m else None
+
+
+def _parse_raw_json(raw: str) -> dict:
+    raw = raw.strip()
+    if raw.startswith("```"):
+        raw = raw.split("```")[1]
+        if raw.startswith("json"):
+            raw = raw[4:]
+    raw = raw.strip().rstrip("`").strip()
+    return json.loads(raw)
+
+
+def _groq_extract(prompt: str) -> dict:
+    from groq import Groq
+    client = Groq(api_key=GROQ_API_KEY)
+    resp = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {"role": "system", "content": "Tu réponds uniquement par un JSON valide, sans markdown ni backticks."},
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.2,
+        max_tokens=8192,
+    )
+    raw = (resp.choices[0].message.content or "{}").strip()
+    return _parse_raw_json(raw)
+
+
+def _gemini_extract(prompt: str) -> dict:
     r = requests.post(
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + GEMINI_API_KEY,
         json={
@@ -801,11 +831,41 @@ def gemini_extract(text: str, institution_name: str) -> InstitutionData:
     out = r.json()
     cand = out.get("candidates", [{}])[0]
     raw = (cand.get("content", {}).get("parts", [{}])[0].get("text", "{}") or "{}").strip()
-    if raw.startswith("```"):
-        raw = raw.split("```")[1]
-        if raw.startswith("json"):
-            raw = raw[4:]
-    data = json.loads(raw)
+    return _parse_raw_json(raw)
+
+
+def gemini_extract(text: str, institution_name: str) -> InstitutionData:
+    # Limite à 8000 chars pour rester sous le TPM Groq free (12k tokens/min)
+    content = text[:8000]
+    prompt = PROMPT_EXTRACTION.format(schema=INSTITUTION_SCHEMA, content=content)
+
+    data: dict | None = None
+
+    # ── Groq en priorité (14 400 req/jour gratuit) ──
+    if GROQ_API_KEY:
+        for attempt in range(3):
+            try:
+                data = _groq_extract(prompt)
+                break
+            except Exception as e:
+                err = str(e)
+                is_413 = "413" in err
+                is_retryable = not is_413 and ("429" in err or "rate" in err.lower() or "quota" in err.lower())
+                if not is_retryable or attempt >= 2:
+                    print(f"[Groq] erreur → fallback Gemini : {e}")
+                    break
+                wait = _parse_retry_after(err) or (5 * (2 ** attempt))
+                jitter = random.uniform(1.0, 3.0)
+                print(f"[Groq] retry {attempt+1}/3 — attente {round(wait+jitter,1)}s")
+                time.sleep(wait + jitter)
+
+    # ── Gemini en fallback ──
+    if data is None and GEMINI_API_KEY:
+        data = _gemini_extract(prompt)
+
+    if data is None:
+        raise RuntimeError("Aucun LLM disponible (GROQ_API_KEY et GEMINI_API_KEY manquants)")
+
     if not data.get("name"):
         data["name"] = institution_name
     return InstitutionData.model_validate(data)

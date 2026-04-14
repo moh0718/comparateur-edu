@@ -26,6 +26,7 @@ SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 SERPER_API_KEY = os.getenv("SERPER_API_KEY")
 FIRECRAWL_API_KEY = os.getenv("FIRECRAWL_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 
 def slugify(title: str) -> str:
@@ -111,12 +112,27 @@ CONTENU SOURCE :
 ARTICLE :"""
 
 
-@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))
-def gemini_write_article(source_text: str, source_title: str, source_url: str) -> str:
-    if not GEMINI_API_KEY:
-        raise ValueError("GEMINI_API_KEY manquant")
-    content = (source_text[:80000] or "[Contenu vide]").strip()
-    prompt = ARTICLE_PROMPT.format(content=content)
+def _parse_retry_after(msg: str) -> float | None:
+    m = re.search(r"try again in\s+([\d.]+)s", msg, re.IGNORECASE)
+    return float(m.group(1)) if m else None
+
+
+def _groq_write_article(prompt: str) -> str:
+    from groq import Groq
+    client = Groq(api_key=GROQ_API_KEY)
+    resp = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {"role": "system", "content": "Tu es un rédacteur expert en éducation algérienne. Tu rédiges des articles de blog clairs et engageants en français."},
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.4,
+        max_tokens=8192,
+    )
+    return (resp.choices[0].message.content or "").strip()
+
+
+def _gemini_write_article(prompt: str) -> str:
     r = requests.post(
         f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}",
         json={"contents": [{"parts": [{"text": prompt}]}]},
@@ -125,7 +141,39 @@ def gemini_write_article(source_text: str, source_title: str, source_url: str) -
     r.raise_for_status()
     out = r.json()
     cand = out.get("candidates", [{}])[0]
-    text = (cand.get("content", {}).get("parts", [{}])[0].get("text", "") or "").strip()
+    return (cand.get("content", {}).get("parts", [{}])[0].get("text", "") or "").strip()
+
+
+def gemini_write_article(source_text: str, source_title: str, source_url: str) -> str:
+    content = (source_text[:8000] or "[Contenu vide]").strip()
+    prompt = ARTICLE_PROMPT.format(content=content)
+
+    text: str | None = None
+
+    # ── Groq en priorité ──
+    if GROQ_API_KEY:
+        for attempt in range(3):
+            try:
+                text = _groq_write_article(prompt)
+                break
+            except Exception as e:
+                err = str(e)
+                is_413 = "413" in err
+                is_retryable = not is_413 and ("429" in err or "rate" in err.lower() or "quota" in err.lower())
+                if not is_retryable or attempt >= 2:
+                    print(f"[Groq blog] erreur → fallback Gemini : {e}")
+                    break
+                wait = _parse_retry_after(err) or (5 * (2 ** attempt))
+                jitter = time.time() % 3.0  # jitter léger
+                print(f"[Groq blog] retry {attempt+1}/3 — attente {round(wait+jitter,1)}s")
+                time.sleep(wait + jitter)
+
+    # ── Gemini en fallback ──
+    if text is None:
+        if not GEMINI_API_KEY:
+            raise ValueError("GROQ_API_KEY et GEMINI_API_KEY manquants")
+        text = _gemini_write_article(prompt)
+
     if source_url and "comparateur gratuit" not in text and "Comparateur gratuit" not in text:
         text = text.rstrip() + "\n\nVous cherchez la meilleure école pour votre profil ? Utilisez notre comparateur gratuit."
     return text
