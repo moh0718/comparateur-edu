@@ -157,6 +157,17 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
     ].filter(Boolean),
   };
 
+  // Fil d'Ariane : Google peut l'afficher sous le titre dans les résultats.
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: getBaseUrl() },
+      { "@type": "ListItem", position: 2, name: "Établissements", item: `${getBaseUrl()}/etablissements` },
+      { "@type": "ListItem", position: 3, name: inst.name, item: canonicalUrl },
+    ],
+  };
+
   const orientationRows: { label: string; value: string | boolean | null }[] = [
     { label: "Bac requis", value: inst.bac_required ?? null },
     { label: "Diplôme", value: inst.diploma_type ?? null },
@@ -199,6 +210,10 @@ export default async function EtablissementSlugPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdInstitution) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
       />
       <Header />
 
