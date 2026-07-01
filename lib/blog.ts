@@ -8,7 +8,7 @@ import { createClient } from "@supabase/supabase-js";
 import { posts as mockPosts, type Post } from "@/data/posts-mock";
 
 const DEFAULT_IMAGE = "https://picsum.photos/seed/kompar-edu/800/450";
-const DEFAULT_CATEGORY = "Actualité" as const;
+const DEFAULT_CATEGORY = "Guides pratiques" as const;
 
 function rowToPost(row: Record<string, unknown>): Post {
   return {
