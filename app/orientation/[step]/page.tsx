@@ -8,7 +8,6 @@ import {
   getOrientationStepConfig,
   getNextOrientationStep,
   getPrevOrientationStep,
-  buildOrientationWhatsAppMessage,
   type OrientationAnswers,
 } from "@/lib/orientation-steps";
 import { sortInstitutionsByMatch } from "@/lib/matching";
@@ -168,7 +167,7 @@ export default function OrientationStepPage() {
                     L’orientation sur-mesure pour un parcours sans faute.
                   </p>
                   <p className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50/80 px-4 py-3 text-center text-xs font-medium text-emerald-800">
-                    <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. La mise en relation se fait exclusivement par WhatsApp, avec votre consentement.
+                    <strong>Aucune donnée personnelle n&apos;est demandée ni stockée.</strong> Vos réponses servent uniquement à afficher vos établissements recommandés, tout de suite, à la fin.
                   </p>
                 </>
               )}
@@ -519,7 +518,6 @@ function MultiCriteriaStep({
 }
 
 function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswers; onPrev: () => void }) {
-  const router = useRouter();
   const matchParams = answersToMatch(answers);
   const [allInstitutions, setAllInstitutions] = useState<Institution[]>(institutionsMock);
 
@@ -538,116 +536,65 @@ function OrientationResultStep({ answers, onPrev }: { answers: OrientationAnswer
     allInstitutions.filter((i) => i.is_active !== false),
     matchParams,
   ).slice(0, 5);
-  const recommendedSummary =
-    recommended.length > 0
-      ? recommended.map((inst) => `${inst.name}${inst.commune ? ` (${inst.commune})` : ""}`).join("; ")
-      : "";
-  const [whatsapp, setWhatsapp] = useState("");
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const waNumber = process.env.NEXT_PUBLIC_WA_NUMBER || "";
-
-  // Log pour debug
-  useEffect(() => {
-    console.log("WhatsApp Admin Number:", waNumber);
-  }, [waNumber]);
-
-  const handleSend = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    const digits = whatsapp.replace(/\D/g, "");
-    if (digits.length < 8) {
-      setError("Numéro invalide (au moins 8 chiffres).");
-      return;
-    }
-    setSending(true);
-    try {
-      const message = buildOrientationWhatsAppMessage(
-        { ...answers, recommended: recommendedSummary } as OrientationAnswers,
-        digits,
-      );
-
-      // Envoi de la copie par email en parallèle (silencieux pour l'utilisateur)
-      fetch("/api/lead-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          message,
-          subject: `Nouveau Lead : ${answers.nom || "Anonyme"} (${answers.niveau || "Niveau non précisé"})`
-        }),
-      }).catch(err => console.error("Erreur envoi copie email:", err));
-
-      const res = await fetch("/api/whatsapp-url", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
-      });
-      const data = await res.json();
-      if (res.ok && data.url) {
-        // Correction : utiliser un lien direct si window.open est bloqué
-        const link = document.createElement("a");
-        link.href = data.url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        router.push(ROUTES.orientationConfirmation);
-      } else {
-        setError(data.error || "Impossible d'ouvrir WhatsApp.");
-      }
-    } catch {
-      setError("Une erreur est survenue.");
-    } finally {
-      setSending(false);
-    }
-  };
 
   return (
-    <div className="space-y-8">
-      <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-        <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-xl">💬</span>
-          <div>
-            <p className="text-sm font-semibold text-slate-900">Recevez les recommandations sur WhatsApp</p>
-            <p className="mt-1 text-xs text-slate-600">
-              Aucune donnée personnelle n&apos;est stockée sur ce site ni dans aucune base de données. WhatsApp s&apos;ouvrira avec un résumé de vos réponses. Vous restez libre d&apos;envoyer ou non le message.
-            </p>
-          </div>
-        </div>
-        <form onSubmit={handleSend} className="mt-4 space-y-4">
-          <div>
-            <label htmlFor="orientation-wa" className="mb-1 block text-sm text-slate-700">
-              Tel WhatsApp
-            </label>
-            <input
-              id="orientation-wa"
-              type="tel"
-              value={whatsapp}
-              onChange={(e) => setWhatsapp(e.target.value)}
-              placeholder="Ex. 055 12 34 56"
-              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
-              required
-            />
-          </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          <button
-            type="submit"
-            disabled={sending}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-4 text-emerald-50 hover:bg-green-700 disabled:opacity-50"
-          >
-            <span className="text-xl">💬</span>
-            {sending ? "Envoi…" : "Recevoir sur WhatsApp"}
-          </button>
-        </form>
+    <div className="space-y-6">
+      <div className="text-center">
+        <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">Vos établissements recommandés</h1>
+        <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
+          Sélection établie à partir de vos réponses (wilaya, type de formation, budget, critères).
+          Ouvrez une fiche pour voir tous les détails et les coordonnées.
+        </p>
       </div>
 
-      <div className="flex justify-center">
+      {recommended.length > 0 ? (
+        <ol className="space-y-4">
+          {recommended.map((institution, index) => (
+            <li key={institution.id ?? institution.slug} className="relative">
+              <span
+                className="absolute -left-2 -top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-green-600 text-xs font-bold text-emerald-50 shadow"
+                aria-hidden
+              >
+                {index + 1}
+              </span>
+              <InstitutionCard institution={institution} />
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <p className="rounded-xl border border-slate-200 bg-white p-5 text-center text-sm text-slate-600">
+          Aucun établissement ne correspond exactement à vos critères. Explorez l&apos;annuaire complet avec les filtres.
+        </p>
+      )}
+
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <Link
+          href={ROUTES.etablissements}
+          className="flex-1 rounded-xl bg-green-600 px-4 py-3.5 text-center text-sm font-semibold text-emerald-50 transition-colors hover:bg-green-700"
+        >
+          Voir tout l&apos;annuaire
+        </Link>
+        <Link
+          href={ROUTES.comparer}
+          className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-center text-sm font-semibold text-slate-800 transition-colors hover:border-green-300 hover:bg-green-50/50"
+        >
+          Comparer les établissements
+        </Link>
+      </div>
+
+      <div className="flex items-center justify-center gap-6">
+        <Link href="/orientation/1" className="text-sm font-medium text-slate-500 underline hover:text-slate-700">
+          Recommencer
+        </Link>
         <button type="button" onClick={onPrev} className="text-sm font-medium text-slate-500 underline hover:text-slate-700">
           Précédent
         </button>
       </div>
+
+      <p className="mx-auto max-w-xl text-center text-xs leading-relaxed text-slate-400">
+        Recommandations indicatives basées sur des informations publiques. Vérifiez toujours les détails
+        (frais, dates, programmes) directement auprès de l&apos;établissement.
+      </p>
     </div>
   );
 }

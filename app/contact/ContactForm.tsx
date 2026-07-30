@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
+/** Adresse de contact de l'équipe (aucun numéro personnel exposé). */
+const CONTACT_EMAIL = "hello.team.locus@outlook.com";
+
 const inputBase =
   "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 pl-9 text-sm text-slate-900 outline-none ring-0 placeholder:text-slate-500 focus:border-green-500 focus:ring-2 focus:ring-green-100";
 
@@ -21,13 +24,6 @@ function IconMail() {
     </svg>
   );
 }
-function IconPhone() {
-  return (
-    <svg className="h-4 w-4 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-    </svg>
-  );
-}
 function IconLock() {
   return (
     <svg className="h-3.5 w-3.5 shrink-0 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
@@ -37,13 +33,6 @@ function IconLock() {
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PHONE_REGEX = /^[\d\s+.-]{8,}$/;
-const PHONE_DIGITS_MIN = 8;
-
-function validatePhone(value: string): boolean {
-  const digits = value.replace(/\D/g, "");
-  return digits.length >= PHONE_DIGITS_MIN;
-}
 
 export function ContactForm() {
   const router = useRouter();
@@ -56,16 +45,12 @@ export function ContactForm() {
     const form = e.currentTarget;
     const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
     const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
-    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value.trim();
     const messageText = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
 
     const errors: Record<string, string> = {};
     if (!name) errors.name = "Nom et prénom requis.";
     else if (name.length < 2) errors.name = "Prénom et nom valides requis.";
     if (email && !EMAIL_REGEX.test(email)) errors.email = "Format d’email incorrect.";
-    if (!phone) errors.phone = "Numéro WhatsApp obligatoire pour vous recontacter.";
-    else if (!PHONE_REGEX.test(phone)) errors.phone = "Format de numéro incorrect.";
-    else if (!validatePhone(phone)) errors.phone = "Numéro trop court (au moins 8 chiffres).";
     if (!messageText) errors.message = "Message requis.";
     else if (messageText.length < 10) errors.message = "Veuillez rédiger un message (au moins 10 caractères).";
 
@@ -75,44 +60,20 @@ export function ContactForm() {
     }
 
     setLoading(true);
-    const lines = [
-      "📩 Contact — Kompar",
-      "────────────────────",
-      `👤 ${name}`,
-      ...(email ? [`📧 ${email}`] : []),
-      ...(phone ? [`📱 ${phone}`] : []),
-      "────────────────────",
+    const subject = `Contact kompar - edu — ${name}`;
+    const bodyLines = [
+      `Nom : ${name}`,
+      ...(email ? [`Email : ${email}`] : []),
+      "",
       messageText,
     ];
-    const message = lines.join("\n");
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+      bodyLines.join("\n")
+    )}`;
 
-    try {
-      const res = await fetch("/api/whatsapp-url", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setFieldErrors({ submit: data.error || "Impossible d’ouvrir WhatsApp." });
-        return;
-      }
-      
-      // Correction : utiliser un lien direct si window.open est bloqué
-      const link = document.createElement("a");
-      link.href = data.url;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      router.push("/contact/confirmation");
-    } catch {
-      setFieldErrors({ submit: "Une erreur est survenue. Réessayez." });
-    } finally {
-      setLoading(false);
-    }
+    // Ouvre le client email du visiteur, pré-rempli. Aucune donnée ne transite par le site.
+    window.location.href = mailto;
+    router.push("/contact/confirmation");
   };
 
   const inputErrorClass = "border-red-400 bg-red-50/50 focus:border-red-500 focus:ring-red-100";
@@ -154,7 +115,7 @@ export function ContactForm() {
 
       <div className="space-y-1">
         <label htmlFor="contact-email" className="block text-sm font-medium text-slate-700">
-          Email <span className="text-slate-500">(optionnel)</span>
+          Votre email <span className="text-slate-500">(pour recevoir une réponse)</span>
         </label>
         <div className="relative">
           <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2">
@@ -174,32 +135,6 @@ export function ContactForm() {
         {fieldErrors.email && (
           <p id="contact-email-error" className="mt-1 text-xs text-red-600" role="alert">
             {fieldErrors.email}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-1">
-        <label htmlFor="contact-phone" className="block text-sm font-medium text-slate-700">
-          Numéro WhatsApp <span className="text-red-600">(obligatoire)</span>
-        </label>
-        <div className="relative">
-          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2">
-            <IconPhone />
-          </span>
-          <input
-            id="contact-phone"
-            type="tel"
-            name="phone"
-            placeholder="Ex. 055 12 34 56 ou +213 555 123 456"
-            className={`${inputBase} pl-9 ${fieldErrors.phone ? inputErrorClass : ""}`}
-            autoComplete="tel"
-            aria-invalid={!!fieldErrors.phone}
-            aria-describedby={fieldErrors.phone ? "contact-phone-error" : undefined}
-          />
-        </div>
-        {fieldErrors.phone && (
-          <p id="contact-phone-error" className="mt-1 text-xs text-red-600" role="alert">
-            {fieldErrors.phone}
           </p>
         )}
       </div>
@@ -225,7 +160,7 @@ export function ContactForm() {
       </div>
 
       <Button type="submit" variant="primary" size="lg" className="w-full justify-center" disabled={loading}>
-        {loading ? "Envoi…" : "Envoyer via WhatsApp"}
+        {loading ? "Ouverture…" : "Envoyer par email"}
       </Button>
 
       <div className="space-y-2 pt-2">
@@ -234,7 +169,12 @@ export function ContactForm() {
             <IconLock />
           </span>
           <span>
-            <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. WhatsApp s&apos;ouvrira avec vos réponses. Vous restez libre d&apos;envoyer ou non le message.
+            Aucune donnée n’est enregistrée sur nos serveurs. Votre logiciel de messagerie s’ouvre avec un
+            message pré-rempli à destination de{" "}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="font-medium text-green-700 underline">
+              {CONTACT_EMAIL}
+            </a>
+            .
           </span>
         </p>
       </div>

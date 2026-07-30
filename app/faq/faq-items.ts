@@ -25,7 +25,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     preview:
       "Vous répondez à quelques questions sur votre situation (wilaya, niveau, budget, critères) et le comparateur vous propose les 5 établissements les plus adaptés à votre profil.",
     full:
-      "Vous répondez à quelques questions sur votre situation (wilaya, niveau, budget, critères) et le comparateur vous propose les 5 établissements les plus adaptés à votre profil. Les résultats sont envoyés sur WhatsApp avec un résumé de vos réponses. Vous pouvez aussi consulter l'annuaire et utiliser les filtres pour explorer par vous-même (catégorie, wilaya, langue d'enseignement, MESRS, etc.).",
+      "Vous répondez à quelques questions sur votre situation (wilaya, niveau, budget, critères) et le comparateur affiche directement, à la fin, les 5 établissements les plus adaptés à votre profil — sans inscription. Vous pouvez aussi consulter l'annuaire et utiliser les filtres pour explorer par vous-même (catégorie, wilaya, langue d'enseignement, MESRS, etc.).",
   },
   {
     id: "3",
@@ -68,9 +68,9 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "Mes données personnelles sont-elles sécurisées ?",
     emoji: "🔒",
     preview:
-      "Aucune donnée personnelle n'est stockée sur le site. Le formulaire d'orientation fonctionne uniquement via WhatsApp, avec votre consentement explicite.",
+      "Aucune donnée personnelle n'est stockée sur le site. Le formulaire d'orientation n'exige aucune information de contact : vos réponses servent uniquement à afficher vos recommandations à l'écran.",
     full:
-      "Aucune donnée personnelle n'est stockée sur le site ni dans aucune base de données. Le formulaire d'orientation fonctionne uniquement via WhatsApp : votre navigateur prépare le message, vous choisissez de l'envoyer ou non. Nous ne conservons pas votre nom, email ni numéro de téléphone. Une copie du message peut être envoyée à l'équipe kompar - edu uniquement à des fins de suivi de la demande.",
+      "Aucune donnée personnelle n'est stockée sur le site ni dans aucune base de données. Le formulaire d'orientation ne demande ni nom, ni email, ni numéro de téléphone : vos réponses sont utilisées uniquement, côté navigateur, pour afficher vos établissements recommandés, puis oubliées. Pour nous écrire, vous pouvez utiliser la page Contact (par email).",
   },
   {
     id: "8",
@@ -79,7 +79,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     preview:
       "Non. Seuls la wilaya, le type de formation et quelques critères sont nécessaires pour les recommandations. Nom et email sont optionnels.",
     full:
-      "Non. Seuls la wilaya, le type de formation et quelques critères (budget, langue, MESRS, etc.) sont nécessaires pour obtenir des recommandations pertinentes. Le nom et l'email sont optionnels et servent uniquement à personnaliser le message WhatsApp. Vous pouvez aussi consulter l'annuaire complet sans remplir aucun formulaire.",
+      "Non. Seuls la wilaya, le type de formation et quelques critères (budget, langue, MESRS, etc.) sont nécessaires pour obtenir des recommandations pertinentes. Aucune information de contact n'est demandée. Vous pouvez aussi consulter l'annuaire complet sans remplir aucun formulaire.",
   },
   {
     id: "9",
@@ -113,9 +113,9 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "Pourquoi remplir le formulaire d'orientation ?",
     emoji: "📝",
     preview:
-      "Pour recevoir une sélection personnalisée de 3 à 5 établissements adaptés à votre profil, wilaya, budget et critères, directement sur WhatsApp.",
+      "Pour afficher, à la fin, une sélection personnalisée de 3 à 5 établissements adaptés à votre profil, wilaya, budget et critères — directement à l'écran.",
     full:
-      "Pour recevoir une sélection personnalisée de 3 à 5 établissements adaptés à votre profil, wilaya, budget et critères, directement sur WhatsApp. Sans ces informations, il est difficile de cibler les établissements qui vous correspondent vraiment parmi les centaines référencés. C'est gratuit, sans engagement et prend moins de 2 minutes.",
+      "Pour afficher, à la fin, une sélection personnalisée de 3 à 5 établissements adaptés à votre profil, wilaya, budget et critères — directement à l'écran. Sans ces réponses, il est difficile de cibler les établissements qui vous correspondent vraiment parmi les centaines référencés. C'est gratuit, sans engagement et prend moins de 2 minutes.",
   },
   {
     id: "13",

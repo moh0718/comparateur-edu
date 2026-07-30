@@ -96,7 +96,7 @@ export function ConsentModal() {
               Vos préférences de confidentialité
             </h2>
             <p id="consent-description" className="mt-2 text-sm text-slate-600 leading-relaxed">
-              <strong className="text-slate-800">Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. La mise en relation se fait exclusivement par <span className="font-medium text-slate-800">WhatsApp</span> avec votre consentement. Nous pouvons aussi utiliser des outils statistiques anonymes pour comprendre l&apos;usage du site. Aucun cookie publicitaire tiers.
+              <strong className="text-slate-800">Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données. Le comparateur affiche vos recommandations directement à l&apos;écran, sans collecte. Pour nous écrire, la page Contact fonctionne par <span className="font-medium text-slate-800">email</span>. Nous pouvons aussi utiliser des outils statistiques anonymes pour comprendre l&apos;usage du site. Aucun cookie publicitaire tiers.
             </p>
           </div>
         </div>
@@ -110,9 +110,9 @@ export function ConsentModal() {
               onChange={(e) => setWhatsapp(e.target.checked)}
             />
             <div className="text-sm text-slate-700">
-              <div className="font-medium text-slate-900">Contact par WhatsApp</div>
+              <div className="font-medium text-slate-900">Contact par email</div>
               <p className="mt-0.5 text-xs text-slate-600">
-                Autoriser le contact par WhatsApp au sujet de votre projet d&apos;orientation ou de comparaison d&apos;établissements. Vos réponses ne sont jamais stockées sur nos serveurs. Vous pourrez nous demander d&apos;arrêter à tout moment.
+                Autoriser une réponse par email si vous nous écrivez via la page Contact, au sujet de votre projet d&apos;orientation ou de comparaison d&apos;établissements. Vos réponses ne sont jamais stockées sur nos serveurs.
               </p>
             </div>
           </label>
