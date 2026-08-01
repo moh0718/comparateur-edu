@@ -303,7 +303,7 @@ export function buildWhatsAppMessage(
   },
   result: { profile: string; cardType: string; suggestedBanks: string[] }
 ): string {
-  const site = process.env.NEXT_PUBLIC_SITE_URL || "kompar-banque.dz";
+  const site = process.env.NEXT_PUBLIC_SITE_URL || "kompar-edu.com";
   const lines: string[] = [
     "🏦 Nouvelle demande — " + site.replace(/^https?:\/\//, ""),
     "─────────────────────────────────────",

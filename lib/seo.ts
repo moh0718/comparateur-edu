@@ -32,7 +32,7 @@ export const SITE_KEYWORDS = [
 export const GEO_WILAYAS = ["Alger", "Blida", "Tipaza", "Boumerdès"] as const;
 
 /** URL canonique du site (sitemap, canonical, openGraph). Ne pas surcharger avec une autre valeur. */
-const CANONICAL_BASE = "https://comparateur-edu-site.vercel.app";
+const CANONICAL_BASE = "https://kompar-edu.com";
 
 export function getBaseUrl(): string {
   return CANONICAL_BASE;

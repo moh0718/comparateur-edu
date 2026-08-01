@@ -43,7 +43,7 @@ export function Footer({ className = "", variant = "default" }: FooterProps) {
             {t("footer.family.label")}
           </span>
           <Link
-            href="https://kompar-banques.vercel.app/"
+            href="https://kompar-banques.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1 text-[11px] font-medium text-emerald-800 shadow-sm hover:border-emerald-300 hover:bg-emerald-50"
