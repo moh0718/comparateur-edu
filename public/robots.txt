@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://comparateur-edu-site.vercel.app/sitemap.xml
