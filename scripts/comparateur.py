@@ -224,7 +224,7 @@ def firecrawl_scrape(url: str) -> str:
 
 
 # User-Agent pour les rares requêtes directes (ex. téléchargement PDF) : identifie le projet.
-USER_AGENT = "KomparBot/1.0 (comparateur banques algériennes; +https://kompar-banque.dz)"
+USER_AGENT = "KomparBot/1.0 (comparateur banques algériennes; +https://kompar-edu.com)"
 
 # --- LlamaParse : lire un PDF (URL) ---
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10))

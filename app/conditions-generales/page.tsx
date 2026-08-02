@@ -128,10 +128,10 @@ const SECTIONS: Array<{
       <p className="text-slate-700">
         Pour toute question ou demande liée à vos données ou à cette politique :{" "}
         <a
-          href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@kompar-banque.dz"}`}
+          href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello.team.locus@outlook.com"}`}
           className="rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-slate-800 hover:bg-slate-100 focus:ring-2 focus:ring-green-500 focus:ring-offset-1"
         >
-          {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@kompar-banque.dz"}
+          {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "hello.team.locus@outlook.com"}
         </a>
       </p>
     ),
