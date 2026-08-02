@@ -46,7 +46,7 @@ const LEGAL_HEBERGEUR_NAME = "Vercel Inc.";
 const LEGAL_HEBERGEUR_ADDRESS = "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis";
 const LEGAL_HEBERGEUR_PHONE = "—";
 const LEGAL_HEBERGEUR_EMAIL = "privacy@vercel.com";
-const LEGAL_HEBERGEUR_PRECISION = "L'hébergement est assuré par Vercel Inc. pour la mise à disposition du site (scripts et contenus). Aucune donnée personnelle des visiteurs n'est stockée sur l'infrastructure Vercel ni sur ce site ; la mise en relation se fait exclusivement par WhatsApp avec consentement (voir section 4).";
+const LEGAL_HEBERGEUR_PRECISION = "L'hébergement est assuré par Vercel Inc. pour la mise à disposition du site (scripts et contenus). Aucune donnée personnelle des visiteurs n'est stockée sur l'infrastructure Vercel ni sur ce site (voir section 4).";
 
 export default function MentionsLegalesPage() {
   return (
@@ -208,10 +208,10 @@ export default function MentionsLegalesPage() {
                 <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données.
               </p>
               <p>
-                La mise en relation se fait <strong className="text-slate-800">exclusivement par WhatsApp</strong>, avec votre consentement préalable (bannière de confidentialité). Vos réponses au formulaire ne sont jamais enregistrées sur nos serveurs : un lien WhatsApp s&apos;ouvre avec un message pré-rempli que vous envoyez (ou non) directement à notre numéro.
+                Le formulaire d&apos;orientation fonctionne <strong className="text-slate-800">entièrement dans votre navigateur</strong> : vos réponses servent uniquement à calculer et afficher vos établissements recommandés, immédiatement, à l&apos;écran. Elles ne sont ni transmises, ni enregistrées sur nos serveurs, ni conservées après votre visite. Aucune information de contact ne vous est demandée.
               </p>
               <p>
-                <strong className="text-slate-800">Consentement :</strong> En acceptant les préférences de confidentialité proposées à votre première visite, vous autorisez le contact par WhatsApp pour vos demandes d&apos;orientation. Vous pouvez à tout moment demander l&apos;arrêt des échanges.
+                <strong className="text-slate-800">Nous contacter :</strong> si vous nous écrivez via la page Contact, votre logiciel de messagerie s&apos;ouvre avec un message pré-rempli vers notre adresse email — vous seul décidez de l&apos;envoyer. Vous pouvez demander l&apos;arrêt des échanges à tout moment.
               </p>
             </div>
           </section>

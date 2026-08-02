@@ -8,7 +8,7 @@ import { LEAD_FORM_HREF, ROUTES } from "@/lib/navigation";
 export const metadata: Metadata = {
   title: "Conditions générales et politique de confidentialité",
   description:
-    "Conditions générales et politique de confidentialité de kompar - edu : rôle du site, zéro stockage de données personnelles, mise en relation par WhatsApp avec consentement, cookies et contact.",
+    "Conditions générales et politique de confidentialité de kompar - edu : rôle du site, zéro stockage de données personnelles, recommandations affichées directement, contact par email, cookies.",
   openGraph: {
     title: `Conditions générales et politique de confidentialité | ${SITE_NAME}`,
     description:
@@ -67,7 +67,7 @@ const SECTIONS: Array<{
           <strong>Aucune donnée personnelle n&apos;est stockée</strong> sur ce site ni dans aucune base de données.
         </p>
         <p className="text-slate-700">
-          La mise en relation se fait <strong className="text-slate-800">exclusivement par WhatsApp</strong>, avec votre consentement préalable. Vos réponses au formulaire ne sont jamais enregistrées sur nos serveurs : un lien WhatsApp s&apos;ouvre avec un message pré-rempli que vous envoyez (ou non) directement à notre numéro.
+          Le formulaire d&apos;orientation fonctionne <strong className="text-slate-800">entièrement dans votre navigateur</strong> : vos réponses servent uniquement à afficher vos établissements recommandés, immédiatement, à l&apos;écran. Elles ne sont ni transmises, ni enregistrées sur nos serveurs, ni conservées après votre visite. Aucune information de contact ne vous est demandée.
         </p>
       </>
     ),
@@ -87,10 +87,10 @@ const SECTIONS: Array<{
             <strong className="text-slate-800">Aucun stockage :</strong> Ce site et ses bases de données ne conservent aucune donnée personnelle des visiteurs. Ni nom, ni numéro, ni réponses aux formulaires ne sont enregistrés sur nos serveurs.
           </li>
           <li>
-            <strong className="text-slate-800">WhatsApp avec consentement uniquement :</strong> La mise en relation se fait exclusivement par WhatsApp. En acceptant la bannière de confidentialité, vous autorisez le contact par WhatsApp pour vos demandes d&apos;orientation. Vous restez libre d&apos;envoyer ou non le message pré-rempli.
+            <strong className="text-slate-800">Résultats affichés directement :</strong> vos recommandations s&apos;affichent à l&apos;écran, sans inscription ni transmission. Pour nous joindre, la page Contact ouvre votre logiciel de messagerie vers notre adresse email — vous seul décidez d&apos;envoyer.
           </li>
           <li>
-            <strong className="text-slate-800">Pas de profilage :</strong> Aucune donnée n&apos;est utilisée pour du ciblage publicitaire ou du profilage. Vos échanges restent entre vous et notre équipe via WhatsApp.
+            <strong className="text-slate-800">Pas de profilage :</strong> Aucune donnée n&apos;est utilisée pour du ciblage publicitaire ou du profilage.
           </li>
         </ul>
       </>
@@ -100,7 +100,7 @@ const SECTIONS: Array<{
     num: 4,
     title: "Consentement et droits",
     content:
-      "En acceptant les préférences de confidentialité proposées à votre première visite, vous autorisez le contact par WhatsApp pour vos demandes d'orientation. Vous pouvez à tout moment demander l'arrêt des échanges. Comme aucune donnée n'est stockée sur ce site, il n'existe pas de base de données à consulter ou rectifier ; les échanges se font directement via WhatsApp.",
+      "Comme aucune donnée n'est stockée sur ce site, il n'existe pas de base de données à consulter, rectifier ou supprimer. Si vous nous écrivez par email via la page Contact, vous pouvez à tout moment demander l'arrêt des échanges. Le traitement éventuel (réponse à votre message) repose sur votre consentement, dans le cadre de la loi 18-07.",
   },
   {
     num: 5,
@@ -117,9 +117,9 @@ const SECTIONS: Array<{
   },
   {
     num: 7,
-    title: "Formulaire et mise en relation",
+    title: "Formulaire d'orientation",
     content:
-      "Remplissez le formulaire : un lien WhatsApp s'ouvre avec un message pré-rempli contenant vos réponses. Vous l'envoyez (ou non) directement à notre numéro. Aucune donnée personnelle n'est stockée sur ce site ni dans aucune base de données — la mise en relation se fait exclusivement par WhatsApp, avec votre consentement.",
+      "Répondez à quelques questions et vos établissements recommandés s'affichent directement à l'écran, à la fin. Le calcul se fait dans votre navigateur : aucune information de contact n'est demandée et aucune donnée n'est stockée sur ce site ni dans aucune base de données.",
   },
   {
     num: 8,
